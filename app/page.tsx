@@ -7,6 +7,7 @@ import HowItWorks from "@/components/HowItWorks";
 import ChromeExtension from "@/components/ChromeExtension";
 import Testimonials from "@/components/Testimonials";
 import Pricing from "@/components/Pricing";
+import ContactForm from "@/components/ContactForm";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
@@ -22,8 +23,9 @@ export default function Home() {
           <Features />
           <HowItWorks />
           <ChromeExtension />
-          <Testimonials />
+          <div className="hidden"><Testimonials /></div>
           <Pricing />
+          <ContactForm />
           <CTA />
         </main>
         <Footer />

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 
 export default function ChromeExtension() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -273,15 +274,15 @@ export default function ChromeExtension() {
               ))}
             </div>
 
-            <a
+            <Link
               href="#"
-              className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-white text-[#0F0F0F] font-semibold text-sm hover:bg-white/90 transition-all hover:shadow-xl hover:shadow-white/10 active:scale-95"
+              className="hidden items-center gap-2.5 px-6 py-3 rounded-xl bg-white text-[#0F0F0F] font-semibold text-sm hover:bg-white/90 transition-all hover:shadow-xl hover:shadow-white/10 active:scale-95"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" />
               </svg>
               Add to Chrome — it's free
-            </a>
+            </Link>
           </div>
         </div>
       </div>

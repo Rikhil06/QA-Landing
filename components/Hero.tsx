@@ -39,10 +39,10 @@ export default function Hero() {
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row items-center gap-4 mb-16">
           <a
-            href="#pricing"
+            href="#contact"
             className="group relative px-7 py-3.5 rounded-xl bg-white text-[#0F0F0F] font-semibold text-sm hover:bg-white/90 transition-all duration-200 hover:shadow-xl hover:shadow-white/15 active:scale-95"
           >
-            Start for free
+            Notify me
             <span className="ml-2 group-hover:translate-x-0.5 inline-block transition-transform">
               →
             </span>
@@ -56,7 +56,7 @@ export default function Hero() {
         </div>
 
         {/* Social proof */}
-        <div className="flex items-center gap-6 text-sm text-white/40 mb-16">
+        <div className="hidden flex items-center gap-6 text-sm text-white/40 mb-16">
           <div className="flex items-center gap-2">
             <div className="flex -space-x-2">
               {["bg-violet-500", "bg-blue-500", "bg-emerald-500", "bg-pink-500"].map(
@@ -103,7 +103,7 @@ export default function Hero() {
               <div className="w-3 h-3 rounded-full bg-emerald-500/70" />
               <div className="flex-1 mx-4">
                 <div className="w-48 h-5 rounded-md bg-white/5 mx-auto flex items-center justify-center">
-                  <span className="text-[10px] text-white/30">annoture.app/boards/checkout-flow</span>
+                  <span className="text-[10px] text-white/30">app.annoture.com/boards/checkout-flow</span>
                 </div>
               </div>
             </div>

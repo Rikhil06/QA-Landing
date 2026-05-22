@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from "react";
 
 type Plan = {
   name: string;
-  monthlyPrice: number | null;
-  yearlyPrice: number | null;
+  monthlyPrice: number | string | null;
+  yearlyPrice: number | string | null;
   gradient: string;
   gradientBg: string;
   highlighted: boolean;
@@ -28,7 +28,7 @@ const plans: Plan[] = [
     gradient: "from-emerald-500 to-teal-500",
     gradientBg: "from-emerald-500/5 to-teal-500/5",
     highlighted: false,
-    cta: "Get started",
+    cta: "Notify me",
     limits: {
       projects: "3 projects",
       members: "5 members",
@@ -39,18 +39,17 @@ const plans: Plan[] = [
       "Chrome extension",
       "Kanban board",
       "Screenshot capture",
-      "Browser metadata",
-      "Comment threads",
+      "Basic annotations & comments",
     ],
   },
   {
     name: "Starter",
-    monthlyPrice: 12,
-    yearlyPrice: 10,
+    monthlyPrice: "TBC",
+    yearlyPrice: "TBC",
     gradient: "from-blue-500 to-cyan-500",
     gradientBg: "from-blue-500/5 to-cyan-500/5",
     highlighted: false,
-    cta: "Start free trial",
+    cta: "Notify me",
     limits: {
       projects: "5 projects",
       members: "10 members",
@@ -59,57 +58,53 @@ const plans: Plan[] = [
     },
     features: [
       "Everything in Free",
+      "Unlimited comments",
       "Priority support",
-      "CSV export",
-      "Custom labels",
-      "Email notifications",
     ],
   },
   {
     name: "Team",
-    monthlyPrice: 39,
-    yearlyPrice: 32,
+    monthlyPrice: "TBC",
+    yearlyPrice: "TBC",
     gradient: "from-violet-500 to-pink-500",
     gradientBg: "from-violet-500/10 to-pink-500/10",
     highlighted: true,
-    badge: "Most popular",
-    cta: "Start free trial",
+    // badge: "Most popular",
+    cta: "Notify me",
     limits: {
       projects: "Unlimited",
       members: "Unlimited",
       screenshots: "Unlimited",
-      retention: "1 year",
+      retention: "Unlimited",
     },
     features: [
       "Everything in Starter",
-      "Board permissions",
-      "Jira & Trello exports",
-      "PDF reports",
+      "Board-level permissions",
+      "Long-term storage",
       "Priority processing",
-      "API access",
     ],
   },
   {
     name: "Agency",
-    monthlyPrice: null,
-    yearlyPrice: null,
+    monthlyPrice: "TBC",
+    yearlyPrice: "TBC",
     gradient: "from-orange-500 to-red-500",
     gradientBg: "from-orange-500/5 to-red-500/5",
     highlighted: false,
-    cta: "Contact sales",
+    cta: "Notify me",
     limits: {
-      projects: "Unlimited",
-      members: "Unlimited",
-      screenshots: "Unlimited",
+      projects: "Custom",
+      members: "Custom",
+      screenshots: "Custom",
       retention: "Custom",
     },
     features: [
       "Everything in Team",
       "White labelling",
-      "SSO / SAML",
+      "Client-specific boards",
+      "Exports (PDF, Jira, Trello)",
+      "SSO",
       "Custom retention",
-      "Dedicated CSM",
-      "SLA guarantee",
     ],
   },
 ];
@@ -125,15 +120,16 @@ const featureRows = [
   { label: "Chrome extension", plans: [true, true, true, true] },
   { label: "Kanban board", plans: [true, true, true, true] },
   { label: "Screenshot capture", plans: [true, true, true, true] },
-  { label: "Browser metadata", plans: [true, true, true, true] },
-  { label: "Comment threads", plans: [true, true, true, true] },
+  { label: "Basic annotations & comments", plans: [true, true, true, true] },
+  { label: "Unlimited comments", plans: [false, true, true, true] },
   { label: "Priority support", plans: [false, true, true, true] },
-  { label: "CSV export", plans: [false, true, true, true] },
   { label: "Board permissions", plans: [false, false, true, true] },
-  { label: "API access", plans: [false, false, true, true] },
-  { label: "PDF reports", plans: [false, false, true, true] },
+  { label: "Long-term storage", plans: [false, false, true, true] },
+  { label: "Priority processing", plans: [false, false, true, true] },
   { label: "White labelling", plans: [false, false, false, true] },
-  { label: "SSO / SAML", plans: [false, false, false, true] },
+  { label: "Client-specific boards", plans: [false, false, false, true] },
+  { label: "Exports (PDF, Jira, Trello)", plans: [false, false, false, true] },
+  { label: "SSO", plans: [false, false, false, true] },
 ];
 
 export default function Pricing() {
@@ -331,6 +327,8 @@ function PricingCard({ plan, yearly }: { plan: Plan; yearly: boolean }) {
               <span className="text-3xl font-bold text-white">Free</span>
               <span className="text-sm text-white/30">forever</span>
             </div>
+          ) : typeof price === "string" ? (
+            <div className="text-3xl font-bold text-white">{price}</div>
           ) : (
             <div className="flex items-baseline gap-1">
               <span className="text-white/40 text-lg">£</span>
@@ -338,9 +336,9 @@ function PricingCard({ plan, yearly }: { plan: Plan; yearly: boolean }) {
               <span className="text-sm text-white/30">/ mo</span>
             </div>
           )}
-          {yearly && price !== null && price > 0 && (
+          {yearly && typeof price === "number" && price > 0 && (
             <div className="text-[11px] text-emerald-400 mt-1">
-              Billed £{(price * 12).toFixed(0)} / year
+              {`Billed £${(price * 12).toFixed(0)} / year`}
             </div>
           )}
         </div>
@@ -370,15 +368,16 @@ function PricingCard({ plan, yearly }: { plan: Plan; yearly: boolean }) {
         </ul>
 
         {/* CTA */}
-        <button
-          className={`w-full py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 active:scale-95 ${
+        <a
+          href="#contact"
+          className={`w-full py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 active:scale-95 text-center ${
             plan.highlighted
               ? "bg-white text-[#0F0F0F] hover:bg-white/90 shadow-lg shadow-white/10"
               : "bg-white/8 text-white/80 border border-white/10 hover:bg-white/12 hover:text-white"
           }`}
         >
           {plan.cta}
-        </button>
+        </a>
       </div>
     </div>
   );

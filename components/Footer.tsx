@@ -6,26 +6,26 @@ const footerLinks = {
     { label: "How it works", href: "#how-it-works" },
     { label: "Chrome Extension", href: "#extension" },
     { label: "Pricing", href: "#pricing" },
-    { label: "Changelog", href: "#" },
+    // { label: "Changelog", href: "#" },
   ],
   Company: [
     { label: "About", href: "#" },
-    { label: "Blog", href: "#" },
-    { label: "Careers", href: "#" },
-    { label: "Contact", href: "#" },
+    // { label: "Blog", href: "#" },
+    // { label: "Careers", href: "#" },
+    { label: "Contact", href: "#contact" },
   ],
-  Legal: [
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
-    { label: "Cookie Policy", href: "#" },
-    { label: "Security", href: "#" },
-  ],
-  Integrations: [
-    { label: "Jira", href: "#" },
-    { label: "Trello", href: "#" },
-    { label: "Slack", href: "#" },
-    { label: "API docs", href: "#" },
-  ],
+  // Legal: [
+  //   { label: "Privacy Policy", href: "#" },
+  //   { label: "Terms of Service", href: "#" },
+  //   { label: "Cookie Policy", href: "#" },
+  //   { label: "Security", href: "#" },
+  // ],
+  // Integrations: [
+  //   { label: "Jira", href: "#" },
+  //   { label: "Trello", href: "#" },
+  //   { label: "Slack", href: "#" },
+  //   { label: "API docs", href: "#" },
+  // ],
 };
 
 export default function Footer() {
@@ -50,7 +50,7 @@ export default function Footer() {
             <p className="text-sm text-white/35 leading-relaxed max-w-[220px] mb-5">
               QA bug capture and tracking for modern product teams.
             </p>
-            <div className="flex gap-3">
+            <div className="flex gap-3 hidden">
               {/* Twitter/X */}
               <a href="#" className="w-8 h-8 rounded-lg bg-white/5 border border-white/8 flex items-center justify-center text-white/40 hover:text-white hover:bg-white/8 transition-all">
                 <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
@@ -97,7 +97,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-white/6">
           <p className="text-xs text-white/25">
-            © 2025 Annoture. All rights reserved.
+            © {new Date().getFullYear()} Annoture. All rights reserved.
           </p>
           <div className="flex items-center gap-4 text-xs text-white/25">
             <span>Made with</span>

@@ -15,7 +15,7 @@ const companies = [
 
 export default function LogoTicker() {
   return (
-    <section className="relative py-12 border-y border-white/6 overflow-hidden">
+    <section className="hidden relative py-12 border-y border-white/6 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-r from-[#0F0F0F] via-transparent to-[#0F0F0F] z-10 pointer-events-none" />
       <p className="text-center text-xs uppercase tracking-widest text-white/25 mb-8 font-medium">
         Trusted by teams at

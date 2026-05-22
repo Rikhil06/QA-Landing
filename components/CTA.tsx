@@ -63,23 +63,23 @@ export default function CTA() {
             </h2>
 
             <p className="text-lg text-white/45 max-w-xl mx-auto mb-10">
-              Join 500+ QA teams who cut their bug reporting time by 80%. Set up
-              in 3 minutes, no credit card required.
+              Be among the first to streamline your QA workflow. Set up
+              in minutes, no credit card required.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
               <a
-                href="#pricing"
+                href="#contact"
                 className="group px-8 py-3.5 rounded-xl bg-white text-[#0F0F0F] font-semibold text-sm hover:bg-white/90 transition-all hover:shadow-2xl hover:shadow-white/15 active:scale-95"
               >
-                Get started free
+                Notify me
                 <span className="ml-2 group-hover:translate-x-0.5 inline-block transition-transform">
                   →
                 </span>
               </a>
               <a
                 href="#extension"
-                className="px-8 py-3.5 rounded-xl glass border border-white/10 text-white/80 font-medium text-sm hover:text-white hover:border-white/20 transition-all"
+                className="hidden px-8 py-3.5 rounded-xl glass border border-white/10 text-white/80 font-medium text-sm hover:text-white hover:border-white/20 transition-all"
               >
                 Add Chrome extension
               </a>

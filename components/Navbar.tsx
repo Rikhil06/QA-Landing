@@ -62,15 +62,15 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-3">
           <a
             href="#"
-            className="text-sm text-white/60 hover:text-white transition-colors px-3 py-1.5"
+            className="text-sm text-white/60 hover:text-white transition-colors px-3 py-1.5 hidden"
           >
             Sign in
           </a>
           <a
-            href="#pricing"
+            href="#contact"
             className="text-sm font-medium px-4 py-2 rounded-lg bg-white text-[#0F0F0F] hover:bg-white/90 transition-all hover:shadow-lg hover:shadow-white/10 active:scale-95"
           >
-            Get started free
+            Notify me
           </a>
         </div>
 
@@ -111,15 +111,15 @@ export default function Navbar() {
             </a>
           ))}
           <div className="mt-3 pt-3 border-t border-white/8 flex flex-col gap-2">
-            <a href="#" className="text-sm text-white/60 px-3 py-2">
+            <a href="#" className="text-sm text-white/60 px-3 py-2 hidden">
               Sign in
             </a>
             <a
-              href="#pricing"
+              href="#contact"
               className="text-sm font-medium px-4 py-2.5 rounded-lg bg-white text-[#0F0F0F] text-center"
               onClick={() => setMobileOpen(false)}
             >
-              Get started free
+              Notify me
             </a>
           </div>
         </div>

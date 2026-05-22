@@ -80,7 +80,7 @@ const features = [
     shadow: "shadow-indigo-500/20",
     tag: "Secure",
     title: "Enterprise ready",
-    desc: "SSO, white-labelling, custom data retention, and granular board permissions. Meets SOC 2 requirements out of the box.",
+    desc: "SSO, white-labelling, custom data retention, and granular board permissions.",
   },
 ];
 
