@@ -38,7 +38,7 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="contact" ref={sectionRef} className="relative py-28 px-6">
+    <section id="contact" ref={sectionRef} className="relative py-16 md:py-28 px-6">
       <div className="max-w-2xl mx-auto">
         <div className="section-animate text-center mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-300 text-xs font-medium mb-5">

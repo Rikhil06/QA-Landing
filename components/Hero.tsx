@@ -24,13 +24,13 @@ export default function Hero() {
         </div>
 
         {/* Headline */}
-        <h1 className="text-5xl md:text-7xl font-bold tracking-tight max-w-4xl leading-[1.08] mb-6">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight max-w-4xl leading-[1.08] mb-6">
           <span className="text-white">QA that moves as</span>
           <br />
           <span className="gradient-text">fast as you do</span>
         </h1>
 
-        <p className="text-lg md:text-xl text-white/50 max-w-2xl leading-relaxed mb-10">
+        <p className="text-base sm:text-lg md:text-xl text-white/50 w-[min(42rem,100vw-3rem)] leading-relaxed mb-10">
           Capture bugs instantly with a single click. Annotate screenshots
           automatically, create Kanban tickets, and collaborate with your team —
           all without leaving your browser.

@@ -157,7 +157,7 @@ export default function Pricing() {
   }, []);
 
   return (
-    <section id="pricing" ref={sectionRef} className="relative py-28 px-6">
+    <section id="pricing" ref={sectionRef} className="relative py-16 md:py-28 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="section-animate text-center mb-12">
@@ -230,7 +230,8 @@ export default function Pricing() {
         {/* Comparison table */}
         {showComparison && (
           <div className="glass-card overflow-hidden">
-            <table className="w-full">
+            <div className="overflow-x-auto">
+            <table className="w-full min-w-[560px]">
               <thead>
                 <tr className="border-b border-white/8">
                   <th className="text-left p-4 text-xs text-white/40 font-medium w-48">Feature</th>
@@ -276,6 +277,7 @@ export default function Pricing() {
                 ))}
               </tbody>
             </table>
+            </div>
           </div>
         )}
       </div>

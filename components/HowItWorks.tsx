@@ -58,7 +58,7 @@ export default function HowItWorks() {
   }, []);
 
   return (
-    <section id="how-it-works" ref={sectionRef} className="relative py-28 px-6">
+    <section id="how-it-works" ref={sectionRef} className="relative py-16 md:py-28 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="section-animate text-center mb-20">

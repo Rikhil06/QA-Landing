@@ -25,7 +25,7 @@ export default function CTA() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-28 px-6">
+    <section ref={sectionRef} className="relative py-16 md:py-28 px-6">
       <div className="max-w-4xl mx-auto">
         <div className="section-animate relative rounded-3xl border border-white/10 overflow-hidden">
           {/* Background */}

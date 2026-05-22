@@ -82,7 +82,7 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-28 px-6">
+    <section ref={sectionRef} className="relative py-16 md:py-28 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="section-animate text-center mb-16">

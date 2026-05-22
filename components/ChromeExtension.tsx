@@ -36,7 +36,7 @@ export default function ChromeExtension() {
   const steps = ["Click element", "Screenshot taken", "Popup opens"];
 
   return (
-    <section id="extension" ref={sectionRef} className="relative py-28 px-6">
+    <section id="extension" ref={sectionRef} className="relative py-16 md:py-28 px-6 overflow-hidden">
       {/* Accent glow */}
       <div
         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
