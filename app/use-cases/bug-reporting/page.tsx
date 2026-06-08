@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PageLayout from "@/components/PageLayout";
+import FAQ from "@/components/FAQ";
 
 export const metadata: Metadata = {
   title: "Visual Bug Reporting Tool — Auto-capture Screenshots & Context",
@@ -303,6 +304,44 @@ export default function BugReportingPage() {
           </div>
         </div>
       </section>
+
+      {/* FAQ */}
+      <FAQ
+        heading="Bug reporting questions"
+        subheading="Common questions from teams looking to improve their bug reports."
+        items={[
+          {
+            question: "What makes a good bug report?",
+            answer:
+              "A good bug report includes the exact URL where the bug occurred, the browser name and version, the operating system, a screenshot showing the issue, the specific element involved, and clear steps to reproduce. Annoture captures all of this automatically in one click — the only thing you write is a one-line description.",
+          },
+          {
+            question: "Why do developers always ask follow-up questions after receiving a bug report?",
+            answer:
+              "Because most bug reports are missing the technical context needed to reproduce the issue. The most common gaps are: missing URL, no browser or OS info, no screenshot, and a vague description of which element was broken. Annoture fills all of these automatically so developers can start working immediately.",
+          },
+          {
+            question: "Can non-technical team members file useful bug reports?",
+            answer:
+              "Yes. Because Annoture captures all the technical details automatically, product managers, designers, and stakeholders can file complete, developer-ready reports with just a one-line description. The tool handles the technical context — they just describe what went wrong.",
+          },
+          {
+            question: "How does Annoture capture the DOM element?",
+            answer:
+              "When you click on an element in capture mode, Annoture reads the element's tag name, ID, class names, CSS selector, and XPath from the DOM and attaches them to the report. Developers can use the CSS selector or XPath to find the exact element without hunting through the codebase.",
+          },
+          {
+            question: "Does Annoture capture the full page or just what's visible?",
+            answer:
+              "Annoture captures a full-page screenshot — including content below the fold — not just the visible viewport. The element you clicked is automatically annotated with a marker so developers can see exactly where the issue is.",
+          },
+          {
+            question: "What if the bug only happens on a specific browser or OS?",
+            answer:
+              "Because Annoture automatically records the browser name and version plus the operating system and version on every report, environment-specific bugs are immediately identifiable. Developers can filter the board by environment and know exactly which configuration to test.",
+          },
+        ]}
+      />
 
       {/* CTA */}
       <section className="relative py-16 md:py-28 px-6">

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PageLayout from "@/components/PageLayout";
+import FAQ from "@/components/FAQ";
 
 export const metadata: Metadata = {
   title: "QA Testing Tool — Visual Bug Capture for QA Engineers",
@@ -304,6 +305,44 @@ export default function QATestingPage() {
           </div>
         </div>
       </section>
+
+      {/* FAQ */}
+      <FAQ
+        heading="Common QA testing questions"
+        subheading="Everything QA engineers ask before switching to Annoture."
+        items={[
+          {
+            question: "How long does it take to capture a bug with Annoture?",
+            answer:
+              "Under 10 seconds. Click the Annoture icon, click the broken element, add a one-line description, set the severity, and hit Submit. Everything else — screenshot, URL, browser, OS, DOM element — is captured automatically.",
+          },
+          {
+            question: "What information is captured automatically in every report?",
+            answer:
+              "Every report automatically includes the exact page URL, browser name and full version number, operating system and version, viewport dimensions, the DOM element (CSS selector and XPath), and a full-page screenshot with the clicked element annotated.",
+          },
+          {
+            question: "Does Annoture work on staging environments and localhost?",
+            answer:
+              "Yes. The extension works on any page you can open in Chrome — including local development servers, staging environments, and production sites.",
+          },
+          {
+            question: "Do developers need to install the extension to see bug reports?",
+            answer:
+              "No. Only the people capturing bugs need the Chrome extension. Developers access the shared Kanban board through the Annoture web app — no extension required.",
+          },
+          {
+            question: "Can the whole team see the same board?",
+            answer:
+              "Yes. QA engineers, developers, designers, and project managers all share the same Kanban board. Everyone sees the same bugs, the same statuses, and the same source of truth — no more chasing updates in Slack.",
+          },
+          {
+            question: "How is severity set on a bug report?",
+            answer:
+              "You set the severity level (Critical, High, Medium, or Low) directly in the capture popup before submitting. It's visible at a glance on every card in the Kanban board and can be used to filter and sort your backlog.",
+          },
+        ]}
+      />
 
       {/* CTA */}
       <section className="relative py-16 md:py-28 px-6">

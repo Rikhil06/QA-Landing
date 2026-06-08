@@ -58,9 +58,9 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-1">
-          <a href="/#features" className="px-3.5 py-1.5 text-sm text-white/60 hover:text-white rounded-lg hover:bg-white/5 transition-all duration-200">
+          <Link href="/features" className="px-3.5 py-1.5 text-sm text-white/60 hover:text-white rounded-lg hover:bg-white/5 transition-all duration-200">
             Features
-          </a>
+          </Link>
           <a href="/#how-it-works" className="px-3.5 py-1.5 text-sm text-white/60 hover:text-white rounded-lg hover:bg-white/5 transition-all duration-200">
             How it works
           </a>
@@ -131,9 +131,9 @@ export default function Navbar() {
         } bg-[#0F0F0F]/95 backdrop-blur-xl`}
       >
         <div className="px-6 py-4 flex flex-col gap-1">
-          <a href="/#features" className="px-3 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/5 rounded-lg transition-all" onClick={() => setMobileOpen(false)}>
+          <Link href="/features" className="px-3 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/5 rounded-lg transition-all" onClick={() => setMobileOpen(false)}>
             Features
-          </a>
+          </Link>
           <a href="/#how-it-works" className="px-3 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/5 rounded-lg transition-all" onClick={() => setMobileOpen(false)}>
             How it works
           </a>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PageLayout from "@/components/PageLayout";
+import FAQ from "@/components/FAQ";
 
 export const metadata: Metadata = {
   title: "QA Bug Capture Features — Chrome Extension, Kanban Board & More",
@@ -136,8 +137,7 @@ export default function FeaturesPage() {
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white mb-6 leading-tight">
             A Chrome extension for QA testing
-            <br />
-            <span className="gradient-text">that does the hard part</span>
+            <span className="gradient-text"> that does the hard part</span>
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-white/50 w-[min(42rem,100vw-3rem)] mx-auto leading-relaxed">
             Annoture sits in your toolbar and captures everything — screenshot,
@@ -206,6 +206,44 @@ export default function FeaturesPage() {
           </div>
         </section>
       ))}
+
+      {/* FAQ */}
+      <FAQ
+        heading="Feature questions"
+        subheading="Common questions about how Annoture's features work."
+        items={[
+          {
+            question: "Which browsers does the Annoture extension support?",
+            answer:
+              "The Annoture extension currently supports Google Chrome. Support for other Chromium-based browsers (Edge, Brave, Arc) is planned for a future release.",
+          },
+          {
+            question: "Does the extension work on localhost and staging environments?",
+            answer:
+              "Yes. The extension works on any URL you can open in Chrome — including http://localhost, internal staging environments, and production sites.",
+          },
+          {
+            question: "Does Annoture annotate the screenshot automatically?",
+            answer:
+              "Yes. When you click an element to capture a bug, Annoture automatically places a marker on the screenshot at the exact point you clicked — no manual annotation needed. The marker is part of the screenshot that gets attached to the report.",
+          },
+          {
+            question: "How many columns does the Kanban board have?",
+            answer:
+              "The board has four columns by default: Backlog, In Progress, In Review, and Done. You can drag cards between columns and filter by severity, assignee, or date.",
+          },
+          {
+            question: "Can I assign bugs to specific team members?",
+            answer:
+              "Yes. Each bug report can be assigned to a specific person on the board. Team members can also comment directly on reports to discuss the issue without leaving the tool.",
+          },
+          {
+            question: "Is there a limit on how many team members I can invite?",
+            answer:
+              "Details on team size limits will be confirmed at launch. Early access members will be the first to know about plan limits and pricing.",
+          },
+        ]}
+      />
 
       {/* CTA */}
       <section className="relative py-16 md:py-28 px-6">
