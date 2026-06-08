@@ -4,7 +4,9 @@
       "Bash(grep -E \"\\\\.\\(json|mjs|ts|js|config\\)$\")",
       "Bash(source ~/.nvm/nvm.sh)",
       "Bash(nvm use:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "WebFetch(domain:marker.io)",
+      "mcp__Claude_Preview__preview_start"
     ]
   }
 }

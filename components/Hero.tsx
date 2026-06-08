@@ -25,15 +25,15 @@ export default function Hero() {
 
         {/* Headline */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight max-w-4xl leading-[1.08] mb-6">
-          <span className="text-white">QA that moves as</span>
-          <br />
-          <span className="gradient-text">fast as you do</span>
+          <span className="text-white">The visual bug capture tool </span>
+          <span className="gradient-text">built for QA teams</span>
+          {/* QA that moves as fast as you do */}
         </h1>
 
         <p className="text-base sm:text-lg md:text-xl text-white/50 w-[min(42rem,100vw-3rem)] leading-relaxed mb-10">
-          Capture bugs instantly with a single click. Annotate screenshots
-          automatically, create Kanban tickets, and collaborate with your team —
-          all without leaving your browser.
+          Click once. Get an automatic bug report with screenshot, URL, browser,
+          OS, and DOM element — already on your Kanban board. No manual
+          write-up, no back-and-forth.
         </p>
 
         {/* CTA Buttons */}
