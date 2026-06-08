@@ -31,26 +31,42 @@ const faqJsonLd = {
     },
     {
       "@type": "Question",
-      name: "What information does Annoture capture automatically?",
+      name: "What information is captured automatically in every report?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Annoture automatically captures the page URL, browser name and version, operating system and version, viewport dimensions, the DOM element (including CSS selector and XPath), and a full-page screenshot with the clicked element annotated.",
+        text: "Every report automatically includes the exact page URL, browser name and full version number, operating system and version, viewport dimensions, the DOM element (CSS selector and XPath), and a full-page screenshot with the clicked element annotated.",
       },
     },
     {
       "@type": "Question",
-      name: "Does Annoture work on any website?",
+      name: "Does Annoture work on staging environments and localhost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. The Annoture Chrome extension works on any website or web application — including staging environments, localhost, and production sites.",
+        text: "Yes. The extension works on any page you can open in Chrome — including local development servers, staging environments, and production sites.",
       },
     },
     {
       "@type": "Question",
-      name: "Do developers need to install anything to receive bug reports?",
+      name: "Do developers need to install the extension to see bug reports?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "No. Developers access the shared Kanban board through the Annoture web app. Only QA engineers and testers who want to capture bugs need the Chrome extension.",
+        text: "No. Only the people capturing bugs need the Chrome extension. Developers access the shared Kanban board through the Annoture web app — no extension required.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Can the whole team see the same board?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. QA engineers, developers, designers, and project managers all share the same Kanban board. Everyone sees the same bugs, the same statuses, and the same source of truth — no more chasing updates in Slack.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How is severity set on a bug report?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "You set the severity level (Critical, High, Medium, or Low) directly in the capture popup before submitting. It is visible at a glance on every card in the Kanban board and can be used to filter and sort your backlog.",
       },
     },
   ],

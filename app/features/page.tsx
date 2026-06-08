@@ -2,6 +2,61 @@ import type { Metadata } from "next";
 import PageLayout from "@/components/PageLayout";
 import FAQ from "@/components/FAQ";
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Which browsers does the Annoture extension support?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The Annoture extension currently supports Google Chrome. Support for other Chromium-based browsers (Edge, Brave, Arc) is planned for a future release.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Does the extension work on localhost and staging environments?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. The extension works on any URL you can open in Chrome — including http://localhost, internal staging environments, and production sites.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Does Annoture annotate the screenshot automatically?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. When you click an element to capture a bug, Annoture automatically places a marker on the screenshot at the exact point you clicked — no manual annotation needed. The marker is part of the screenshot that gets attached to the report.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How many columns does the Kanban board have?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The board has four columns by default: Backlog, In Progress, In Review, and Done. You can drag cards between columns and filter by severity, assignee, or date.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Can I assign bugs to specific team members?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Each bug report can be assigned to a specific person on the board. Team members can also comment directly on reports to discuss the issue without leaving the tool.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Is there a limit on how many team members I can invite?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Details on team size limits will be confirmed at launch. Early access members will be the first to know about plan limits and pricing.",
+      },
+    },
+  ],
+};
+
 export const metadata: Metadata = {
   title: "QA Bug Capture Features — Chrome Extension, Kanban Board & More",
   description:
@@ -126,6 +181,10 @@ const features = [
 export default function FeaturesPage() {
   return (
     <PageLayout>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       {/* Hero */}
       <section className="relative pt-32 pb-20 px-6">
         <div className="max-w-4xl mx-auto text-center">

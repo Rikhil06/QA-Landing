@@ -26,23 +26,47 @@ const faqJsonLd = {
       name: "What makes a good bug report?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A good bug report includes the exact URL where the bug was found, the browser name and version, the operating system, a screenshot showing the issue, the specific element involved, and clear steps to reproduce. Annoture captures all of this automatically in one click.",
+        text: "A good bug report includes the exact URL where the bug occurred, the browser name and version, the operating system, a screenshot showing the issue, the specific element involved, and clear steps to reproduce. Annoture captures all of this automatically in one click — the only thing you write is a one-line description.",
       },
     },
     {
       "@type": "Question",
-      name: "How does Annoture improve bug reports?",
+      name: "Why do developers always ask follow-up questions after receiving a bug report?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Annoture eliminates the most common gaps in bug reports by automatically capturing the page URL, browser version, operating system, viewport size, a full-page screenshot, and the exact DOM element (CSS selector and XPath). Developers receive everything they need to reproduce the bug without asking follow-up questions.",
+        text: "Because most bug reports are missing the technical context needed to reproduce the issue. The most common gaps are: missing URL, no browser or OS info, no screenshot, and a vague description of which element was broken. Annoture fills all of these automatically so developers can start working immediately.",
       },
     },
     {
       "@type": "Question",
-      name: "Can non-technical users file good bug reports with Annoture?",
+      name: "Can non-technical team members file useful bug reports?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Because Annoture captures all the technical details automatically, non-technical team members — product managers, designers, stakeholders — can file detailed, developer-ready bug reports with just a one-line description. The technical context is captured by the tool, not the person.",
+        text: "Yes. Because Annoture captures all the technical details automatically, product managers, designers, and stakeholders can file complete, developer-ready reports with just a one-line description. The tool handles the technical context — they just describe what went wrong.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How does Annoture capture the DOM element?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "When you click on an element in capture mode, Annoture reads the element's tag name, ID, class names, CSS selector, and XPath from the DOM and attaches them to the report. Developers can use the CSS selector or XPath to find the exact element without hunting through the codebase.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Does Annoture capture the full page or just what's visible?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Annoture captures a full-page screenshot — including content below the fold — not just the visible viewport. The element you clicked is automatically annotated with a marker so developers can see exactly where the issue is.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What if the bug only happens on a specific browser or OS?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Because Annoture automatically records the browser name and version plus the operating system and version on every report, environment-specific bugs are immediately identifiable. Developers can filter the board by environment and know exactly which configuration to test.",
       },
     },
   ],
