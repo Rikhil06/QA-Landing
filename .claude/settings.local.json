@@ -6,7 +6,10 @@
       "Bash(nvm use:*)",
       "Bash(npm install:*)",
       "WebFetch(domain:marker.io)",
-      "mcp__Claude_Preview__preview_start"
+      "mcp__Claude_Preview__preview_start",
+      "Bash(git fetch *)",
+      "Bash(git stash *)",
+      "Bash(git pull *)"
     ]
   }
 }
