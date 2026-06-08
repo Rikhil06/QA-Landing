@@ -88,10 +88,7 @@ export const metadata: Metadata = {
       "Capture bugs in one click. Annoture's Chrome extension auto-captures screenshots, URL, browser, OS, and DOM element — creating developer-ready reports instantly.",
     images: ["/og-image.png"],
   },
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  },
+  // Icons are auto-generated from app/icon.tsx and app/apple-icon.tsx
 };
 
 const jsonLd = {
@@ -142,7 +139,7 @@ const jsonLd = {
         url: BASE_URL,
         logo: {
           "@type": "ImageObject",
-          url: `${BASE_URL}/apple-touch-icon.png`,
+          url: `${BASE_URL}/apple-icon`,
         },
       },
       potentialAction: {
