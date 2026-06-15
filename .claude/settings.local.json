@@ -9,7 +9,16 @@
       "mcp__Claude_Preview__preview_start",
       "Bash(git fetch *)",
       "Bash(git stash *)",
-      "Bash(git pull *)"
+      "Bash(git pull *)",
+      "WebSearch",
+      "WebFetch(domain:testbuddy.io)",
+      "WebFetch(domain:jam.dev)",
+      "WebFetch(domain:disbug.io)",
+      "WebFetch(domain:www.betterbugs.io)",
+      "WebFetch(domain:docs.betterbugs.io)",
+      "WebFetch(domain:www.ngram.com)",
+      "WebFetch(domain:bugherd.com)",
+      "WebFetch(domain:chromewebstore.google.com)"
     ]
   }
 }

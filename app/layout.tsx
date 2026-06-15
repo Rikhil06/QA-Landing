@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import CookieBanner from "@/components/CookieBanner";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -171,8 +171,8 @@ export default function RootLayout({
         />
         {children}
         <Analytics />
+        <CookieBanner />
       </body>
-      <GoogleAnalytics gaId="G-58KJX531NH" />
     </html>
   );
 }

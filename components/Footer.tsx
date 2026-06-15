@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 
 const footerLinks = {
@@ -12,21 +14,14 @@ const footerLinks = {
     { label: "Bug Reporting", href: "/use-cases/bug-reporting" },
   ],
   Company: [
-    { label: "About", href: "#" },
+    { label: "About", href: "/about" },
     { label: "Contact", href: "/#contact" },
   ],
-  // Legal: [
-  //   { label: "Privacy Policy", href: "#" },
-  //   { label: "Terms of Service", href: "#" },
-  //   { label: "Cookie Policy", href: "#" },
-  //   { label: "Security", href: "#" },
-  // ],
-  // Integrations: [
-  //   { label: "Jira", href: "#" },
-  //   { label: "Trello", href: "#" },
-  //   { label: "Slack", href: "#" },
-  //   { label: "API docs", href: "#" },
-  // ],
+  Legal: [
+    { label: "Privacy Policy", href: "/privacy-policy" },
+    { label: "Terms of Service", href: "/terms" },
+    { label: "Cookie Policy", href: "/cookies" },
+  ],
 };
 
 export default function Footer() {
@@ -79,7 +74,7 @@ export default function Footer() {
               <ul className="space-y-2.5">
                 {links.map((link) => (
                   <li key={link.label}>
-                    {link.href.startsWith("/use-cases") ? (
+                    {link.href.startsWith("/") && !link.href.startsWith("/#") ? (
                       <Link
                         href={link.href}
                         className="text-sm text-white/35 hover:text-white/70 transition-colors"
@@ -107,6 +102,16 @@ export default function Footer() {
             © {new Date().getFullYear()} Annoture. All rights reserved.
           </p>
           <div className="flex items-center gap-4 text-xs text-white/25">
+            <button
+              onClick={() => {
+                localStorage.removeItem("cookie_consent");
+                window.location.reload();
+              }}
+              className="text-white/45 underline underline-offset-2 hover:text-white/70 transition-colors"
+            >
+              Cookie settings
+            </button>
+            <span>·</span>
             <span>Made with</span>
             <span className="text-red-400">♥</span>
             <span>for QA teams everywhere</span>

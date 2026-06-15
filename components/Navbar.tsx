@@ -96,6 +96,9 @@ export default function Navbar() {
           <a href="/#pricing" className="px-3.5 py-1.5 text-sm text-white/60 hover:text-white rounded-lg hover:bg-white/5 transition-all duration-200">
             Pricing
           </a>
+          <Link href="/about" className="px-3.5 py-1.5 text-sm text-white/60 hover:text-white rounded-lg hover:bg-white/5 transition-all duration-200">
+            About
+          </Link>
         </nav>
 
         {/* CTA */}
@@ -163,6 +166,9 @@ export default function Navbar() {
           <a href="/#pricing" className="px-3 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/5 rounded-lg transition-all" onClick={() => setMobileOpen(false)}>
             Pricing
           </a>
+          <Link href="/about" className="px-3 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/5 rounded-lg transition-all" onClick={() => setMobileOpen(false)}>
+            About
+          </Link>
 
           <div className="mt-3 pt-3 border-t border-white/8">
             <a
