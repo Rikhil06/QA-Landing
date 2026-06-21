@@ -32,7 +32,7 @@ const plans: Plan[] = [
     limits: {
       projects: "3 projects",
       members: "5 members",
-      screenshots: "25 / month",
+      screenshots: "100 / month",
       retention: "7 days",
     },
     features: [
