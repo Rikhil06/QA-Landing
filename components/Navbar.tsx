@@ -96,6 +96,9 @@ export default function Navbar() {
           <a href="/#pricing" className="px-3.5 py-1.5 text-sm text-white/60 hover:text-white rounded-lg hover:bg-white/5 transition-all duration-200">
             Pricing
           </a>
+          <Link href="/compare/bugherd-and-marker-io" className="px-3.5 py-1.5 text-sm text-white/60 hover:text-white rounded-lg hover:bg-white/5 transition-all duration-200">
+            Compare
+          </Link>
           <Link href="/about" className="px-3.5 py-1.5 text-sm text-white/60 hover:text-white rounded-lg hover:bg-white/5 transition-all duration-200">
             About
           </Link>
@@ -166,6 +169,9 @@ export default function Navbar() {
           <a href="/#pricing" className="px-3 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/5 rounded-lg transition-all" onClick={() => setMobileOpen(false)}>
             Pricing
           </a>
+          <Link href="/compare/bugherd-and-marker-io" className="px-3 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/5 rounded-lg transition-all" onClick={() => setMobileOpen(false)}>
+            Compare
+          </Link>
           <Link href="/about" className="px-3 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/5 rounded-lg transition-all" onClick={() => setMobileOpen(false)}>
             About
           </Link>
