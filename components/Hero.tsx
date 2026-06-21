@@ -24,7 +24,7 @@ export default function Hero() {
         </div>
 
         {/* Headline */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight max-w-4xl leading-[1.08] mb-6">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight w-[min(56rem,100vw-3rem)] leading-[1.08] mb-6">
           <span className="text-white">The visual bug capture tool </span>
           <span className="gradient-text">built for QA teams</span>
           {/* QA that moves as fast as you do */}
