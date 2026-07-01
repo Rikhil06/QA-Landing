@@ -22,9 +22,9 @@ const sections = [
     title: "How we use cookies",
     content: (
       <p>
-        Annoture uses cookies on the landing page (annoture.com) and the web application. We use a mix of
-        first-party cookies (set by us) and third-party cookies (set by our service providers). Below is a
-        full list of the cookies we use and why.
+        Annoture uses cookies on the landing page (annoture.com) and the web application (app.annoture.com).
+        We use a mix of first-party cookies (set by us) and third-party cookies (set by our service
+        providers). Below is a full list of the cookies we use and why.
       </p>
     ),
   },
@@ -47,9 +47,28 @@ const sections = [
             </thead>
             <tbody className="divide-y divide-white/5">
               <tr>
-                <td className="py-2 pr-4 font-mono text-white/60">annoture_token</td>
-                <td className="py-2 pr-4">Stores your authentication JWT to keep you logged in to the web app.</td>
-                <td className="py-2">Session / 30 days</td>
+                <td className="py-2 pr-4 font-mono text-white/60">token</td>
+                <td className="py-2 pr-4">
+                  Stores your authentication JWT as an httpOnly cookie (not readable by JavaScript) to keep
+                  you securely logged in to the web app. Set by the API server.
+                </td>
+                <td className="py-2">7 days</td>
+              </tr>
+              <tr>
+                <td className="py-2 pr-4 font-mono text-white/60">has_session</td>
+                <td className="py-2 pr-4">
+                  A non-sensitive flag (value: &quot;1&quot;) that tells the web app a session is active,
+                  without exposing the JWT itself. Set alongside the <code>token</code> cookie.
+                </td>
+                <td className="py-2">7 days</td>
+              </tr>
+              <tr>
+                <td className="py-2 pr-4 font-mono text-white/60">oauth_state</td>
+                <td className="py-2 pr-4">
+                  A short-lived security token used during Google and GitHub sign-in to prevent
+                  cross-site request forgery (CSRF) attacks. Automatically cleared after sign-in completes.
+                </td>
+                <td className="py-2">10 minutes</td>
               </tr>
               <tr>
                 <td className="py-2 pr-4 font-mono text-white/60">cookie_consent</td>
@@ -184,7 +203,7 @@ export default function CookiePolicy() {
   return (
     <LegalLayout
       title="Cookie Policy"
-      lastUpdated="14 June 2025"
+      lastUpdated="28 June 2025"
       intro="This Cookie Policy explains what cookies are, which ones Annoture uses, and how you can control them. We respect your right to privacy and your ability to manage your preferences."
       sections={sections}
     />

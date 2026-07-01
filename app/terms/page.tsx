@@ -14,8 +14,8 @@ const sections = [
       <p>
         By creating an Annoture account or using any part of our service, you agree to be bound by these
         Terms of Service. If you do not agree, you must not use Annoture. These terms form a legally binding
-        agreement between you (or the organisation you represent) and Annoture, the operator of
-        Annoture.
+        agreement between you (or the organisation you represent) and Annoture (&quot;we&quot;,
+        &quot;us&quot;, &quot;our&quot;).
       </p>
     ),
   },
@@ -23,10 +23,11 @@ const sections = [
     title: "Description of service",
     content: (
       <p>
-        Annoture is a visual QA bug capture and tracking tool. It consists of a Chrome browser extension for
-        capturing bug reports and a web application for managing those reports on a shared Kanban board.
-        Features and limits vary by plan (Free, Starter, Team, Agency). We reserve the right to modify,
-        suspend, or discontinue any part of the service at any time with reasonable notice.
+        Annoture is a visual QA bug capture and tracking tool. It consists of a browser extension for
+        Chrome and Firefox for capturing bug reports (including screenshots and screen recordings) and a web
+        application for managing those reports on a shared Kanban board. Features and limits vary by plan
+        (Free, Starter, Team, Agency). We reserve the right to modify, suspend, or discontinue any part of
+        the service at any time with reasonable notice.
       </p>
     ),
   },
@@ -57,7 +58,12 @@ const sections = [
           <li>Infringe the intellectual property rights of others.</li>
           <li>Upload malicious code, malware, or harmful content.</li>
           <li>
-            Capture or store screenshots or data from websites you do not have permission to access or test.
+            Capture screenshots, screen recordings, or data from websites you do not own or have explicit
+            permission to test.
+          </li>
+          <li>
+            Use the extension on live production sites in a way that captures personal data of third-party
+            end-users without their consent.
           </li>
           <li>Attempt to gain unauthorised access to our systems or other users&apos; accounts.</li>
           <li>Resell or redistribute the service without our prior written consent.</li>
@@ -96,7 +102,11 @@ const sections = [
           be charged again. We do not offer prorated refunds for unused time on a cancelled plan.
         </p>
         <p className="mt-3">
-          If you believe you have been charged in error, contact us within 14 days and we will investigate.
+          If you believe you have been charged in error, contact us at{" "}
+          <a href="mailto:hello@annoture.com" className="text-white/70 underline">
+            hello@annoture.com
+          </a>{" "}
+          within 14 days and we will investigate.
         </p>
       </>
     ),
@@ -128,24 +138,42 @@ const sections = [
     content: (
       <>
         <p>
-          You retain ownership of all bug reports, screenshots, and data you submit to Annoture
-          (&quot;Your Content&quot;). By using the service you grant us a limited licence to store, process,
-          and display Your Content solely to provide the service to you and your team.
+          You retain ownership of all bug reports, screenshots, screen recordings, and data you submit to
+          Annoture (&quot;Your Content&quot;). By using the service you grant us a limited licence to store,
+          process, and display Your Content solely to provide the service to you and your team.
         </p>
         <p className="mt-3">
-          You are responsible for ensuring that screenshots and data you capture do not contain sensitive
-          personal data (e.g. customer PII) that should not be stored in a third-party tool. You must have
-          the right to capture and share any content submitted.
+          You are responsible for ensuring that screenshots, screen recordings, and data you capture do not
+          contain sensitive personal data (e.g. customer PII) that should not be stored in a third-party
+          tool. You must have the right to capture and share any content submitted.
         </p>
       </>
+    ),
+  },
+  {
+    title: "Data processing",
+    content: (
+      <p>
+        Where you use Annoture to process personal data on behalf of your own customers or end-users, you
+        act as the data controller and we act as a data processor. A Data Processing Agreement (DPA) is
+        available on request at{" "}
+        <a href="mailto:privacy@annoture.com" className="text-white/70 underline">
+          privacy@annoture.com
+        </a>
+        . Our handling of personal data is governed by our{" "}
+        <a href="/privacy-policy" className="text-white/70 underline">
+          Privacy Policy
+        </a>
+        .
+      </p>
     ),
   },
   {
     title: "Intellectual property",
     content: (
       <p>
-        The Annoture name, logo, software, and all associated intellectual property are owned by Everything
-        Creative. Nothing in these terms transfers any intellectual property rights to you. You may not copy,
+        The Annoture name, logo, software, and all associated intellectual property are owned by Annoture.
+        Nothing in these terms transfers any intellectual property rights to you. You may not copy,
         modify, distribute, or reverse-engineer any part of the Annoture service without our prior written
         permission.
       </p>
@@ -183,6 +211,22 @@ const sections = [
     ),
   },
   {
+    title: "Contact",
+    content: (
+      <p>
+        For general enquiries: {" "}
+        <a href="mailto:hello@annoture.com" className="text-white/70 underline">
+          hello@annoture.com
+        </a>
+        . For legal or data protection matters:{" "}
+        <a href="mailto:privacy@annoture.com" className="text-white/70 underline">
+          privacy@annoture.com
+        </a>
+        .
+      </p>
+    ),
+  },
+  {
     title: "Governing law",
     content: (
       <p>
@@ -207,7 +251,7 @@ export default function Terms() {
   return (
     <LegalLayout
       title="Terms of Service"
-      lastUpdated="14 June 2025"
+      lastUpdated="28 June 2025"
       intro="Please read these Terms of Service carefully before using Annoture. They set out the rules for using our service and your rights and responsibilities as a user."
       sections={sections}
     />

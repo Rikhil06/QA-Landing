@@ -13,12 +13,19 @@ const sections = [
     content: (
       <>
         <p>
-          Annoture is a visual QA bug capture tool. When this policy refers to
-          &quot;Annoture&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;, it means Annoture.
+          Annoture is a visual QA bug capture tool. When this policy refers to &quot;Annoture&quot;,
+          &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;, it means Annoture.
         </p>
-        <p>
+        <p className="mt-3">
           We are the data controller for personal data collected through the Annoture website (annoture.com),
-          web application, and Chrome extension.
+          web application, Chrome extension, and Firefox add-on.
+        </p>
+        <p className="mt-3">
+          For data protection enquiries, contact us at{" "}
+          <a href="mailto:privacy@annoture.com" className="text-white/70 underline">
+            privacy@annoture.com
+          </a>
+          .
         </p>
       </>
     ),
@@ -34,9 +41,15 @@ const sections = [
             register.
           </li>
           <li>
-            <strong className="text-white/70">Usage data:</strong> bug reports you submit (including
-            screenshots, page URLs, browser, operating system, and viewport metadata captured by the
-            extension).
+            <strong className="text-white/70">Usage data:</strong> bug reports you submit, including
+            screenshots, screen recordings (video/WebM), page URLs, browser, operating system, and viewport
+            metadata captured by the extension.
+          </li>
+          <li>
+            <strong className="text-white/70">Console log data:</strong> browser console errors and warnings
+            captured at the time of a bug report. These are filtered to error/warning level only (not
+            console.log) and are redacted to remove tokens, emails, and other sensitive patterns before
+            transmission.
           </li>
           <li>
             <strong className="text-white/70">Billing data:</strong> payment method details and invoice
@@ -101,7 +114,7 @@ const sections = [
     ),
   },
   {
-    title: "Third-party services",
+    title: "Third-party services (sub-processors)",
     content: (
       <>
         <p>We share data with trusted third parties only as needed to operate the service:</p>
@@ -120,15 +133,21 @@ const sections = [
             .
           </li>
           <li>
-            <strong className="text-white/70">Supabase</strong> — database hosting for account and project
-            data (EU/US servers).
+            <strong className="text-white/70">Render</strong> — database and backend API hosting. Account,
+            team, and bug report data is stored on Render-managed PostgreSQL infrastructure.
+          </li>
+          <li>
+            <strong className="text-white/70">Cloudflare (R2)</strong> — object storage for screenshots and
+            screen recordings captured in bug reports.
           </li>
           <li>
             <strong className="text-white/70">Vercel</strong> — hosting for the web application and landing
             page.
           </li>
           <li>
-            <strong className="text-white/70">Render</strong> — hosting for the backend API.
+            <strong className="text-white/70">Resend</strong> — transactional email delivery (account
+            verification, password reset, and billing notifications). Email addresses are shared with Resend
+            solely to deliver these messages.
           </li>
           <li>
             <strong className="text-white/70">Sentry</strong> — error monitoring (collects anonymised error
@@ -143,6 +162,18 @@ const sections = [
           All sub-processors are required to handle your data in accordance with applicable data protection law.
         </p>
       </>
+    ),
+  },
+  {
+    title: "International data transfers",
+    content: (
+      <p>
+        Some of our sub-processors (including Stripe, Cloudflare, Render, Resend, and Sentry) are based in
+        the United States. Transfers of personal data from the UK to the US are covered by the UK–US Data
+        Bridge (where the recipient is certified) or by Standard Contractual Clauses approved by the UK
+        Information Commissioner. By using Annoture you acknowledge that your data may be transferred to and
+        processed in the United States under these safeguards.
+      </p>
     ),
   },
   {
@@ -170,8 +201,20 @@ const sections = [
           <li>Withdraw consent for analytics at any time.</li>
         </ul>
         <p className="mt-3">
-          To exercise any of these rights, contact us via the contact form on our website. We will respond
-          within 30 days.
+          To exercise any of these rights, email us at{" "}
+          <a href="mailto:privacy@annoture.com" className="text-white/70 underline">
+            privacy@annoture.com
+          </a>
+          . We will respond within 30 days. You also have the right to lodge a complaint with the{" "}
+          <a
+            href="https://ico.org.uk/make-a-complaint"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white/70 underline"
+          >
+            Information Commissioner&apos;s Office (ICO)
+          </a>
+          .
         </p>
       </>
     ),
@@ -193,8 +236,9 @@ const sections = [
     content: (
       <p>
         We use industry-standard measures to protect your data, including encryption in transit (TLS),
-        hashed passwords (bcrypt), and access controls. No method of transmission over the internet is 100%
-        secure, but we take reasonable precautions to protect your information.
+        hashed passwords (bcrypt), httpOnly authentication cookies, and access controls. No method of
+        transmission over the internet is 100% secure, but we take reasonable precautions to protect your
+        information.
       </p>
     ),
   },
@@ -213,8 +257,8 @@ export default function PrivacyPolicy() {
   return (
     <LegalLayout
       title="Privacy Policy"
-      lastUpdated="14 June 2025"
-      intro="This Privacy Policy explains how Annoture collects, uses, and protects personal data when you use our website, web application, and Chrome extension. We take your privacy seriously and are committed to being transparent about our data practices."
+      lastUpdated="28 June 2025"
+      intro="This Privacy Policy explains how Annoture collects, uses, and protects personal data when you use our website, web application, Chrome extension, and Firefox add-on. We take your privacy seriously and are committed to being transparent about our data practices."
       sections={sections}
     />
   );
