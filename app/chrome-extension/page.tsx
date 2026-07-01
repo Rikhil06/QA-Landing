@@ -18,9 +18,6 @@ export const metadata: Metadata = {
   },
 };
 
-const CHROME_STORE_URL =
-  "https://chromewebstore.google.com/detail/annoture/pgclbfnhbhgjjacblhcacfgpofmmbddo";
-
 const steps = [
   {
     number: "01",
@@ -59,6 +56,24 @@ const captured = [
   { label: "Screen recording", desc: "Short recording of activity before capture (Team plan)", icon: "🎬" },
 ];
 
+function ComingSoonButton({ className }: { className?: string }) {
+  return (
+    <div className={`inline-flex items-center gap-3 rounded-xl cursor-not-allowed select-none ${className}`}>
+      <svg className="w-5 h-5 opacity-50 shrink-0" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5"/>
+        <circle cx="12" cy="12" r="4" fill="currentColor"/>
+        <line x1="21.17" y1="8" x2="12" y2="8" stroke="currentColor" strokeWidth="1.5"/>
+        <line x1="3.95" y1="6.06" x2="8.54" y2="14" stroke="currentColor" strokeWidth="1.5"/>
+        <line x1="10.88" y1="21.94" x2="15.46" y2="14" stroke="currentColor" strokeWidth="1.5"/>
+      </svg>
+      <span>Add to Chrome</span>
+      <span className="px-2 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/25 text-amber-400 text-[10px] font-semibold tracking-wide uppercase">
+        Coming soon
+      </span>
+    </div>
+  );
+}
+
 export default function ChromeExtensionPage() {
   return (
     <PageLayout>
@@ -83,21 +98,7 @@ export default function ChromeExtensionPage() {
             The Annoture Chrome extension sits in your toolbar and captures everything a developer needs — screenshot, URL, browser, OS, and console errors — the moment you spot a bug.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href={CHROME_STORE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-7 py-3.5 rounded-xl bg-white text-[#0F0F0F] font-semibold text-sm hover:bg-white/90 transition-all hover:shadow-2xl hover:shadow-white/15 active:scale-95"
-            >
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5"/>
-                <circle cx="12" cy="12" r="4" fill="currentColor"/>
-                <line x1="21.17" y1="8" x2="12" y2="8" stroke="currentColor" strokeWidth="1.5"/>
-                <line x1="3.95" y1="6.06" x2="8.54" y2="14" stroke="currentColor" strokeWidth="1.5"/>
-                <line x1="10.88" y1="21.94" x2="15.46" y2="14" stroke="currentColor" strokeWidth="1.5"/>
-              </svg>
-              Add to Chrome — it&apos;s free
-            </a>
+            <ComingSoonButton className="px-7 py-3.5 bg-white/8 border border-white/10 text-white/35 font-semibold text-sm" />
             <Link
               href="/features"
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl border border-white/10 text-white/60 hover:text-white hover:border-white/20 text-sm font-medium transition-all"
@@ -105,7 +106,7 @@ export default function ChromeExtensionPage() {
               See all features →
             </Link>
           </div>
-          <p className="mt-4 text-xs text-white/25">Free to install · No credit card required</p>
+          <p className="mt-4 text-xs text-white/25">Awaiting Chrome Web Store approval</p>
         </div>
       </section>
 
@@ -134,17 +135,7 @@ export default function ChromeExtensionPage() {
           </div>
 
           <div className="mt-10 text-center">
-            <a
-              href={CHROME_STORE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-violet-500 to-blue-500 text-white font-semibold text-sm hover:opacity-90 transition-all hover:shadow-2xl hover:shadow-violet-500/25 active:scale-95"
-            >
-              Install Annoture for Chrome
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-            </a>
+            <ComingSoonButton className="px-8 py-3.5 bg-white/6 border border-white/10 text-white/35 font-semibold text-sm" />
           </div>
         </div>
       </section>
@@ -188,19 +179,12 @@ export default function ChromeExtensionPage() {
                 </svg>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Ready to try it?
+                Coming soon to Chrome
               </h2>
               <p className="text-white/45 mb-8 max-w-sm mx-auto">
-                Install the extension, sign up for free, and capture your first bug in under 2 minutes.
+                The extension is awaiting Google Chrome Web Store approval. Sign up now and we&apos;ll notify you the moment it&apos;s live.
               </p>
-              <a
-                href={CHROME_STORE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white text-[#0F0F0F] font-semibold text-sm hover:bg-white/90 transition-all hover:shadow-2xl hover:shadow-white/15 active:scale-95"
-              >
-                Add to Chrome — it&apos;s free →
-              </a>
+              <ComingSoonButton className="mx-auto px-8 py-3.5 bg-white/8 border border-white/10 text-white/35 font-semibold text-sm" />
               <p className="mt-4 text-xs text-white/25">Free plan available · No credit card required</p>
             </div>
           </div>
