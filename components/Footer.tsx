@@ -4,9 +4,9 @@ import Link from "next/link";
 
 const footerLinks = {
   Product: [
-    { label: "Features", href: "/#features" },
+    { label: "Features", href: "/features" },
     { label: "How it works", href: "/#how-it-works" },
-    { label: "Chrome Extension", href: "/#extension" },
+    { label: "Chrome Extension", href: "/chrome-extension" },
     { label: "Pricing", href: "/#pricing" },
   ],
   "Use Cases": [
@@ -15,6 +15,7 @@ const footerLinks = {
   ],
   Company: [
     { label: "About", href: "/about" },
+    { label: "FAQ", href: "/faq" },
     { label: "Contact", href: "/contact" },
   ],
   Legal: [
