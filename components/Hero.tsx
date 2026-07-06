@@ -48,10 +48,19 @@ export default function Hero() {
             </span>
           </a>
           <a
-            href="#how-it-works"
-            className="px-7 py-3.5 rounded-xl glass text-white/80 font-medium text-sm hover:text-white hover:bg-white/8 transition-all duration-200"
+            href="https://chromewebstore.google.com/detail/annoture/bmamimdeecmfddopfkkcfphkddigpimc"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-2.5 px-7 py-3.5 rounded-xl glass border border-white/10 text-white/80 font-medium text-sm hover:text-white hover:bg-white/8 hover:border-white/20 transition-all duration-200"
           >
-            See how it works
+            <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5"/>
+              <circle cx="12" cy="12" r="4" fill="currentColor"/>
+              <line x1="21.17" y1="8" x2="12" y2="8" stroke="currentColor" strokeWidth="1.5"/>
+              <line x1="3.95" y1="6.06" x2="8.54" y2="14" stroke="currentColor" strokeWidth="1.5"/>
+              <line x1="10.88" y1="21.94" x2="15.46" y2="14" stroke="currentColor" strokeWidth="1.5"/>
+            </svg>
+            Add to Chrome — it&apos;s free
           </a>
         </div>
 
