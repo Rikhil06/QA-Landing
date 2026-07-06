@@ -69,10 +69,10 @@ export default function CTA() {
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
               <a
-                href="#contact"
+                href="https://app.annoture.com/"
                 className="group px-8 py-3.5 rounded-xl bg-white text-[#0F0F0F] font-semibold text-sm hover:bg-white/90 transition-all hover:shadow-2xl hover:shadow-white/15 active:scale-95"
               >
-                Notify me
+                Get started free
                 <span className="ml-2 group-hover:translate-x-0.5 inline-block transition-transform">
                   →
                 </span>

@@ -318,10 +318,10 @@ export default function FeaturesPage() {
                 the starter plan.
               </p>
               <a
-                href="/#contact"
+                href="https://app.annoture.com/"
                 className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white text-[#0F0F0F] font-semibold text-sm hover:bg-white/90 transition-all hover:shadow-2xl hover:shadow-white/15 active:scale-95"
               >
-                Notify me when it launches →
+                Get started free →
               </a>
             </div>
           </div>

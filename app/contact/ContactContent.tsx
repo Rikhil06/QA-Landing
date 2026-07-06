@@ -110,13 +110,6 @@ export default function ContactContent() {
                     </a>
                     .
                   </p>
-                  <p className="text-white/40">
-                    For billing issues, visit your{" "}
-                    <a href="https://app.annoture.com/usage-billing" className="text-white/70 hover:text-white transition-colors underline underline-offset-2">
-                      billing settings
-                    </a>
-                    .
-                  </p>
                 </div>
               </div>
             </div>

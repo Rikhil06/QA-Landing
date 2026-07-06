@@ -39,10 +39,10 @@ export default function Hero() {
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row items-center gap-4 mb-16">
           <a
-            href="#contact"
+            href="https://app.annoture.com/"
             className="group relative px-7 py-3.5 rounded-xl bg-white text-[#0F0F0F] font-semibold text-sm hover:bg-white/90 transition-all duration-200 hover:shadow-xl hover:shadow-white/15 active:scale-95"
           >
-            Notify me
+            Get started free
             <span className="ml-2 group-hover:translate-x-0.5 inline-block transition-transform">
               →
             </span>

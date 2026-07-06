@@ -140,10 +140,10 @@ export default function Navbar() {
         {/* CTA */}
         <div className="hidden md:flex items-center gap-3">
           <a
-            href="/#contact"
+            href="https://app.annoture.com/"
             className="text-sm font-medium px-4 py-2 rounded-lg bg-white text-[#0F0F0F] hover:bg-white/90 transition-all hover:shadow-lg hover:shadow-white/10 active:scale-95"
           >
-            Notify me
+            Get started free
           </a>
         </div>
 

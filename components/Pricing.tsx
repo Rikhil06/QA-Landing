@@ -28,7 +28,7 @@ const plans: Plan[] = [
     gradient: "from-emerald-500 to-teal-500",
     gradientBg: "from-emerald-500/5 to-teal-500/5",
     highlighted: false,
-    cta: "Notify me",
+    cta: "Get started free",
     limits: {
       projects: "3 projects",
       members: "5 members",
@@ -49,7 +49,7 @@ const plans: Plan[] = [
     gradient: "from-blue-500 to-cyan-500",
     gradientBg: "from-blue-500/5 to-cyan-500/5",
     highlighted: false,
-    cta: "Notify me",
+    cta: "Get started free",
     limits: {
       projects: "5 projects",
       members: "10 members",
@@ -70,7 +70,7 @@ const plans: Plan[] = [
     gradientBg: "from-violet-500/10 to-pink-500/10",
     highlighted: true,
     // badge: "Most popular",
-    cta: "Notify me",
+    cta: "Get started free",
     limits: {
       projects: "Unlimited",
       members: "Unlimited",
@@ -91,7 +91,7 @@ const plans: Plan[] = [
     gradient: "from-orange-500 to-red-500",
     gradientBg: "from-orange-500/5 to-red-500/5",
     highlighted: false,
-    cta: "Notify me",
+    cta: "Get started free",
     limits: {
       projects: "Custom",
       members: "Custom",
@@ -371,7 +371,7 @@ function PricingCard({ plan, yearly }: { plan: Plan; yearly: boolean }) {
 
         {/* CTA */}
         <a
-          href="#contact"
+          href="https://app.annoture.com/"
           className={`w-full py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 active:scale-95 text-center ${
             plan.highlighted
               ? "bg-white text-[#0F0F0F] hover:bg-white/90 shadow-lg shadow-white/10"
