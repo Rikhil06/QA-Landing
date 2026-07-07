@@ -140,6 +140,12 @@ export default function Navbar() {
         {/* CTA */}
         <div className="hidden md:flex items-center gap-3">
           <a
+            href="https://app.annoture.com/login"
+            className="text-sm text-white/60 hover:text-white transition-colors"
+          >
+            Log in
+          </a>
+          <a
             href="https://app.annoture.com/"
             className="text-sm font-medium px-4 py-2 rounded-lg bg-white text-[#0F0F0F] hover:bg-white/90 transition-all hover:shadow-lg hover:shadow-white/10 active:scale-95"
           >
@@ -218,13 +224,20 @@ export default function Navbar() {
             Contact
           </Link>
 
-          <div className="mt-3 pt-3 border-t border-white/8">
+          <div className="mt-3 pt-3 border-t border-white/8 flex flex-col gap-2">
             <a
-              href="/#contact"
+              href="https://app.annoture.com/login"
+              className="block text-sm text-white/60 hover:text-white px-4 py-2.5 rounded-lg hover:bg-white/5 transition-all text-center"
+              onClick={() => setMobileOpen(false)}
+            >
+              Log in
+            </a>
+            <a
+              href="https://app.annoture.com/"
               className="block text-sm font-medium px-4 py-2.5 rounded-lg bg-white text-[#0F0F0F] text-center"
               onClick={() => setMobileOpen(false)}
             >
-              Notify me
+              Get started free
             </a>
           </div>
         </div>
