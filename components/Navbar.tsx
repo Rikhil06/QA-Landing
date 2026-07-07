@@ -138,7 +138,7 @@ export default function Navbar() {
         </nav>
 
         {/* CTA */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex items-center gap-6">
           <a
             href="https://app.annoture.com/login"
             className="text-sm text-white/60 hover:text-white transition-colors"
