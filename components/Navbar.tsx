@@ -12,6 +12,7 @@ const productLinks: DropdownItem[] = [
 ];
 
 const resourceLinks: DropdownItem[] = [
+  { label: "Blog", href: "/blog", desc: "QA tips and best practices" },
   { label: "FAQ", href: "/faq", desc: "Common questions answered" },
   { label: "QA Testing", href: "/use-cases/qa-testing", desc: "Built for QA engineers" },
   { label: "Bug Reporting", href: "/use-cases/bug-reporting", desc: "For developer teams" },
