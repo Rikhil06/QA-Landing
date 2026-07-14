@@ -7,6 +7,7 @@ type DropdownItem = { label: string; href: string; desc: string };
 
 const productLinks: DropdownItem[] = [
   { label: "Features", href: "/features", desc: "Everything Annoture can do" },
+  { label: "Integrations", href: "/integrations", desc: "GitHub, Jira, Slack and more" },
   { label: "Chrome Extension", href: "/chrome-extension", desc: "Install and capture in one click" },
   { label: "How it works", href: "/#how-it-works", desc: "See the workflow" },
 ];
