@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageLayout from "@/components/PageLayout";
-import { posts } from "@/lib/blog";
+import { posts, type Post } from "@/lib/blog";
+
+const sortedPosts = [...posts].sort((a: Post, b: Post) =>
+  new Date(b.date).getTime() - new Date(a.date).getTime()
+);
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -20,7 +24,7 @@ function categoryClass(cat: string) {
 }
 
 export default function BlogPage() {
-  const [featured, ...rest] = posts;
+  const [featured, ...rest] = sortedPosts;
 
   return (
     <PageLayout>
