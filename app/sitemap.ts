@@ -103,6 +103,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.75,
     },
     {
+      url: `${base}/blog/how-to-prioritize-bugs-a-practical-framework-for-qa-teams`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.75,
+    },
+    {
       url: `${base}/integrations`,
       lastModified: now,
       changeFrequency: "weekly",
