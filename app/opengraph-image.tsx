@@ -6,6 +6,14 @@ export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
 export default async function Image() {
+  const interSemiBold = await fetch(
+    'https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-700-normal.ttf'
+  ).then((res) => res.arrayBuffer());
+
+  const interRegular = await fetch(
+    'https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-400-normal.ttf'
+  ).then((res) => res.arrayBuffer());
+
   return new ImageResponse(
     (
       <div
@@ -18,7 +26,7 @@ export default async function Image() {
           alignItems: 'center',
           justifyContent: 'center',
           position: 'relative',
-          fontFamily: 'system-ui, -apple-system, sans-serif',
+          fontFamily: 'Inter, sans-serif',
           overflow: 'hidden',
         }}
       >
@@ -142,6 +150,12 @@ export default async function Image() {
         </div>
       </div>
     ),
-    { ...size }
+    {
+      ...size,
+      fonts: [
+        { name: 'Inter', data: interRegular, weight: 400 },
+        { name: 'Inter', data: interSemiBold, weight: 700 },
+      ],
+    }
   );
 }
