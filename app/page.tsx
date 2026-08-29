@@ -47,7 +47,7 @@ const homeFaqSchema = {
       name: "Is Annoture free?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Annoture is currently in early access. Sign up to be notified when it launches — early access members will get priority access and be the first to hear about pricing.",
+        text: "Yes — Annoture has a free plan that's free forever. Paid plans start at £15/month for more projects, members, and storage. No credit card required to get started.",
       },
     },
   ],

@@ -18,7 +18,7 @@ export async function POST(req: Request) {
     resend.emails.send({
       from: `Annoture <${process.env.NOTIFY_EMAIL!}>`,
       to: email,
-      subject: "You're on the Annoture early access list",
+      subject: "Thanks for getting in touch with Annoture",
       text: `Hi ${name},\n\nThanks for your interest in Annoture — we'll be in touch soon.\n\nThe Annoture team`,
     }),
   ]);

@@ -167,10 +167,10 @@ export default function QATestingPage() {
             team's Kanban board.
           </p>
           <a
-            href="/#contact"
+            href="https://app.annoture.com/register"
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white text-[#0F0F0F] font-semibold text-sm hover:bg-white/90 transition-all hover:shadow-xl hover:shadow-white/15 active:scale-95"
           >
-            Get early access →
+            Get started for free →
           </a>
         </div>
       </section>
@@ -370,14 +370,13 @@ export default function QATestingPage() {
                 Ready to transform your QA workflow?
               </h2>
               <p className="text-white/45 mb-8 max-w-md mx-auto">
-                Get early access to Annoture — free to start, no credit card
-                required.
+                Start for free — no credit card required.
               </p>
               <a
-                href="/#contact"
+                href="https://app.annoture.com/register"
                 className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white text-[#0F0F0F] font-semibold text-sm hover:bg-white/90 transition-all hover:shadow-2xl hover:shadow-white/15 active:scale-95"
               >
-                Get early access →
+                Get started for free →
               </a>
             </div>
           </div>

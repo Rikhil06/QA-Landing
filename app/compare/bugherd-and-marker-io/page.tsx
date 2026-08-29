@@ -114,7 +114,7 @@ export default function ComparePage() {
             never expires — 100 screenshots a month, on the house.
           </p>
           <a
-            href="/#contact"
+            href="https://app.annoture.com/register"
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white text-[#0F0F0F] font-semibold text-sm hover:bg-white/90 transition-all hover:shadow-xl hover:shadow-white/15 active:scale-95"
           >
             Try Annoture free →
@@ -307,10 +307,10 @@ export default function ComparePage() {
                 bugs in under a minute.
               </p>
               <a
-                href="/#contact"
+                href="https://app.annoture.com/register"
                 className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white text-[#0F0F0F] font-semibold text-sm hover:bg-white/90 transition-all hover:shadow-2xl hover:shadow-white/15 active:scale-95"
               >
-                Get early access →
+                Get started for free →
               </a>
             </div>
           </div>

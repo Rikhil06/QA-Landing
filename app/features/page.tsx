@@ -51,7 +51,7 @@ const faqJsonLd = {
       name: "Is there a limit on how many team members I can invite?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Details on team size limits will be confirmed at launch. Early access members will be the first to know about plan limits and pricing.",
+        text: "Team size limits depend on your plan. The Free plan supports up to 5 members, Starter up to 10, and Team and Agency plans support unlimited members. See the pricing page for full details.",
       },
     },
   ],
@@ -314,8 +314,7 @@ export default function FeaturesPage() {
                 Ready to try it?
               </h2>
               <p className="text-white/45 mb-8 max-w-md mx-auto">
-                Get early access to every feature listed here — free forever on
-                the starter plan.
+                Every feature listed here is available now — free to start, no credit card required.
               </p>
               <a
                 href="https://app.annoture.com/register"

@@ -154,10 +154,10 @@ export default function BugReportingPage() {
             captured in one click, no manual write-up required.
           </p>
           <a
-            href="/#contact"
+            href="https://app.annoture.com/register"
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white text-[#0F0F0F] font-semibold text-sm hover:bg-white/90 transition-all hover:shadow-xl hover:shadow-white/15 active:scale-95"
           >
-            Get early access →
+            Get started for free →
           </a>
         </div>
       </section>
@@ -377,14 +377,13 @@ export default function BugReportingPage() {
                 Better bug reports start here
               </h2>
               <p className="text-white/45 mb-8 max-w-md mx-auto">
-                Give your team the context they need to ship fixes fast. Get
-                early access to Annoture — free to start.
+                Give your team the context they need to ship fixes fast. Free to start, no credit card required.
               </p>
               <a
-                href="/#contact"
+                href="https://app.annoture.com/register"
                 className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white text-[#0F0F0F] font-semibold text-sm hover:bg-white/90 transition-all hover:shadow-2xl hover:shadow-white/15 active:scale-95"
               >
-                Get early access →
+                Get started for free →
               </a>
             </div>
           </div>

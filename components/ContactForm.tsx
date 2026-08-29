@@ -45,7 +45,7 @@ export default function ContactForm() {
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
-            Get early access
+            Get in touch
           </div>
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-5">
             Interested in
@@ -53,7 +53,7 @@ export default function ContactForm() {
             <span className="gradient-text">Annoture?</span>
           </h2>
           <p className="text-lg text-white/45 max-w-md mx-auto">
-            Leave your details and we&apos;ll be in touch with early access and updates.
+            Leave your details and we&apos;ll get back to you shortly.
           </p>
         </div>
 
