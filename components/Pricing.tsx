@@ -11,6 +11,7 @@ type Plan = {
   highlighted: boolean;
   badge?: string;
   cta: string;
+  ctaUrl: string;
   features: string[];
   limits: {
     projects: string;
@@ -29,6 +30,7 @@ const plans: Plan[] = [
     gradientBg: "from-emerald-500/5 to-teal-500/5",
     highlighted: false,
     cta: "Get started for free",
+    ctaUrl: "https://app.annoture.com/register",
     limits: {
       projects: "3 projects",
       members: "5 members",
@@ -49,7 +51,8 @@ const plans: Plan[] = [
     gradient: "from-blue-500 to-cyan-500",
     gradientBg: "from-blue-500/5 to-cyan-500/5",
     highlighted: false,
-    cta: "Get started for free",
+    cta: "Get started",
+    ctaUrl: "https://app.annoture.com/register",
     limits: {
       projects: "5 projects",
       members: "10 members",
@@ -70,7 +73,8 @@ const plans: Plan[] = [
     gradientBg: "from-violet-500/10 to-pink-500/10",
     highlighted: true,
     // badge: "Most popular",
-    cta: "Get started for free",
+    cta: "Get started",
+    ctaUrl: "https://app.annoture.com/register",
     limits: {
       projects: "Unlimited",
       members: "Unlimited",
@@ -91,7 +95,8 @@ const plans: Plan[] = [
     gradient: "from-orange-500 to-red-500",
     gradientBg: "from-orange-500/5 to-red-500/5",
     highlighted: false,
-    cta: "Get started for free",
+    cta: "Contact us",
+    ctaUrl: "https://annoture.com/contact",
     limits: {
       projects: "Custom",
       members: "Custom",
@@ -371,7 +376,7 @@ function PricingCard({ plan, yearly }: { plan: Plan; yearly: boolean }) {
 
         {/* CTA */}
         <a
-          href="https://app.annoture.com/register"
+          href={plan.ctaUrl}
           className={`w-full py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 active:scale-95 text-center ${
             plan.highlighted
               ? "bg-white text-[#0F0F0F] hover:bg-white/90 shadow-lg shadow-white/10"
