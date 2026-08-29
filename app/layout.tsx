@@ -72,21 +72,14 @@ export const metadata: Metadata = {
     title: "Annoture — Visual QA Bug Capture Tool",
     description:
       "Capture bugs in one click. Annoture's Chrome extension auto-captures screenshots, URL, browser, OS, and DOM element — creating developer-ready reports instantly.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Annoture — Visual QA Bug Capture Tool",
-      },
-    ],
+    // images auto-populated by app/opengraph-image.tsx
   },
   twitter: {
     card: "summary_large_image",
     title: "Annoture — Visual QA Bug Capture Tool",
     description:
       "Capture bugs in one click. Annoture's Chrome extension auto-captures screenshots, URL, browser, OS, and DOM element — creating developer-ready reports instantly.",
-    images: ["/og-image.png"],
+    // images auto-populated by app/twitter-image.tsx
   },
   // Icons are auto-generated from app/icon.tsx and app/apple-icon.tsx
 };
