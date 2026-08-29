@@ -25,6 +25,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: integration.description,
       type: "website",
       url,
+      images: [{ url: "https://annoture.com/opengraph-image", width: 1200, height: 630, alt: "Annoture — Visual QA Bug Capture Tool" }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      images: ["https://annoture.com/opengraph-image"],
     },
   };
 }
