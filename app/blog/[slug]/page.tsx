@@ -169,10 +169,10 @@ export default async function BlogPostPage({ params }: Props) {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href="https://app.annoture.com/"
+                href="https://app.annoture.com/register"
                 className="px-6 py-3 rounded-xl bg-white text-[#0F0F0F] font-semibold text-sm hover:bg-white/90 transition-all duration-200 active:scale-95"
               >
-                Get started free →
+                Get started for free →
               </a>
               <a
                 href="https://chromewebstore.google.com/detail/annoture/bmamimdeecmfddopfkkcfphkddigpimc"

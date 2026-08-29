@@ -148,10 +148,10 @@ export default function Navbar() {
             Log in
           </a>
           <a
-            href="https://app.annoture.com/"
+            href="https://app.annoture.com/register"
             className="text-sm font-medium px-4 py-2 rounded-lg bg-white text-[#0F0F0F] hover:bg-white/90 transition-all hover:shadow-lg hover:shadow-white/10 active:scale-95"
           >
-            Get started free
+            Get started for free
           </a>
         </div>
 
@@ -235,11 +235,11 @@ export default function Navbar() {
               Log in
             </a>
             <a
-              href="https://app.annoture.com/"
+              href="https://app.annoture.com/register"
               className="block text-sm font-medium px-4 py-2.5 rounded-lg bg-white text-[#0F0F0F] text-center"
               onClick={() => setMobileOpen(false)}
             >
-              Get started free
+              Get started for free
             </a>
           </div>
         </div>

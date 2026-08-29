@@ -124,10 +124,10 @@ export default function BlogPage() {
               Everything we write about is built into Annoture. Try it free — no credit card needed.
             </p>
             <a
-              href="https://app.annoture.com/"
+              href="https://app.annoture.com/register"
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-white text-[#0F0F0F] font-semibold text-sm hover:bg-white/90 transition-all duration-200 hover:shadow-xl hover:shadow-white/15 active:scale-95"
             >
-              Get started free →
+              Get started for free →
             </a>
           </div>
         </div>
