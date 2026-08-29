@@ -299,7 +299,7 @@ export default function FeaturesPage() {
           {
             question: "Is there a limit on how many team members I can invite?",
             answer:
-              "Details on team size limits will be confirmed at launch. Early access members will be the first to know about plan limits and pricing.",
+              "Team size limits depend on your plan. The Free plan supports up to 5 members, Starter up to 10, and Team and Agency plans support unlimited members. See the pricing page for full details.",
           },
         ]}
       />
