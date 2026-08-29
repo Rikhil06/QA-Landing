@@ -14,14 +14,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const integration = getIntegration(slug);
   if (!integration) return {};
+  const url = `https://annoture.com/integrations/${slug}`;
   return {
     title: `${integration.name} Integration — Annoture`,
     description: integration.description,
     robots: { index: true, follow: true },
+    alternates: { canonical: url },
     openGraph: {
       title: `${integration.name} Integration — Annoture`,
       description: integration.description,
       type: "website",
+      url,
     },
   };
 }

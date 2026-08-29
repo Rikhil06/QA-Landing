@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "Blog",
   description: "QA tips, product updates, and best practices from the Annoture team.",
   robots: { index: true, follow: true },
+  alternates: { canonical: "https://annoture.com/blog" },
 };
 
 const categoryColors: Record<string, string> = {

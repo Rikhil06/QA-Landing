@@ -14,15 +14,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) return {};
+  const url = `https://annoture.com/blog/${slug}`;
   return {
     title: post.title,
     description: post.excerpt,
     robots: { index: true, follow: true },
+    alternates: { canonical: url },
     openGraph: {
       title: post.title,
       description: post.excerpt,
       type: "article",
       publishedTime: post.date,
+      url,
     },
   };
 }
