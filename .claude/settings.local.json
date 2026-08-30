@@ -18,7 +18,10 @@
       "WebFetch(domain:docs.betterbugs.io)",
       "WebFetch(domain:www.ngram.com)",
       "WebFetch(domain:bugherd.com)",
-      "WebFetch(domain:chromewebstore.google.com)"
+      "WebFetch(domain:chromewebstore.google.com)",
+      "Bash(kill 14174)",
+      "Bash(lsof -ti:3001)",
+      "Bash(xargs kill -9)"
     ]
   }
 }

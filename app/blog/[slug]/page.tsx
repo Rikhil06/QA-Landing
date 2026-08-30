@@ -4,6 +4,7 @@ import Link from "next/link";
 import PageLayout from "@/components/PageLayout";
 import { posts, getPost, type ContentBlock } from "@/lib/blog";
 import ShareButtons from "@/components/ShareButtons";
+import ReadingProgress from "@/components/ReadingProgress";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -16,6 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPost(slug);
   if (!post) return {};
   const url = `https://annoture.com/blog/${slug}`;
+  const ogImage = `https://annoture.com/blog/${slug}/opengraph-image`;
   return {
     title: post.title,
     description: post.excerpt,
@@ -27,11 +29,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "article",
       publishedTime: post.date,
       url,
-      images: [{ url: "https://annoture.com/opengraph-image", width: 1200, height: 630, alt: "Annoture — Visual QA Bug Capture Tool" }],
+      images: [{ url: ogImage, width: 1200, height: 630, alt: post.title }],
     },
     twitter: {
       card: "summary_large_image",
-      images: ["https://annoture.com/opengraph-image"],
+      images: [ogImage],
     },
   };
 }
@@ -111,13 +113,40 @@ function categoryClass(cat: string) {
   return categoryColors[cat] ?? "bg-white/10 text-white/60 border-white/10";
 }
 
+function InlineCTA() {
+  return (
+    <div className="my-10 px-6 py-5 rounded-xl bg-white/3 border border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div>
+        <p className="text-sm font-semibold text-white mb-1">Capturing bugs manually?</p>
+        <p className="text-sm text-white/45">One click captures the screenshot, URL, browser, OS, and DOM element automatically.</p>
+      </div>
+      <a
+        href="https://app.annoture.com/register"
+        className="shrink-0 px-4 py-2 rounded-lg bg-violet-500 text-white text-sm font-semibold hover:bg-violet-400 transition-colors whitespace-nowrap"
+      >
+        Try Annoture →
+      </a>
+    </div>
+  );
+}
+
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) notFound();
 
+  const midpoint = Math.floor(post.content.length / 2);
+
+  // Related: same category first, then others, exclude current
+  const related = [
+    ...posts.filter((p) => p.slug !== slug && p.category === post.category),
+    ...posts.filter((p) => p.slug !== slug && p.category !== post.category),
+  ].slice(0, 3);
+
   return (
     <PageLayout>
+      <ReadingProgress />
+
       {/* Hero */}
       <section className="relative pt-32 pb-12 px-6 overflow-hidden">
         <div
@@ -159,7 +188,12 @@ export default async function BlogPostPage({ params }: Props) {
           <p className="text-lg text-white/55 leading-relaxed mb-10 pb-10 border-b border-white/8">
             {post.excerpt}
           </p>
-          {post.content.map((block, i) => renderBlock(block, i))}
+          {post.content.map((block, i) => (
+            <>
+              {renderBlock(block, i)}
+              {i === midpoint && <InlineCTA key="inline-cta" />}
+            </>
+          ))}
           <div className="mt-10 pt-8 border-t border-white/8">
             <ShareButtons title={post.title} slug={post.slug} />
           </div>
@@ -167,7 +201,7 @@ export default async function BlogPostPage({ params }: Props) {
       </article>
 
       {/* CTA */}
-      <section className="px-6 pb-32">
+      <section className="px-6 pb-16">
         <div className="max-w-2xl mx-auto">
           <div className="rounded-2xl border border-white/8 bg-white/2 p-8 sm:p-10 text-center">
             <h2 className="text-xl font-bold text-white mb-3">Ready to fix your bug reports?</h2>
@@ -194,30 +228,30 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
       </section>
 
-      {/* More posts */}
-      {posts.filter((p) => p.slug !== slug).length > 0 && (
+      {/* Related posts */}
+      {related.length > 0 && (
         <section className="px-6 pb-24 border-t border-white/6 pt-16">
           <div className="max-w-5xl mx-auto">
-            <p className="text-xs font-semibold text-white/30 uppercase tracking-widest mb-6">More from the blog</p>
+            <p className="text-xs font-semibold text-white/30 uppercase tracking-widest mb-6">
+              More from the blog
+            </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {posts
-                .filter((p) => p.slug !== slug)
-                .slice(0, 3)
-                .map((p) => (
-                  <Link
-                    key={p.slug}
-                    href={`/blog/${p.slug}`}
-                    className="group block glass-card rounded-xl p-6 hover:border-white/15 transition-all duration-300"
-                  >
-                    <span className={`text-xs font-semibold px-2 py-0.5 rounded-full border ${categoryClass(p.category)} mb-4 inline-block`}>
-                      {p.category}
-                    </span>
-                    <h3 className="text-white font-semibold leading-snug mb-2 group-hover:text-white/90 transition-colors">
-                      {p.title}
-                    </h3>
-                    <p className="text-sm text-white/40 leading-relaxed line-clamp-2">{p.excerpt}</p>
-                  </Link>
-                ))}
+              {related.map((p) => (
+                <Link
+                  key={p.slug}
+                  href={`/blog/${p.slug}`}
+                  className="group block glass-card rounded-xl p-6 hover:border-white/15 transition-all duration-300"
+                >
+                  <span className={`text-xs font-semibold px-2 py-0.5 rounded-full border ${categoryClass(p.category)} mb-4 inline-block`}>
+                    {p.category}
+                  </span>
+                  <h3 className="text-white font-semibold leading-snug mb-2 group-hover:text-white/90 transition-colors">
+                    {p.title}
+                  </h3>
+                  <p className="text-sm text-white/40 leading-relaxed line-clamp-2 mb-3">{p.excerpt}</p>
+                  <span className="text-xs text-white/25">{p.readTime}</span>
+                </Link>
+              ))}
             </div>
           </div>
         </section>
