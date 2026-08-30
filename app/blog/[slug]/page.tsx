@@ -5,6 +5,7 @@ import PageLayout from "@/components/PageLayout";
 import { posts, getPost, type ContentBlock } from "@/lib/blog";
 import ShareButtons from "@/components/ShareButtons";
 import ReadingProgress from "@/components/ReadingProgress";
+import React from "react";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -189,10 +190,10 @@ export default async function BlogPostPage({ params }: Props) {
             {post.excerpt}
           </p>
           {post.content.map((block, i) => (
-            <>
+            <React.Fragment key={i}>
               {renderBlock(block, i)}
-              {i === midpoint && <InlineCTA key="inline-cta" />}
-            </>
+              {i === midpoint && <InlineCTA />}
+            </React.Fragment>
           ))}
           <div className="mt-10 pt-8 border-t border-white/8">
             <ShareButtons title={post.title} slug={post.slug} />
