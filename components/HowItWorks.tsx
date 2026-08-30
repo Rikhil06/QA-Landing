@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const steps = [
   {
@@ -127,19 +127,102 @@ export default function HowItWorks() {
         {/* Video Demo */}
         <div className="section-animate mt-24 text-center">
           <p className="text-sm text-white/40 uppercase tracking-widest font-mono mb-6">See it in action</p>
-          <div className="relative mx-auto max-w-3xl rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/40">
-            <video
-              src="https://cdn.annoture.com/demo-video/annoture-demo.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full"
-            />
-          </div>
+          <VideoDemo />
         </div>
       </div>
     </section>
+  );
+}
+
+function VideoDemo() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
+
+  // Scroll-driven scale animation
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current || !wrapperRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const windowH = window.innerHeight;
+      const progress = Math.min(1, Math.max(0, (windowH - rect.top) / (windowH + rect.height * 0.5)));
+      const scale = 0.75 + progress * 0.25;
+      const opacity = 0.3 + progress * 0.7;
+      wrapperRef.current.style.transform = `scale(${scale})`;
+      wrapperRef.current.style.opacity = `${opacity}`;
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Play when in view, pause and reset when out of view
+  useEffect(() => {
+    if (!containerRef.current || !videoRef.current) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = videoRef.current;
+          if (!video) return;
+          if (entry.isIntersecting) {
+            video.currentTime = 0;
+            video.play().then(() => setPlaying(true)).catch(() => {});
+          } else {
+            video.pause();
+            video.currentTime = 0;
+            setPlaying(false);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  const togglePlay = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.paused) {
+      video.play().then(() => setPlaying(true)).catch(() => {});
+    } else {
+      video.pause();
+      setPlaying(false);
+    }
+  };
+
+  return (
+    <div ref={containerRef} className="relative -mx-6 md:-mx-16 lg:-mx-32">
+      <div
+        ref={wrapperRef}
+        style={{ transform: 'scale(0.75)', opacity: 0.3, transition: 'transform 0.1s linear, opacity 0.1s linear' }}
+        className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-purple-500/10 cursor-pointer group"
+        onClick={togglePlay}
+      >
+        <div className="overflow-hidden" style={{ marginTop: '-2.25%' }}>
+          <video
+            ref={videoRef}
+            src="https://cdn.annoture.com/demo-video/annoture-demo.mp4"
+            muted
+            playsInline
+            className="w-full"
+            onEnded={() => setPlaying(false)}
+          />
+        </div>
+        {/* Play/pause overlay */}
+        {!playing && (
+          <div className="absolute inset-0 flex items-center justify-center bg-black/30 transition-opacity">
+            <div className="w-16 h-16 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm flex items-center justify-center group-hover:bg-white/20 transition-colors">
+              <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        )}
+        <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10" />
+      </div>
+    </div>
   );
 }
 
