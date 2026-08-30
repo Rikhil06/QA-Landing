@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { integrations } from "@/lib/integrations";
+import { posts } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://annoture.com";
@@ -90,24 +91,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     },
-    {
-      url: `${base}/blog/why-bug-reports-slow-down-development`,
+    ...posts.map((p) => ({
+      url: `${base}/blog/${p.slug}`,
       lastModified: now,
-      changeFrequency: "monthly",
+      changeFrequency: "monthly" as const,
       priority: 0.75,
-    },
-    {
-      url: `${base}/blog/how-to-connect-annoture-with-github-and-jira`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.75,
-    },
-    {
-      url: `${base}/blog/how-to-prioritize-bugs-a-practical-framework-for-qa-teams`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.75,
-    },
+    })),
     {
       url: `${base}/integrations`,
       lastModified: now,
