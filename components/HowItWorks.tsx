@@ -123,6 +123,21 @@ export default function HowItWorks() {
             ))}
           </div>
         </div>
+
+        {/* Video Demo */}
+        <div className="section-animate mt-24 text-center">
+          <p className="text-sm text-white/40 uppercase tracking-widest font-mono mb-6">See it in action</p>
+          <div className="relative mx-auto max-w-3xl rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/40">
+            <video
+              src="https://cdn.annoture.com/demo-video/annoture-demo.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full"
+            />
+          </div>
+        </div>
       </div>
     </section>
   );
