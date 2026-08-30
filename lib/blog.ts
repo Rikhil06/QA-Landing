@@ -461,8 +461,6 @@ export const posts: Post[] = [
       },
     ],
   },
-];
-
   {
     slug: "how-to-run-qa-as-a-solo-developer-or-small-team",
     title: "How to Run QA as a Solo Developer or Small Team",
