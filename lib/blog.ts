@@ -463,6 +463,157 @@ export const posts: Post[] = [
   },
 ];
 
+  {
+    slug: "how-to-run-qa-as-a-solo-developer-or-small-team",
+    title: "How to Run QA as a Solo Developer or Small Team",
+    excerpt:
+      "You don't need a dedicated QA department to ship software that works. Here's how small teams and solo developers can build a lightweight QA process that actually holds up.",
+    category: "QA Best Practices",
+    date: "30 August 2026",
+    readTime: "6 min read",
+    author: "Annoture Team",
+    content: [
+      {
+        type: "p",
+        text: "Most QA advice is written for enterprise teams. Dedicated testers, multiple environments, formal test plans, regression suites that take an afternoon to run. If you're a solo developer or a team of three, none of that applies — and following it will slow you down without making your software meaningfully better.",
+      },
+      {
+        type: "p",
+        text: "But \"we're too small for proper QA\" is also wrong. It's just an excuse to skip the things that would have caught the bug your biggest client hit on their first day. Small teams need QA. They just need a version of it that fits the way they actually work.",
+      },
+      {
+        type: "h2",
+        text: "Accept that you're testing differently, not less seriously",
+      },
+      {
+        type: "p",
+        text: "The goal of QA isn't to follow a process — it's to catch problems before users do. A ten-person team and a solo developer have the same goal. The difference is that the solo developer has to catch those problems in a fraction of the time, without a dedicated tester, often while also being the person who wrote the code.",
+      },
+      {
+        type: "p",
+        text: "That's a real constraint, and the answer isn't to pretend it doesn't exist. It's to be deliberate about where you spend your testing effort so that the time you do invest catches the things that matter most.",
+      },
+      {
+        type: "h2",
+        text: "Start with the critical path",
+      },
+      {
+        type: "p",
+        text: "You don't have time to test everything. So be explicit about what you will always test before shipping anything. For most products, the critical path is short:",
+      },
+      {
+        type: "ul",
+        items: [
+          "Signup and login — if this is broken, nothing else matters",
+          "The core action that makes your product valuable — the thing users came to do",
+          "Payment and billing flows — if money is involved",
+          "Any data that once written is hard to undo — deletions, submissions, sends",
+        ],
+      },
+      {
+        type: "p",
+        text: "Write this list down. Before every release, walk through every step manually. It takes ten minutes and it's caught more production bugs than any automated test suite a small team ever wrote.",
+      },
+      {
+        type: "h2",
+        text: "Test in a browser you don't normally use",
+      },
+      {
+        type: "p",
+        text: "Solo developers and small teams almost always develop and test in the same browser. Which means they never see the bugs that only show up in Safari, or only in Firefox, or only on a mobile viewport.",
+      },
+      {
+        type: "p",
+        text: "Before every release, open your critical path in at least one browser that isn't your daily driver. Safari on macOS is the most common source of layout surprises. Chrome on Android is the most common mobile failure point. You don't need to test everything in both — just the critical path, once.",
+      },
+      {
+        type: "quote",
+        text: "The bugs that embarrass you in front of clients are almost never the complex ones. They're the obvious ones that nobody checked in the browser the client actually uses.",
+      },
+      {
+        type: "h2",
+        text: "Make it easy to report bugs when you find them",
+      },
+      {
+        type: "p",
+        text: "One of the hidden costs of small-team QA is what happens to bugs you find during testing. On a larger team, there's a system — a Jira board, a GitHub repo, a dedicated Slack channel. On a small team, bugs often get filed as a mental note, a sticky, or a message to yourself that gets buried.",
+      },
+      {
+        type: "p",
+        text: "The result is that bugs you found and meant to fix never get fixed because they were never properly tracked. Three weeks later, a user hits the same issue and it feels like it came out of nowhere.",
+      },
+      {
+        type: "p",
+        text: "Whatever your team size, every bug you find should go somewhere permanent the moment you find it — with enough context to fix it later without having to recreate the mental state you were in when you spotted it. URL, browser, what you did, what you expected, what happened. A screenshot of the exact broken state. That's the minimum.",
+      },
+      {
+        type: "h2",
+        text: "Involve users earlier than feels comfortable",
+      },
+      {
+        type: "p",
+        text: "Small teams often compensate for limited internal QA by shipping to real users early. This is genuinely a good strategy — with one important condition. You need a way for those users to report what they find that doesn't require them to write an email.",
+      },
+      {
+        type: "p",
+        text: "User bug reports are almost always vague. \"The button didn't work\" tells you almost nothing. Without the URL, the browser, and a screenshot, you're starting a conversation that could take four messages before you know what you're actually dealing with. At small-team scale, that cost is significant — four messages per bug report, across ten users, is forty messages just to understand what's broken.",
+      },
+      {
+        type: "callout",
+        text: "The best user feedback mechanisms capture the context automatically. When a user clicks to report something, the tool should already know what page they were on, what browser they were using, and what it looked like — so the report is useful the moment it arrives.",
+      },
+      {
+        type: "h2",
+        text: "Pick one place where all bugs live",
+      },
+      {
+        type: "p",
+        text: "This sounds obvious but it's the thing small teams get wrong most often. Bugs end up in GitHub Issues, Notion, a shared doc, a Slack message, someone's personal to-do list — sometimes all five, depending on who found the bug and when. Nobody has a complete picture of what's broken.",
+      },
+      {
+        type: "p",
+        text: "Decide where bugs live, and make it the only place. It doesn't matter much which tool you pick. What matters is that it's one tool, everyone uses it, and it has enough structure to let you sort bugs by priority and see at a glance what's been fixed and what hasn't.",
+      },
+      {
+        type: "h2",
+        text: "Automate one thing, not everything",
+      },
+      {
+        type: "p",
+        text: "Small teams often bounce between two failure modes: no automated testing at all, or a grand ambition to write a comprehensive test suite that never gets finished because there isn't enough time.",
+      },
+      {
+        type: "p",
+        text: "The better approach: automate exactly one layer, and do it well. For most small teams, that's unit tests on your business logic — the functions that calculate, transform, and validate data. These are fast to write, fast to run, and catch the class of bugs that are hardest to spot manually. Leave UI testing and integration testing to manual checks until you have the capacity to do them properly.",
+      },
+      {
+        type: "h2",
+        text: "Set a 'good enough to ship' standard and write it down",
+      },
+      {
+        type: "p",
+        text: "Without a QA team, the decision about whether something is ready to ship defaults to whoever is most confident or most tired that day. That's not a standard — it's a coin flip.",
+      },
+      {
+        type: "p",
+        text: "Write down what 'ready to ship' means for your team. It could be as simple as: the critical path works in Chrome and Safari, no regressions in the last three features shipped, no open bugs marked critical or high. That list shouldn't take more than ten minutes to check. But having it written means the decision is consistent and doesn't depend on how you're feeling on a given Thursday.",
+      },
+      {
+        type: "h2",
+        text: "The goal: ship software that works, not software that was tested perfectly",
+      },
+      {
+        type: "p",
+        text: "Small teams that build good software don't do it by running the same QA process as a hundred-person engineering organisation. They do it by being deliberate about where they look, consistent about what they track, and honest about what they're skipping and why.",
+      },
+      {
+        type: "p",
+        text: "The process described here fits in an afternoon. Critical path testing, one extra browser, a single place where bugs live, a written definition of ready to ship. That's enough to meaningfully reduce the number of things that break in production — which is the actual goal, regardless of team size.",
+      },
+    ],
+  },
+];
+
 export function getPost(slug: string): Post | undefined {
   return posts.find((p) => p.slug === slug);
 }
