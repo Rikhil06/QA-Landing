@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import PageLayout from "@/components/PageLayout";
 import { posts, getPost, type ContentBlock } from "@/lib/blog";
+import ShareButtons from "@/components/ShareButtons";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -127,12 +128,15 @@ export default async function BlogPostPage({ params }: Props) {
           }}
         />
         <div className="max-w-2xl mx-auto">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 text-sm text-white/40 hover:text-white/70 transition-colors mb-8"
-          >
-            ← Back to blog
-          </Link>
+          <div className="flex items-center justify-between mb-8">
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-2 text-sm text-white/40 hover:text-white/70 transition-colors"
+            >
+              ← Back to blog
+            </Link>
+            <ShareButtons title={post.title} slug={post.slug} />
+          </div>
           <div className="flex flex-wrap items-center gap-3 mb-6">
             <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${categoryClass(post.category)}`}>
               {post.category}
@@ -156,6 +160,9 @@ export default async function BlogPostPage({ params }: Props) {
             {post.excerpt}
           </p>
           {post.content.map((block, i) => renderBlock(block, i))}
+          <div className="mt-10 pt-8 border-t border-white/8">
+            <ShareButtons title={post.title} slug={post.slug} />
+          </div>
         </div>
       </article>
 
