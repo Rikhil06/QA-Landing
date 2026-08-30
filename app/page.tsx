@@ -66,6 +66,7 @@ import FAQ from "@/components/FAQ";
 import ContactForm from "@/components/ContactForm";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import LatestPosts from "@/components/LatestPosts";
 
 const homeFaqs = [
   {
@@ -124,6 +125,7 @@ export default function Home() {
             items={homeFaqs}
           />
           <ContactForm />
+          <LatestPosts />
           <CTA />
         </main>
         <Footer />
