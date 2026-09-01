@@ -12,6 +12,14 @@ const productLinks: DropdownItem[] = [
   { label: "How it works", href: "/#how-it-works", desc: "See the workflow" },
 ];
 
+const audienceLinks: DropdownItem[] = [
+  { label: "Agencies", href: "/for/agencies", desc: "Collect feedback from your clients" },
+  { label: "SaaS Teams", href: "/for/saas", desc: "Ship faster with better QA" },
+  { label: "Startups", href: "/for/startups", desc: "Move fast without breaking things" },
+  { label: "Freelancers", href: "/for/freelancers", desc: "Look professional, deliver faster" },
+  { label: "E-commerce", href: "/for/ecommerce", desc: "Protect revenue from broken flows" },
+];
+
 const resourceLinks: DropdownItem[] = [
   { label: "Blog", href: "/blog", desc: "QA tips and best practices" },
   { label: "FAQ", href: "/faq", desc: "Common questions answered" },
@@ -121,6 +129,13 @@ export default function Navbar() {
             onToggle={() => toggle("product")}
             onClose={() => setOpenDropdown(null)}
           />
+          <NavDropdown
+            label="Who is it for"
+            items={audienceLinks}
+            open={openDropdown === "audiences"}
+            onToggle={() => toggle("audiences")}
+            onClose={() => setOpenDropdown(null)}
+          />
           <a href="/#pricing" className="px-3.5 py-1.5 text-sm text-white/60 hover:text-white rounded-lg hover:bg-white/5 transition-all duration-200">
             Pricing
           </a>
@@ -188,6 +203,26 @@ export default function Navbar() {
           {mobileExpanded === "product" && (
             <div className="ml-4 border-l border-white/8 pl-3 space-y-1 mb-1">
               {productLinks.map((link) => (
+                <Link key={link.href} href={link.href} className="block px-3 py-2 text-sm text-white/60 hover:text-white rounded-lg transition-all" onClick={() => setMobileOpen(false)}>
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          )}
+
+          {/* Who is it for */}
+          <button
+            onClick={() => setMobileExpanded((p) => (p === "audiences" ? null : "audiences"))}
+            className="px-3 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/5 rounded-lg transition-all text-left flex items-center justify-between"
+          >
+            Who is it for
+            <svg className={`w-3.5 h-3.5 transition-transform ${mobileExpanded === "audiences" ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          {mobileExpanded === "audiences" && (
+            <div className="ml-4 border-l border-white/8 pl-3 space-y-1 mb-1">
+              {audienceLinks.map((link) => (
                 <Link key={link.href} href={link.href} className="block px-3 py-2 text-sm text-white/60 hover:text-white rounded-lg transition-all" onClick={() => setMobileOpen(false)}>
                   {link.label}
                 </Link>

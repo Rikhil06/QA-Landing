@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { integrations } from "@/lib/integrations";
 import { posts } from "@/lib/blog";
+import { audiences } from "@/lib/audiences";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://annoture.com";
@@ -115,6 +116,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.9,
     },
+    ...audiences.map((a) => ({
+      url: `${base}/for/${a.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+    })),
     ...integrations.map((i) => ({
       url: `${base}/integrations/${i.slug}`,
       lastModified: now,

@@ -10,6 +10,13 @@ const footerLinks = {
     { label: "Chrome Extension", href: "/chrome-extension" },
     { label: "Pricing", href: "/#pricing" },
   ],
+  "Who is it for": [
+    { label: "Agencies", href: "/for/agencies" },
+    { label: "SaaS Teams", href: "/for/saas" },
+    { label: "Startups", href: "/for/startups" },
+    { label: "Freelancers", href: "/for/freelancers" },
+    { label: "E-commerce", href: "/for/ecommerce" },
+  ],
   "Use Cases": [
     { label: "QA Testing", href: "/use-cases/qa-testing" },
     { label: "Bug Reporting", href: "/use-cases/bug-reporting" },
