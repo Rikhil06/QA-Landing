@@ -31,7 +31,7 @@ export const posts: Post[] = [
     content: [
       {
         type: "p",
-        text: "Every QA team has felt it — you file a detailed report, the developer looks at it, and they come back with questions. \"Which browser were you on?\" \"Can you send me the URL?\" \"What exactly did you click?\" Twenty minutes later, you're no clearer on a fix than when you started.",
+        text: "Every QA team has felt it - you file a detailed report, the developer looks at it, and they come back with questions. \"Which browser were you on?\" \"Can you send me the URL?\" \"What exactly did you click?\" Twenty minutes later, you're no clearer on a fix than when you started.",
       },
       {
         type: "p",
@@ -51,14 +51,14 @@ export const posts: Post[] = [
           "They read the report and realise they don't have enough to reproduce it",
           "They message the QA tester for more information",
           "The tester has to context-switch back to what they were testing earlier",
-          "There's back-and-forth — sometimes across days, if time zones are involved",
+          "There's back-and-forth - sometimes across days, if time zones are involved",
           "The developer finally has enough information to reproduce the issue",
           "By then, they've broken their focus at least twice",
         ],
       },
       {
         type: "p",
-        text: "Multiply this across a team of five developers handling ten bugs a week each, and you have a significant chunk of your sprint capacity consumed by information gaps — not engineering work.",
+        text: "Multiply this across a team of five developers handling ten bugs a week each, and you have a significant chunk of your sprint capacity consumed by information gaps - not engineering work.",
       },
       {
         type: "h2",
@@ -71,13 +71,13 @@ export const posts: Post[] = [
       {
         type: "ul",
         items: [
-          "What did you expect to happen? — The intended behaviour, so there is no ambiguity",
-          "What actually happened? — The exact, observed behaviour",
-          "Steps to reproduce — Numbered steps that lead reliably to the bug",
-          "URL — The exact page where the issue occurred",
-          "Browser and version — Chrome 124? Safari 17.4? It matters more than you think",
-          "Operating system — macOS, Windows, iOS all render differently",
-          "Screenshot or recording — Annotated if possible, pointing to the exact element",
+          "What did you expect to happen? - The intended behaviour, so there is no ambiguity",
+          "What actually happened? - The exact, observed behaviour",
+          "Steps to reproduce - Numbered steps that lead reliably to the bug",
+          "URL - The exact page where the issue occurred",
+          "Browser and version - Chrome 124? Safari 17.4? It matters more than you think",
+          "Operating system - macOS, Windows, iOS all render differently",
+          "Screenshot or recording - Annotated if possible, pointing to the exact element",
         ],
       },
       {
@@ -90,7 +90,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "A screenshot of a broken UI is helpful. A screenshot with a marker on the exact broken element is dramatically more helpful — it eliminates the \"wait, which part is wrong?\" step entirely.",
+        text: "A screenshot of a broken UI is helpful. A screenshot with a marker on the exact broken element is dramatically more helpful - it eliminates the \"wait, which part is wrong?\" step entirely.",
       },
       {
         type: "p",
@@ -98,7 +98,7 @@ export const posts: Post[] = [
       },
       {
         type: "quote",
-        text: "The result? Developers spend time hunting for the exact issue that the tester had right in front of them — and then had to leave behind.",
+        text: "The result? Developers spend time hunting for the exact issue that the tester had right in front of them - and then had to leave behind.",
       },
       {
         type: "h2",
@@ -118,11 +118,11 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "One of the most overlooked pieces of context is the exact DOM element involved in the bug. If a button doesn't respond to clicks, the developer needs to know which button — in which component, at what depth in the DOM tree.",
+        text: "One of the most overlooked pieces of context is the exact DOM element involved in the bug. If a button doesn't respond to clicks, the developer needs to know which button - in which component, at what depth in the DOM tree.",
       },
       {
         type: "p",
-        text: "Most bug reports don't include this. Not because testers don't know it's useful, but because capturing it requires opening DevTools, finding the element, copying the selector — a 3-minute interruption in the middle of a testing session.",
+        text: "Most bug reports don't include this. Not because testers don't know it's useful, but because capturing it requires opening DevTools, finding the element, copying the selector - a 3-minute interruption in the middle of a testing session.",
       },
       {
         type: "h2",
@@ -130,7 +130,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "Here's the real problem with incomplete bug reports: they don't just cost time, they cost focus. Research on developer productivity consistently shows that deep work takes roughly 23 minutes to re-enter after an interruption. When a developer receives an incomplete report and has to chase information, they're not \"just checking Slack\" — they're triggering a full context switch.",
+        text: "Here's the real problem with incomplete bug reports: they don't just cost time, they cost focus. Research on developer productivity consistently shows that deep work takes roughly 23 minutes to re-enter after an interruption. When a developer receives an incomplete report and has to chase information, they're not \"just checking Slack\" - they're triggering a full context switch.",
       },
       {
         type: "callout",
@@ -146,7 +146,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "The best QA workflows capture all seven required fields with zero extra effort from the tester. That means the screenshot is taken at the moment of capture, the URL and browser and OS and viewport are recorded automatically, the DOM element is detected, and the report lands directly on the team's task board — already categorised and ready to triage.",
+        text: "The best QA workflows capture all seven required fields with zero extra effort from the tester. That means the screenshot is taken at the moment of capture, the URL and browser and OS and viewport are recorded automatically, the DOM element is detected, and the report lands directly on the team's task board - already categorised and ready to triage.",
       },
       {
         type: "p",
@@ -158,11 +158,11 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "The gap between \"bug spotted\" and \"bug fixed\" is mostly information. Not technical complexity, not developer capacity — missing context that should have been in the original report but wasn't because capturing it was too much effort.",
+        text: "The gap between \"bug spotted\" and \"bug fixed\" is mostly information. Not technical complexity, not developer capacity - missing context that should have been in the original report but wasn't because capturing it was too much effort.",
       },
       {
         type: "p",
-        text: "When you remove the friction from capturing that context — when the right information is automatic — bug reports stop being back-and-forth threads and start being actionable work items. That's the difference between a QA workflow that slows a team down and one that makes it faster.",
+        text: "When you remove the friction from capturing that context - when the right information is automatic - bug reports stop being back-and-forth threads and start being actionable work items. That's the difference between a QA workflow that slows a team down and one that makes it faster.",
       },
     ],
   },
@@ -170,7 +170,7 @@ export const posts: Post[] = [
     slug: "how-to-connect-annoture-with-github-and-jira",
     title: "How to Connect Annoture with GitHub and Jira (And Why Your Team Will Thank You)",
     excerpt:
-      "Stop copying bug reports into GitHub Issues or Jira tickets by hand. Here's how Annoture's integrations eliminate that step entirely — and what that actually means for your team's speed.",
+      "Stop copying bug reports into GitHub Issues or Jira tickets by hand. Here's how Annoture's integrations eliminate that step entirely - and what that actually means for your team's speed.",
     category: "Product",
     date: "19 July 2026",
     readTime: "5 min read",
@@ -182,7 +182,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "The tester captures the bug in Annoture. Then they open GitHub or Jira, create a new issue, paste in the URL, write a description from memory, attach the screenshot manually, pick a priority, assign it — and only then does the developer see it. The bug has been captured twice.",
+        text: "The tester captures the bug in Annoture. Then they open GitHub or Jira, create a new issue, paste in the URL, write a description from memory, attach the screenshot manually, pick a priority, assign it - and only then does the developer see it. The bug has been captured twice.",
       },
       {
         type: "p",
@@ -194,7 +194,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "Once you connect your GitHub account in Site Settings and select a repository, every bug captured through the Annoture Chrome extension automatically creates a GitHub Issue. Not a stub — a fully formed issue with:",
+        text: "Once you connect your GitHub account in Site Settings and select a repository, every bug captured through the Annoture Chrome extension automatically creates a GitHub Issue. Not a stub - a fully formed issue with:",
       },
       {
         type: "ul",
@@ -208,7 +208,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "The developer opens GitHub and everything is already there. No message from the tester saying \"I filed a bug, can you take a look?\" — the issue is in the repository the moment capture happens.",
+        text: "The developer opens GitHub and everything is already there. No message from the tester saying \"I filed a bug, can you take a look?\" - the issue is in the repository the moment capture happens.",
       },
       {
         type: "h3",
@@ -224,11 +224,11 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "Jira works the same way — connect your Atlassian account, pick a cloud site and project, and Annoture creates a Bug issue in that project for every capture. The difference is the format.",
+        text: "Jira works the same way - connect your Atlassian account, pick a cloud site and project, and Annoture creates a Bug issue in that project for every capture. The difference is the format.",
       },
       {
         type: "p",
-        text: "Jira uses Atlassian Document Format (ADF) for issue descriptions, not Markdown. We build the description natively in ADF so it renders properly inside Jira — the screenshot appears as an inline image, and the browser/OS/viewport metadata is formatted as a structured table rather than a wall of text.",
+        text: "Jira uses Atlassian Document Format (ADF) for issue descriptions, not Markdown. We build the description natively in ADF so it renders properly inside Jira - the screenshot appears as an inline image, and the browser/OS/viewport metadata is formatted as a structured table rather than a wall of text.",
       },
       {
         type: "quote",
@@ -240,7 +240,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "Atlassian access tokens expire after approximately one hour. Most integrations break quietly when this happens — the next capture just silently fails to create a Jira issue. Annoture stores the refresh token securely and refreshes the access token automatically before each issue creation. Your integration keeps working overnight, across weekends, and during long testing sessions without any manual re-authorisation.",
+        text: "Atlassian access tokens expire after approximately one hour. Most integrations break quietly when this happens - the next capture just silently fails to create a Jira issue. Annoture stores the refresh token securely and refreshes the access token automatically before each issue creation. Your integration keeps working overnight, across weekends, and during long testing sessions without any manual re-authorisation.",
       },
       {
         type: "h2",
@@ -248,7 +248,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "The two integrations aren't alternatives — teams often use them together. Developers might live in GitHub while PMs and project managers track work in Jira. With both integrations active, a single capture creates an issue in both places simultaneously. Neither team has to wait for the other to manually forward information.",
+        text: "The two integrations aren't alternatives - teams often use them together. Developers might live in GitHub while PMs and project managers track work in Jira. With both integrations active, a single capture creates an issue in both places simultaneously. Neither team has to wait for the other to manually forward information.",
       },
       {
         type: "callout",
@@ -260,7 +260,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "Enabling an integration doesn't remove reports from Annoture. Everything still appears on your Kanban board — the GitHub Issue number and Jira ticket key are shown as badges on each report card. Clicking either badge opens the corresponding issue directly. The Annoture board becomes the central view that links out to wherever the work is actually being done.",
+        text: "Enabling an integration doesn't remove reports from Annoture. Everything still appears on your Kanban board - the GitHub Issue number and Jira ticket key are shown as badges on each report card. Clicking either badge opens the corresponding issue directly. The Annoture board becomes the central view that links out to wherever the work is actually being done.",
       },
       {
         type: "h2",
@@ -268,7 +268,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "Both integrations are in Site Settings — accessible from the Settings icon next to your site's Kanban board. The GitHub setup takes about 30 seconds: authorise, pick a repo, save. Jira takes slightly longer because you pick a cloud site first, then a project. After that, the integration runs silently in the background. There's nothing to configure per-report.",
+        text: "Both integrations are in Site Settings - accessible from the Settings icon next to your site's Kanban board. The GitHub setup takes about 30 seconds: authorise, pick a repo, save. Jira takes slightly longer because you pick a cloud site first, then a project. After that, the integration runs silently in the background. There's nothing to configure per-report.",
       },
       {
         type: "p",
@@ -280,11 +280,11 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "GitHub and Jira are live now. Slack, Linear, and Figma integrations are next — Slack for instant channel notifications when a bug is captured, Linear for teams that use it as their primary issue tracker, and Figma for linking bug reports directly to the design frames they affect. If there's an integration your team needs that isn't on the roadmap, the fastest way to get it prioritised is to request it.",
+        text: "GitHub and Jira are live now. Slack, Linear, and Figma integrations are next - Slack for instant channel notifications when a bug is captured, Linear for teams that use it as their primary issue tracker, and Figma for linking bug reports directly to the design frames they affect. If there's an integration your team needs that isn't on the roadmap, the fastest way to get it prioritised is to request it.",
       },
       {
         type: "p",
-        text: "The pattern across all of them is the same: capture once in Annoture, and the right people see it in the tool they already use — without anyone copying anything.",
+        text: "The pattern across all of them is the same: capture once in Annoture, and the right people see it in the tool they already use - without anyone copying anything.",
       },
     ],
   },
@@ -292,7 +292,7 @@ export const posts: Post[] = [
     slug: "how-to-prioritize-bugs-a-practical-framework-for-qa-teams",
     title: "How to Prioritize Bugs: A Practical Framework for QA Teams",
     excerpt:
-      "Not every bug deserves to block a release. Here's how high-performing QA teams decide what to fix first — and how to get developers to agree.",
+      "Not every bug deserves to block a release. Here's how high-performing QA teams decide what to fix first - and how to get developers to agree.",
     category: "QA Best Practices",
     date: "23 August 2026",
     readTime: "7 min read",
@@ -304,11 +304,11 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "Most teams answer this question badly — either by gut feel, by whoever shouts loudest, or by the order bugs happened to arrive. The result is a backlog where a cosmetic alignment issue blocks a release while a data loss bug sits unassigned for two weeks.",
+        text: "Most teams answer this question badly - either by gut feel, by whoever shouts loudest, or by the order bugs happened to arrive. The result is a backlog where a cosmetic alignment issue blocks a release while a data loss bug sits unassigned for two weeks.",
       },
       {
         type: "p",
-        text: "Good bug prioritization isn't complicated, but it does require a shared framework that everyone — QA, developers, and product — agrees on before the pressure hits.",
+        text: "Good bug prioritization isn't complicated, but it does require a shared framework that everyone - QA, developers, and product - agrees on before the pressure hits.",
       },
       {
         type: "h2",
@@ -321,13 +321,13 @@ export const posts: Post[] = [
       {
         type: "ul",
         items: [
-          "Severity describes how bad the bug is technically — does it crash the app, corrupt data, or just misalign a label?",
-          "Priority describes how urgently it needs to be fixed — relative to everything else on the board right now.",
+          "Severity describes how bad the bug is technically - does it crash the app, corrupt data, or just misalign a label?",
+          "Priority describes how urgently it needs to be fixed - relative to everything else on the board right now.",
         ],
       },
       {
         type: "p",
-        text: "A bug can be high severity but low priority. A crash in a feature used by 0.1% of users on a deprecated browser matters technically but may not need to block your next release. Conversely, a low-severity bug — say, a misleading label on your checkout button — might be top priority because it's directly hurting conversion.",
+        text: "A bug can be high severity but low priority. A crash in a feature used by 0.1% of users on a deprecated browser matters technically but may not need to block your next release. Conversely, a low-severity bug - say, a misleading label on your checkout button - might be top priority because it's directly hurting conversion.",
       },
       {
         type: "quote",
@@ -339,15 +339,15 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "Most teams use four severity levels. The key is having specific, agreed definitions so that testers apply them consistently — not based on how they're feeling that day.",
+        text: "Most teams use four severity levels. The key is having specific, agreed definitions so that testers apply them consistently - not based on how they're feeling that day.",
       },
       {
         type: "ol",
         items: [
-          "Critical — The application crashes, data is lost or corrupted, or a core user flow is completely broken. No workaround exists. This stops a release.",
-          "High — Major functionality is broken, but the app still runs. A workaround may exist but is not acceptable for production. Needs fixing before release in most cases.",
-          "Medium — A feature doesn't work as expected, but the impact is limited in scope or a reasonable workaround exists. Targeted for the current or next sprint.",
-          "Low — Cosmetic issues, minor copy errors, small UI inconsistencies. Tracked but not release-blocking. Fixed when bandwidth allows.",
+          "Critical - The application crashes, data is lost or corrupted, or a core user flow is completely broken. No workaround exists. This stops a release.",
+          "High - Major functionality is broken, but the app still runs. A workaround may exist but is not acceptable for production. Needs fixing before release in most cases.",
+          "Medium - A feature doesn't work as expected, but the impact is limited in scope or a reasonable workaround exists. Targeted for the current or next sprint.",
+          "Low - Cosmetic issues, minor copy errors, small UI inconsistencies. Tracked but not release-blocking. Fixed when bandwidth allows.",
         ],
       },
       {
@@ -360,7 +360,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "Once severity is established, priority is a judgment call — but a structured one. Four factors should inform it:",
+        text: "Once severity is established, priority is a judgment call - but a structured one. Four factors should inform it:",
       },
       {
         type: "h3",
@@ -396,7 +396,7 @@ export const posts: Post[] = [
       },
       {
         type: "callout",
-        text: "Tip: when you capture a bug, set the priority immediately — while you're still looking at it. Context fades fast. A bug filed with 'not assigned' priority that sits for three days will cost more time to re-evaluate than it would have taken to set it right.",
+        text: "Tip: when you capture a bug, set the priority immediately - while you're still looking at it. Context fades fast. A bug filed with 'not assigned' priority that sits for three days will cost more time to re-evaluate than it would have taken to set it right.",
       },
       {
         type: "h2",
@@ -409,9 +409,9 @@ export const posts: Post[] = [
       {
         type: "ul",
         items: [
-          "Data loss or corruption of any kind — user data, financial records, or any persisted state",
-          "Security vulnerabilities — exposed credentials, broken authentication, unprotected endpoints",
-          "Crashes on the main user path — login, signup, checkout, core product flow",
+          "Data loss or corruption of any kind - user data, financial records, or any persisted state",
+          "Security vulnerabilities - exposed credentials, broken authentication, unprotected endpoints",
+          "Crashes on the main user path - login, signup, checkout, core product flow",
           "Bugs that have already reached production and are affecting live users",
         ],
       },
@@ -425,11 +425,11 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "The biggest failure mode in bug prioritization isn't bad judgment — it's a QA team that sets priorities in isolation and then fights with developers about them. The fix is collaborative triage.",
+        text: "The biggest failure mode in bug prioritization isn't bad judgment - it's a QA team that sets priorities in isolation and then fights with developers about them. The fix is collaborative triage.",
       },
       {
         type: "p",
-        text: "A short triage session — 15 minutes at the start of each sprint, or a standing async process using your task board — where QA and at least one developer review new bugs together almost always produces better outcomes than either side deciding alone. QA knows what's broken. Developers know what's expensive to fix. Neither side has the full picture on their own.",
+        text: "A short triage session - 15 minutes at the start of each sprint, or a standing async process using your task board - where QA and at least one developer review new bugs together almost always produces better outcomes than either side deciding alone. QA knows what's broken. Developers know what's expensive to fix. Neither side has the full picture on their own.",
       },
       {
         type: "p",
@@ -445,7 +445,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "When bug reports arrive with the full context automatically captured — URL, browser, OS, viewport, screenshot, DOM element — prioritization becomes a five-second decision rather than a five-minute investigation. The information needed to assess severity and priority is already in the report.",
+        text: "When bug reports arrive with the full context automatically captured - URL, browser, OS, viewport, screenshot, DOM element - prioritization becomes a five-second decision rather than a five-minute investigation. The information needed to assess severity and priority is already in the report.",
       },
       {
         type: "h2",
@@ -457,7 +457,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "The goal isn't perfect prioritization — that doesn't exist. The goal is a process that's consistent, transparent, and fast enough that bugs get to the right developer at the right time without anyone spending half their day arguing about what matters.",
+        text: "The goal isn't perfect prioritization - that doesn't exist. The goal is a process that's consistent, transparent, and fast enough that bugs get to the right developer at the right time without anyone spending half their day arguing about what matters.",
       },
     ],
   },
@@ -473,7 +473,7 @@ export const posts: Post[] = [
     content: [
       {
         type: "p",
-        text: "Most QA advice is written for enterprise teams. Dedicated testers, multiple environments, formal test plans, regression suites that take an afternoon to run. If you're a solo developer or a team of three, none of that applies — and following it will slow you down without making your software meaningfully better.",
+        text: "Most QA advice is written for enterprise teams. Dedicated testers, multiple environments, formal test plans, regression suites that take an afternoon to run. If you're a solo developer or a team of three, none of that applies - and following it will slow you down without making your software meaningfully better.",
       },
       {
         type: "p",
@@ -485,7 +485,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "The goal of QA isn't to follow a process — it's to catch problems before users do. A ten-person team and a solo developer have the same goal. The difference is that the solo developer has to catch those problems in a fraction of the time, without a dedicated tester, often while also being the person who wrote the code.",
+        text: "The goal of QA isn't to follow a process - it's to catch problems before users do. A ten-person team and a solo developer have the same goal. The difference is that the solo developer has to catch those problems in a fraction of the time, without a dedicated tester, often while also being the person who wrote the code.",
       },
       {
         type: "p",
@@ -502,10 +502,10 @@ export const posts: Post[] = [
       {
         type: "ul",
         items: [
-          "Signup and login — if this is broken, nothing else matters",
-          "The core action that makes your product valuable — the thing users came to do",
-          "Payment and billing flows — if money is involved",
-          "Any data that once written is hard to undo — deletions, submissions, sends",
+          "Signup and login - if this is broken, nothing else matters",
+          "The core action that makes your product valuable - the thing users came to do",
+          "Payment and billing flows - if money is involved",
+          "Any data that once written is hard to undo - deletions, submissions, sends",
         ],
       },
       {
@@ -522,7 +522,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "Before every release, open your critical path in at least one browser that isn't your daily driver. Safari on macOS is the most common source of layout surprises. Chrome on Android is the most common mobile failure point. You don't need to test everything in both — just the critical path, once.",
+        text: "Before every release, open your critical path in at least one browser that isn't your daily driver. Safari on macOS is the most common source of layout surprises. Chrome on Android is the most common mobile failure point. You don't need to test everything in both - just the critical path, once.",
       },
       {
         type: "quote",
@@ -534,7 +534,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "One of the hidden costs of small-team QA is what happens to bugs you find during testing. On a larger team, there's a system — a Jira board, a GitHub repo, a dedicated Slack channel. On a small team, bugs often get filed as a mental note, a sticky, or a message to yourself that gets buried.",
+        text: "One of the hidden costs of small-team QA is what happens to bugs you find during testing. On a larger team, there's a system - a Jira board, a GitHub repo, a dedicated Slack channel. On a small team, bugs often get filed as a mental note, a sticky, or a message to yourself that gets buried.",
       },
       {
         type: "p",
@@ -542,7 +542,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "Whatever your team size, every bug you find should go somewhere permanent the moment you find it — with enough context to fix it later without having to recreate the mental state you were in when you spotted it. URL, browser, what you did, what you expected, what happened. A screenshot of the exact broken state. That's the minimum.",
+        text: "Whatever your team size, every bug you find should go somewhere permanent the moment you find it - with enough context to fix it later without having to recreate the mental state you were in when you spotted it. URL, browser, what you did, what you expected, what happened. A screenshot of the exact broken state. That's the minimum.",
       },
       {
         type: "h2",
@@ -550,15 +550,15 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "Small teams often compensate for limited internal QA by shipping to real users early. This is genuinely a good strategy — with one important condition. You need a way for those users to report what they find that doesn't require them to write an email.",
+        text: "Small teams often compensate for limited internal QA by shipping to real users early. This is genuinely a good strategy - with one important condition. You need a way for those users to report what they find that doesn't require them to write an email.",
       },
       {
         type: "p",
-        text: "User bug reports are almost always vague. \"The button didn't work\" tells you almost nothing. Without the URL, the browser, and a screenshot, you're starting a conversation that could take four messages before you know what you're actually dealing with. At small-team scale, that cost is significant — four messages per bug report, across ten users, is forty messages just to understand what's broken.",
+        text: "User bug reports are almost always vague. \"The button didn't work\" tells you almost nothing. Without the URL, the browser, and a screenshot, you're starting a conversation that could take four messages before you know what you're actually dealing with. At small-team scale, that cost is significant - four messages per bug report, across ten users, is forty messages just to understand what's broken.",
       },
       {
         type: "callout",
-        text: "The best user feedback mechanisms capture the context automatically. When a user clicks to report something, the tool should already know what page they were on, what browser they were using, and what it looked like — so the report is useful the moment it arrives.",
+        text: "The best user feedback mechanisms capture the context automatically. When a user clicks to report something, the tool should already know what page they were on, what browser they were using, and what it looked like - so the report is useful the moment it arrives.",
       },
       {
         type: "h2",
@@ -566,7 +566,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "This sounds obvious but it's the thing small teams get wrong most often. Bugs end up in GitHub Issues, Notion, a shared doc, a Slack message, someone's personal to-do list — sometimes all five, depending on who found the bug and when. Nobody has a complete picture of what's broken.",
+        text: "This sounds obvious but it's the thing small teams get wrong most often. Bugs end up in GitHub Issues, Notion, a shared doc, a Slack message, someone's personal to-do list - sometimes all five, depending on who found the bug and when. Nobody has a complete picture of what's broken.",
       },
       {
         type: "p",
@@ -582,7 +582,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "The better approach: automate exactly one layer, and do it well. For most small teams, that's unit tests on your business logic — the functions that calculate, transform, and validate data. These are fast to write, fast to run, and catch the class of bugs that are hardest to spot manually. Leave UI testing and integration testing to manual checks until you have the capacity to do them properly.",
+        text: "The better approach: automate exactly one layer, and do it well. For most small teams, that's unit tests on your business logic - the functions that calculate, transform, and validate data. These are fast to write, fast to run, and catch the class of bugs that are hardest to spot manually. Leave UI testing and integration testing to manual checks until you have the capacity to do them properly.",
       },
       {
         type: "h2",
@@ -590,7 +590,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "Without a QA team, the decision about whether something is ready to ship defaults to whoever is most confident or most tired that day. That's not a standard — it's a coin flip.",
+        text: "Without a QA team, the decision about whether something is ready to ship defaults to whoever is most confident or most tired that day. That's not a standard - it's a coin flip.",
       },
       {
         type: "p",
@@ -606,7 +606,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "The process described here fits in an afternoon. Critical path testing, one extra browser, a single place where bugs live, a written definition of ready to ship. That's enough to meaningfully reduce the number of things that break in production — which is the actual goal, regardless of team size.",
+        text: "The process described here fits in an afternoon. Critical path testing, one extra browser, a single place where bugs live, a written definition of ready to ship. That's enough to meaningfully reduce the number of things that break in production - which is the actual goal, regardless of team size.",
       },
     ],
   },
@@ -614,7 +614,7 @@ export const posts: Post[] = [
     slug: "how-to-get-clients-to-report-bugs-properly",
     title: "How to Get Clients to Report Bugs Properly (Without Losing Your Mind)",
     excerpt:
-      "\"The website is broken\" is not a bug report. Here's how agencies can train clients to send reports that are actually useful — and how to make the whole process almost effortless.",
+      "\"The website is broken\" is not a bug report. Here's how agencies can train clients to send reports that are actually useful - and how to make the whole process almost effortless.",
     category: "Agencies",
     date: "7 September 2026",
     readTime: "7 min read",
@@ -630,7 +630,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "The problem isn't the client. The problem is that nobody told them what a useful bug report looks like — and even if someone did, filing one properly is too much friction for someone who just wants the site to work.",
+        text: "The problem isn't the client. The problem is that nobody told them what a useful bug report looks like - and even if someone did, filing one properly is too much friction for someone who just wants the site to work.",
       },
       {
         type: "h2",
@@ -638,7 +638,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "When a developer sees a bug, they instinctively think in terms of reproduction steps. What URL? What browser? What was clicked? What should have happened? What actually happened? That mental model is trained over years of debugging — it's completely invisible to someone who doesn't write software.",
+        text: "When a developer sees a bug, they instinctively think in terms of reproduction steps. What URL? What browser? What was clicked? What should have happened? What actually happened? That mental model is trained over years of debugging - it's completely invisible to someone who doesn't write software.",
       },
       {
         type: "p",
@@ -646,7 +646,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "This means that lecturing clients about what makes a good bug report — however gently — mostly doesn't work. They'll nod, send better reports for two weeks, and then revert to \"something looks off\" by the third month of a project. Education alone doesn't solve a friction problem.",
+        text: "This means that lecturing clients about what makes a good bug report - however gently - mostly doesn't work. They'll nod, send better reports for two weeks, and then revert to \"something looks off\" by the third month of a project. Education alone doesn't solve a friction problem.",
       },
       {
         type: "h2",
@@ -659,17 +659,17 @@ export const posts: Post[] = [
       {
         type: "ul",
         items: [
-          "The exact URL where the problem occurred — not \"the contact page\", the full address",
-          "The browser and version — Chrome? Safari? Edge? The version often matters as much as the name",
-          "The device and screen size — desktop, mobile, tablet; the viewport width for layout bugs",
-          "A screenshot showing the broken state — not the page in general, the specific broken element",
-          "What they expected to happen and what actually happened — the gap between those two things is the bug",
-          "Steps to reproduce — ideally numbered, so you can follow them exactly",
+          "The exact URL where the problem occurred - not \"the contact page\", the full address",
+          "The browser and version - Chrome? Safari? Edge? The version often matters as much as the name",
+          "The device and screen size - desktop, mobile, tablet; the viewport width for layout bugs",
+          "A screenshot showing the broken state - not the page in general, the specific broken element",
+          "What they expected to happen and what actually happened - the gap between those two things is the bug",
+          "Steps to reproduce - ideally numbered, so you can follow them exactly",
         ],
       },
       {
         type: "p",
-        text: "Most client reports contain one or two of these. The rest get collected through follow-up messages — one question per email, one email per day, across a week. By the time you have enough to open DevTools, you've sent six messages and the client has started wondering if you're actually working on it.",
+        text: "Most client reports contain one or two of these. The rest get collected through follow-up messages - one question per email, one email per day, across a week. By the time you have enough to open DevTools, you've sent six messages and the client has started wondering if you're actually working on it.",
       },
       {
         type: "h2",
@@ -677,15 +677,15 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "The friction isn't just annoying — it's expensive. Consider a mid-sized agency with ten active client projects. Each project generates an average of five client bug reports a month. If each report requires an average of three follow-up exchanges before it's actionable, that's 150 client messages per month just to gather information that should have been in the original report.",
+        text: "The friction isn't just annoying - it's expensive. Consider a mid-sized agency with ten active client projects. Each project generates an average of five client bug reports a month. If each report requires an average of three follow-up exchanges before it's actionable, that's 150 client messages per month just to gather information that should have been in the original report.",
       },
       {
         type: "quote",
-        text: "You're not billing for that time. You're not supposed to be. But someone is doing it — which means it's either eating into project margins or eating into someone's evening.",
+        text: "You're not billing for that time. You're not supposed to be. But someone is doing it - which means it's either eating into project margins or eating into someone's evening.",
       },
       {
         type: "p",
-        text: "There's also a subtler cost: the delay. A bug reported on Monday that requires three rounds of clarification might not be actionable until Thursday. By then the client has chased twice and started to wonder whether you're responsive. The bug itself was probably fixable in twenty minutes — the process around it cost four days.",
+        text: "There's also a subtler cost: the delay. A bug reported on Monday that requires three rounds of clarification might not be actionable until Thursday. By then the client has chased twice and started to wonder whether you're responsive. The bug itself was probably fixable in twenty minutes - the process around it cost four days.",
       },
       {
         type: "h2",
@@ -693,7 +693,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "The best time to establish how clients report bugs is during project onboarding — before any bugs have been found, before any frustration has built up, while the relationship is fresh and the client is receptive.",
+        text: "The best time to establish how clients report bugs is during project onboarding - before any bugs have been found, before any frustration has built up, while the relationship is fresh and the client is receptive.",
       },
       {
         type: "p",
@@ -701,7 +701,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "This doesn't solve the problem completely — clients still forget, still send vague messages, still report bugs via WhatsApp at 9pm — but it establishes a shared reference point. \"As we covered in the onboarding, it would really help if you could include the URL and a screenshot\" lands very differently than saying it for the first time after a frustrating exchange.",
+        text: "This doesn't solve the problem completely - clients still forget, still send vague messages, still report bugs via WhatsApp at 9pm - but it establishes a shared reference point. \"As we covered in the onboarding, it would really help if you could include the URL and a screenshot\" lands very differently than saying it for the first time after a frustrating exchange.",
       },
       {
         type: "h2",
@@ -713,7 +713,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "This is where a browser extension changes the dynamic entirely. Instead of asking a client to open a new tab, find your project management tool, create a new issue, remember to include the URL, take a screenshot separately, attach it, write a description — all while already frustrated by something that's broken — you give them a single button to click.",
+        text: "This is where a browser extension changes the dynamic entirely. Instead of asking a client to open a new tab, find your project management tool, create a new issue, remember to include the URL, take a screenshot separately, attach it, write a description - all while already frustrated by something that's broken - you give them a single button to click.",
       },
       {
         type: "p",
@@ -737,7 +737,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "The better solution is to give clients an annotation interface that's built into the reporting flow. Click to place a marker, drag to highlight — two seconds of effort that makes the screenshot dramatically more useful. When annotation is that easy, clients actually do it.",
+        text: "The better solution is to give clients an annotation interface that's built into the reporting flow. Click to place a marker, drag to highlight - two seconds of effort that makes the screenshot dramatically more useful. When annotation is that easy, clients actually do it.",
       },
       {
         type: "h2",
@@ -745,15 +745,15 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "One of the underappreciated causes of vague client bug reports is that clients don't trust the reports they've already sent. They've filed three things in your project management tool and never heard what happened to them. So the next time they see something wrong, they send you a Slack message instead — because that at least gets a response.",
+        text: "One of the underappreciated causes of vague client bug reports is that clients don't trust the reports they've already sent. They've filed three things in your project management tool and never heard what happened to them. So the next time they see something wrong, they send you a Slack message instead - because that at least gets a response.",
       },
       {
         type: "p",
-        text: "A visible bug board — one the client can actually see, showing the status of their reported issues — changes this dynamic. When clients can see that their reports have been received, triaged, and moved to \"in progress\" or \"fixed,\" they trust the process. They stop chasing via Slack. They stop duplicating reports. They file through the proper channel because they can see it works.",
+        text: "A visible bug board - one the client can actually see, showing the status of their reported issues - changes this dynamic. When clients can see that their reports have been received, triaged, and moved to \"in progress\" or \"fixed,\" they trust the process. They stop chasing via Slack. They stop duplicating reports. They file through the proper channel because they can see it works.",
       },
       {
         type: "quote",
-        text: "The best client bug report process isn't one where clients report less — it's one where they report more, through the right channel, in a way that's useful.",
+        text: "The best client bug report process isn't one where clients report less - it's one where they report more, through the right channel, in a way that's useful.",
       },
       {
         type: "h2",
@@ -761,7 +761,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "Even with a perfect process in place, some clients will always report via email or WhatsApp. That's fine — the goal is not to eliminate informal reports, it's to reduce the information gap when they arrive.",
+        text: "Even with a perfect process in place, some clients will always report via email or WhatsApp. That's fine - the goal is not to eliminate informal reports, it's to reduce the information gap when they arrive.",
       },
       {
         type: "p",
@@ -777,11 +777,11 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "For agencies that want to be more formal about it: add a brief \"bug reporting procedure\" clause to your maintenance and support contracts. Not a legal treatise — two sentences describing the tool clients should use and the information required for a bug to enter the queue. This sets the expectation in the place where clients actually pay attention to process: the contract they've signed.",
+        text: "For agencies that want to be more formal about it: add a brief \"bug reporting procedure\" clause to your maintenance and support contracts. Not a legal treatise - two sentences describing the tool clients should use and the information required for a bug to enter the queue. This sets the expectation in the place where clients actually pay attention to process: the contract they've signed.",
       },
       {
         type: "p",
-        text: "It also gives you a professional basis for saying, when a vague report arrives, \"as per our agreed process, we'd need a bit more information to look into this.\" Not rude, not dismissive — just professional. The contract said this.",
+        text: "It also gives you a professional basis for saying, when a vague report arrives, \"as per our agreed process, we'd need a bit more information to look into this.\" Not rude, not dismissive - just professional. The contract said this.",
       },
       {
         type: "h2",
@@ -793,7 +793,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "When that's working, the back-and-forth disappears. The Friday afternoon panic messages disappear. The \"did you get my email?\" follow-ups disappear. What's left is a clean signal — a board of real, actionable issues, each with the context to fix it — and a client relationship that isn't strained by a process that was always too hard for them.",
+        text: "When that's working, the back-and-forth disappears. The Friday afternoon panic messages disappear. The \"did you get my email?\" follow-ups disappear. What's left is a clean signal - a board of real, actionable issues, each with the context to fix it - and a client relationship that isn't strained by a process that was always too hard for them.",
       },
     ],
   },
