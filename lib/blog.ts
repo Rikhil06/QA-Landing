@@ -610,6 +610,193 @@ export const posts: Post[] = [
       },
     ],
   },
+  {
+    slug: "how-to-get-clients-to-report-bugs-properly",
+    title: "How to Get Clients to Report Bugs Properly (Without Losing Your Mind)",
+    excerpt:
+      "\"The website is broken\" is not a bug report. Here's how agencies can train clients to send reports that are actually useful — and how to make the whole process almost effortless.",
+    category: "Agencies",
+    date: "7 September 2026",
+    readTime: "7 min read",
+    author: "Annoture Team",
+    content: [
+      {
+        type: "p",
+        text: "Every agency developer knows the message. It arrives at 4pm on a Friday, sometimes with a screenshot of the wrong screen, usually without one at all: \"Hey, something's not working on the site. Can you take a look?\"",
+      },
+      {
+        type: "p",
+        text: "You ask which page. They say \"the main one.\" You ask what they were trying to do. They say \"just browsing.\" You ask what browser they're on. They say \"the normal one.\" Twenty minutes later you've established that they were using Internet Explorer 11 on a work laptop running Windows 7, and the \"broken\" element is a CSS feature that hasn't been supported since 2019.",
+      },
+      {
+        type: "p",
+        text: "The problem isn't the client. The problem is that nobody told them what a useful bug report looks like — and even if someone did, filing one properly is too much friction for someone who just wants the site to work.",
+      },
+      {
+        type: "h2",
+        text: "Why clients are bad at bug reports (it's not their fault)",
+      },
+      {
+        type: "p",
+        text: "When a developer sees a bug, they instinctively think in terms of reproduction steps. What URL? What browser? What was clicked? What should have happened? What actually happened? That mental model is trained over years of debugging — it's completely invisible to someone who doesn't write software.",
+      },
+      {
+        type: "p",
+        text: "Your client isn't being lazy when they send a vague message. They genuinely don't know that \"the browser they're on\" is a relevant variable. They don't know that a screenshot of the correct state is almost useless, and that you need a screenshot of the broken state. They don't know that \"the main page\" could mean three different URLs depending on how you're navigating.",
+      },
+      {
+        type: "p",
+        text: "This means that lecturing clients about what makes a good bug report — however gently — mostly doesn't work. They'll nod, send better reports for two weeks, and then revert to \"something looks off\" by the third month of a project. Education alone doesn't solve a friction problem.",
+      },
+      {
+        type: "h2",
+        text: "What you actually need from a client report",
+      },
+      {
+        type: "p",
+        text: "Before you can fix the process, it's worth being specific about the information gap. When a client reports a bug, here's what you need to action it without any follow-up:",
+      },
+      {
+        type: "ul",
+        items: [
+          "The exact URL where the problem occurred — not \"the contact page\", the full address",
+          "The browser and version — Chrome? Safari? Edge? The version often matters as much as the name",
+          "The device and screen size — desktop, mobile, tablet; the viewport width for layout bugs",
+          "A screenshot showing the broken state — not the page in general, the specific broken element",
+          "What they expected to happen and what actually happened — the gap between those two things is the bug",
+          "Steps to reproduce — ideally numbered, so you can follow them exactly",
+        ],
+      },
+      {
+        type: "p",
+        text: "Most client reports contain one or two of these. The rest get collected through follow-up messages — one question per email, one email per day, across a week. By the time you have enough to open DevTools, you've sent six messages and the client has started wondering if you're actually working on it.",
+      },
+      {
+        type: "h2",
+        text: "The real cost of back-and-forth bug reporting",
+      },
+      {
+        type: "p",
+        text: "The friction isn't just annoying — it's expensive. Consider a mid-sized agency with ten active client projects. Each project generates an average of five client bug reports a month. If each report requires an average of three follow-up exchanges before it's actionable, that's 150 client messages per month just to gather information that should have been in the original report.",
+      },
+      {
+        type: "quote",
+        text: "You're not billing for that time. You're not supposed to be. But someone is doing it — which means it's either eating into project margins or eating into someone's evening.",
+      },
+      {
+        type: "p",
+        text: "There's also a subtler cost: the delay. A bug reported on Monday that requires three rounds of clarification might not be actionable until Thursday. By then the client has chased twice and started to wonder whether you're responsive. The bug itself was probably fixable in twenty minutes — the process around it cost four days.",
+      },
+      {
+        type: "h2",
+        text: "The onboarding approach: set expectations before they report anything",
+      },
+      {
+        type: "p",
+        text: "The best time to establish how clients report bugs is during project onboarding — before any bugs have been found, before any frustration has built up, while the relationship is fresh and the client is receptive.",
+      },
+      {
+        type: "p",
+        text: "A short \"how to report an issue\" section in your onboarding document does more than any amount of after-the-fact coaching. Keep it simple: a bulleted list of the five things to include in a report, a link to whatever tool you use for bug tracking, and a note on what happens after they report something (so they know it's been received).",
+      },
+      {
+        type: "p",
+        text: "This doesn't solve the problem completely — clients still forget, still send vague messages, still report bugs via WhatsApp at 9pm — but it establishes a shared reference point. \"As we covered in the onboarding, it would really help if you could include the URL and a screenshot\" lands very differently than saying it for the first time after a frustrating exchange.",
+      },
+      {
+        type: "h2",
+        text: "The tool approach: make the right thing the easy thing",
+      },
+      {
+        type: "p",
+        text: "Education sets expectations. Tools actually change behaviour. And the behaviour change you want is this: when a client sees something wrong on a site, the fastest path from \"noticing the bug\" to \"you knowing about it\" should automatically include all the context you need.",
+      },
+      {
+        type: "p",
+        text: "This is where a browser extension changes the dynamic entirely. Instead of asking a client to open a new tab, find your project management tool, create a new issue, remember to include the URL, take a screenshot separately, attach it, write a description — all while already frustrated by something that's broken — you give them a single button to click.",
+      },
+      {
+        type: "p",
+        text: "They click the extension, type a short description of what's wrong, and submit. The URL they're on, the browser they're using, the operating system, the viewport size, and a screenshot of the current state are captured automatically. The report lands on your board, already organised, with everything you need. No follow-up required.",
+      },
+      {
+        type: "callout",
+        text: "When capturing context is automatic, the bar for a client to file a complete report drops to almost nothing. They describe what's wrong. The tool handles the rest.",
+      },
+      {
+        type: "h2",
+        text: "What to do about the annotation problem",
+      },
+      {
+        type: "p",
+        text: "Screenshots are more useful when the problem is marked. A screenshot of a checkout page tells you something is wrong on the checkout page. A screenshot with a red circle on the broken button tells you exactly what to look at.",
+      },
+      {
+        type: "p",
+        text: "Asking clients to annotate screenshots is, in practice, asking them to take a screenshot, open an image editor, draw on it, save it, and attach it. Almost none of them will. The ones who try will send you an image annotated with the wrong tool, saved at the wrong size, with the arrow pointing at the wrong thing.",
+      },
+      {
+        type: "p",
+        text: "The better solution is to give clients an annotation interface that's built into the reporting flow. Click to place a marker, drag to highlight — two seconds of effort that makes the screenshot dramatically more useful. When annotation is that easy, clients actually do it.",
+      },
+      {
+        type: "h2",
+        text: "The status update problem",
+      },
+      {
+        type: "p",
+        text: "One of the underappreciated causes of vague client bug reports is that clients don't trust the reports they've already sent. They've filed three things in your project management tool and never heard what happened to them. So the next time they see something wrong, they send you a Slack message instead — because that at least gets a response.",
+      },
+      {
+        type: "p",
+        text: "A visible bug board — one the client can actually see, showing the status of their reported issues — changes this dynamic. When clients can see that their reports have been received, triaged, and moved to \"in progress\" or \"fixed,\" they trust the process. They stop chasing via Slack. They stop duplicating reports. They file through the proper channel because they can see it works.",
+      },
+      {
+        type: "quote",
+        text: "The best client bug report process isn't one where clients report less — it's one where they report more, through the right channel, in a way that's useful.",
+      },
+      {
+        type: "h2",
+        text: "Handling the reports that arrive anyway",
+      },
+      {
+        type: "p",
+        text: "Even with a perfect process in place, some clients will always report via email or WhatsApp. That's fine — the goal is not to eliminate informal reports, it's to reduce the information gap when they arrive.",
+      },
+      {
+        type: "p",
+        text: "For these cases, a simple reply template saves time: \"Thanks for flagging this. To help me look into it, could you share: (1) the URL where you saw this, (2) which browser you were using, and (3) a screenshot of the issue if you can?\" Copy-paste, sent in ten seconds, gets you the three things that resolve 80% of the ambiguity.",
+      },
+      {
+        type: "p",
+        text: "Better still: once you have the URL and browser, you can often reproduce the issue yourself and file a proper report internally. The client message becomes a trigger, and the actual report is filed properly. This means your records are complete even when the client's process isn't.",
+      },
+      {
+        type: "h2",
+        text: "Making it part of the contract",
+      },
+      {
+        type: "p",
+        text: "For agencies that want to be more formal about it: add a brief \"bug reporting procedure\" clause to your maintenance and support contracts. Not a legal treatise — two sentences describing the tool clients should use and the information required for a bug to enter the queue. This sets the expectation in the place where clients actually pay attention to process: the contract they've signed.",
+      },
+      {
+        type: "p",
+        text: "It also gives you a professional basis for saying, when a vague report arrives, \"as per our agreed process, we'd need a bit more information to look into this.\" Not rude, not dismissive — just professional. The contract said this.",
+      },
+      {
+        type: "h2",
+        text: "The outcome worth aiming for",
+      },
+      {
+        type: "p",
+        text: "A well-run client bug reporting process isn't one where clients send perfect reports from memory. It's one where the tool does the work, the client barely has to think, and the report that lands on your board already has everything you need.",
+      },
+      {
+        type: "p",
+        text: "When that's working, the back-and-forth disappears. The Friday afternoon panic messages disappear. The \"did you get my email?\" follow-ups disappear. What's left is a clean signal — a board of real, actionable issues, each with the context to fix it — and a client relationship that isn't strained by a process that was always too hard for them.",
+      },
+    ],
+  },
 ];
 
 export function getPost(slug: string): Post | undefined {
