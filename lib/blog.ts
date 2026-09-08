@@ -797,6 +797,255 @@ export const posts: Post[] = [
       },
     ],
   },
+  {
+    slug: "the-pre-launch-qa-checklist-every-team-needs",
+    title: "The Pre-Launch QA Checklist Every Team Needs (And Most Don't Have)",
+    excerpt:
+      "Most launch bugs aren't surprising - they're predictable. Here's the checklist that catches them before your users do, whether you have a QA team or not.",
+    category: "QA Best Practices",
+    date: "8 September 2026",
+    readTime: "8 min read",
+    author: "Annoture Team",
+    content: [
+      {
+        type: "p",
+        text: "Every team that has shipped a broken release can tell you the same story. The bug that made it to production wasn't mysterious - it was something that would have been caught in ten minutes if anyone had looked. The checkout button that didn't work on mobile. The form that cleared itself when the page scrolled. The email that went out with a broken link.",
+      },
+      {
+        type: "p",
+        text: "The problem isn't that teams don't care about quality. It's that there's no agreed, written list of what to check before every release. Checks happen in people's heads, inconsistently, and the things that get missed are always the same categories of things.",
+      },
+      {
+        type: "p",
+        text: "This checklist is designed to be used before every significant release - not just major versions. Print it, paste it into your wiki, or run through it in your task management tool. The goal is that every check on this list gets done by someone before code reaches your users.",
+      },
+      {
+        type: "h2",
+        text: "Section 1 - The critical path",
+      },
+      {
+        type: "p",
+        text: "Before anything else, walk through the core flows a user would take on their first day. These are the paths that, if broken, make everything else irrelevant.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Sign up - create a new account from scratch and complete the full onboarding flow",
+          "Log in - sign in with an existing account, including password reset",
+          "The core action - whatever your product does, do it end-to-end as a new user would",
+          "Upgrade or purchase - if there is a payment flow, run it in test mode with a test card",
+          "Log out - confirm the session clears and the user is properly redirected",
+          "Delete or cancel - if users can delete their account or cancel a subscription, test that it works cleanly",
+        ],
+      },
+      {
+        type: "p",
+        text: "Each of these should work without any prior knowledge of the app. If you need to know something about the system to make a flow work, a new user will hit that wall.",
+      },
+      {
+        type: "h2",
+        text: "Section 2 - Cross-browser and cross-device",
+      },
+      {
+        type: "p",
+        text: "Browser differences account for a disproportionate share of launch bugs. A layout that looks perfect in Chrome can collapse in Safari. A JavaScript interaction that works in Firefox can silently fail in Edge. You don't need to test everything in every browser - but you do need to test the critical path in each of the main ones.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Chrome - latest stable release",
+          "Safari - latest stable release on macOS (and iOS if you have mobile users)",
+          "Firefox - latest stable release",
+          "Edge - if any of your users are likely to be on Windows corporate environments",
+          "Mobile Chrome on Android - the most common mobile browser globally",
+          "Mobile Safari on iOS - the most common mobile browser among iPhone users",
+        ],
+      },
+      {
+        type: "quote",
+        text: "Safari is responsible for the majority of cross-browser bugs in web applications. If you only have time for one additional browser beyond your development browser, make it Safari.",
+      },
+      {
+        type: "p",
+        text: "For each browser, at minimum: can the user complete the critical path? Does the layout break at any point? Are there any console errors on the main pages?",
+      },
+      {
+        type: "h2",
+        text: "Section 3 - Responsive and viewport",
+      },
+      {
+        type: "p",
+        text: "Test at three viewport widths before every release. Not full device testing - just the widths that expose the most common layout failures.",
+      },
+      {
+        type: "ul",
+        items: [
+          "360px - the smallest common Android viewport, where things most often break",
+          "768px - the tablet breakpoint, where many layouts transition awkwardly",
+          "1440px - a common desktop monitor width, where wide layouts sometimes over-extend",
+        ],
+      },
+      {
+        type: "p",
+        text: "At each width, check: does the navigation collapse correctly? Does text overflow its container? Are buttons and inputs large enough to tap on mobile? Does any content disappear off screen?",
+      },
+      {
+        type: "callout",
+        text: "DevTools device emulation is not a substitute for testing on a real device - but it catches 80% of layout issues in a fraction of the time. Use it for every release; use a real device for major ones.",
+      },
+      {
+        type: "h2",
+        text: "Section 4 - Forms and data entry",
+      },
+      {
+        type: "p",
+        text: "Forms fail in predictable ways, and almost all of them are caught by a structured check rather than exploratory testing.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Required field validation - submit each form with required fields empty and confirm the error messages appear and are readable",
+          "Invalid format validation - submit an invalid email, a too-short password, a phone number with letters",
+          "Character limits - paste a very long string into every text input and confirm it doesn't break the layout or the database write",
+          "Special characters - try names with apostrophes, addresses with commas, inputs with angle brackets or quotes",
+          "Double submission - click the submit button twice quickly and confirm the form doesn't submit twice",
+          "Back button after submission - go back in the browser after submitting a form and confirm it doesn't resubmit",
+          "Autofill - check that browser autofill populates the correct fields and doesn't cause validation to fail",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Section 5 - Emails and notifications",
+      },
+      {
+        type: "p",
+        text: "Email bugs are particularly painful because by the time you discover them, they've already gone to real users. Check every triggered email before launch.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Welcome email - does it send on signup? Does it render correctly in Gmail and Outlook?",
+          "Password reset - does the link work and expire after use?",
+          "Verification emails - does the verification link actually verify the account?",
+          "Notification emails - do they send at the right time and contain the right information?",
+          "Email links - click every link in every email and confirm they go to the right page",
+          "Unsubscribe - does clicking unsubscribe actually stop emails?",
+          "From name and address - are these set correctly and not defaulting to a test value?",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Section 6 - Error states and edge cases",
+      },
+      {
+        type: "p",
+        text: "The happy path works. It's the error paths that tend to be untested - and that users hit regularly.",
+      },
+      {
+        type: "ul",
+        items: [
+          "404 pages - navigate to a URL that doesn't exist and confirm there is a useful 404 page",
+          "Empty states - what does the dashboard look like for a brand new user with no data?",
+          "Network failure - disconnect briefly while submitting a form and confirm the error is handled gracefully",
+          "Session expiry - what happens when a logged-in user's session expires? Are they redirected cleanly to login?",
+          "Duplicate actions - try creating the same resource twice and confirm there is a useful error, not a crash",
+          "Long content - add a very long team name, a very long post title, and check nothing overflows",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Section 7 - Performance and load",
+      },
+      {
+        type: "p",
+        text: "You don't need a load testing suite for this. A few quick checks before launch catch the most common performance regressions.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Page load time - run your main marketing page through PageSpeed Insights and confirm the score hasn't dropped significantly since the last release",
+          "Images - are all images optimised? Are any new images accidentally served at full resolution?",
+          "Console errors - open the browser console on each main page and confirm there are no red errors",
+          "Network tab - look for any requests returning 4xx or 5xx status codes on page load",
+          "Large files - check that no new JavaScript bundles have been accidentally included that significantly increase bundle size",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Section 8 - Security basics",
+      },
+      {
+        type: "p",
+        text: "These aren't a substitute for a security audit, but they catch the most common oversights.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Auth-gated routes - visit a page that requires login while logged out and confirm you are redirected",
+          "Other users' data - if users have private data, confirm that navigating directly to another user's resource URL returns an error rather than showing their data",
+          "HTTPS - confirm the production URL redirects from http to https and does not serve content over plain http",
+          "Sensitive data in URLs - confirm that passwords, tokens, and API keys are not appearing in URL query parameters",
+          "Cookie flags - if your auth uses cookies, confirm they are HttpOnly and Secure in production",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Section 9 - Content and copy",
+      },
+      {
+        type: "p",
+        text: "Content bugs are the ones users screenshot and post on social media. They're also among the easiest to catch.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Placeholder text - search for 'Lorem ipsum', 'TODO', 'TBD', 'PLACEHOLDER', '[insert', and 'your company name' across the live build",
+          "Broken images - look for any missing images, alt text on a white background, or incorrectly sized images",
+          "Old pricing - if you've changed pricing, confirm the old prices don't appear anywhere",
+          "Spelling and grammar on new content - run new copy through a spellchecker before it goes live",
+          "Legal pages - confirm privacy policy, terms, and cookie policy are present and up to date",
+          "Page titles and meta descriptions - check that new pages have appropriate titles and descriptions set",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Section 10 - Post-release checks",
+      },
+      {
+        type: "p",
+        text: "The checklist doesn't end at deployment. A brief check immediately after release catches deployment-specific issues that don't show up in staging.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Smoke test the critical path on production - not staging, the actual live URL",
+          "Check error monitoring - look at Sentry or your equivalent for any new errors in the first 15 minutes",
+          "Check analytics - confirm your page view events are firing and session counts look normal",
+          "Test any third-party integrations on production - they sometimes behave differently with production API keys",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Making the checklist stick",
+      },
+      {
+        type: "p",
+        text: "The hardest part of a pre-launch checklist is not writing it - it's running it consistently under time pressure. When a release is delayed and the team is anxious to ship, the checklist is the first thing that gets skipped.",
+      },
+      {
+        type: "p",
+        text: "Two things help with this. First, make the checklist shorter than you think it should be. The right pre-launch checklist for most teams is not this entire document - it's eight to twelve items that cover your specific critical paths and your historically common failure modes. Start with the full list, identify the checks that have caught bugs in your past releases, and keep those. Remove the rest.",
+      },
+      {
+        type: "p",
+        text: "Second, make running the checklist fast. Most of the time spent on a checklist is not the checking itself - it's the reporting. If a tester finds a bug and has to copy the URL, note the browser, take a screenshot, open your task tool, create an issue, paste everything in and write a description, that's five minutes per bug. Multiply by ten bugs across a release check and you've added an hour to the process. When reporting is fast - a single click that captures everything automatically - the checklist gets run because it doesn't feel like a burden.",
+      },
+      {
+        type: "p",
+        text: "A pre-launch checklist that takes 20 minutes to run and captures everything it finds is a better investment than any number of post-launch hotfixes. The bugs on this list are not the exotic ones. They are the predictable ones - the ones that have been shipping to production for years because nobody had a written agreement about what to check before the deploy button was pressed.",
+      },
+    ],
+  },
 ];
 
 export function getPost(slug: string): Post | undefined {
