@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import CookieBanner from "@/components/CookieBanner";
+import { Contentsquare } from "./contentsquare";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -158,6 +159,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full flex flex-col bg-[#0F0F0F] text-white">
+        <Contentsquare />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
