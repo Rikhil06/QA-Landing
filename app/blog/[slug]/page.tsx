@@ -5,6 +5,8 @@ import PageLayout from "@/components/PageLayout";
 import { posts, getPost, type ContentBlock } from "@/lib/blog";
 import ShareButtons from "@/components/ShareButtons";
 import ReadingProgress from "@/components/ReadingProgress";
+import InlineText, { plainText } from "@/components/InlineText";
+import { toIsoDate } from "@/lib/dates";
 import React from "react";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -19,16 +21,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return {};
   const url = `https://annoture.com/blog/${slug}`;
   const ogImage = `https://annoture.com/blog/${slug}/opengraph-image`;
+  const title = post.seoTitle ?? post.title;
   return {
-    title: post.title,
+    title,
     description: post.excerpt,
     robots: { index: true, follow: true },
     alternates: { canonical: url },
     openGraph: {
-      title: post.title,
+      title,
       description: post.excerpt,
       type: "article",
-      publishedTime: post.date,
+      publishedTime: toIsoDate(post.date),
+      modifiedTime: toIsoDate(post.updated ?? post.date),
       url,
       images: [{ url: ogImage, width: 1200, height: 630, alt: post.title }],
     },
@@ -56,7 +60,7 @@ function renderBlock(block: ContentBlock, i: number) {
     case "p":
       return (
         <p key={i} className="text-white/60 leading-relaxed mb-5">
-          {block.text}
+          <InlineText text={block.text} />
         </p>
       );
     case "ul":
@@ -65,7 +69,7 @@ function renderBlock(block: ContentBlock, i: number) {
           {block.items.map((item, j) => (
             <li key={j} className="flex gap-3 text-white/60 leading-relaxed">
               <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-violet-400 shrink-0" />
-              {item}
+              <span><InlineText text={item} /></span>
             </li>
           ))}
         </ul>
@@ -78,7 +82,7 @@ function renderBlock(block: ContentBlock, i: number) {
               <span className="text-violet-400 font-semibold text-sm shrink-0 mt-0.5 w-5 text-right">
                 {j + 1}.
               </span>
-              {item}
+              <span><InlineText text={item} /></span>
             </li>
           ))}
         </ol>
@@ -89,7 +93,7 @@ function renderBlock(block: ContentBlock, i: number) {
           key={i}
           className="my-8 pl-5 border-l-2 border-violet-500/60 text-white/70 italic leading-relaxed"
         >
-          {block.text}
+          <InlineText text={block.text} />
         </blockquote>
       );
     case "callout":
@@ -98,7 +102,37 @@ function renderBlock(block: ContentBlock, i: number) {
           key={i}
           className="my-8 px-6 py-5 rounded-xl bg-violet-500/8 border border-violet-500/20 text-white/80 leading-relaxed"
         >
-          {block.text}
+          <InlineText text={block.text} />
+        </div>
+      );
+    case "table":
+      return (
+        <div key={i} className="my-8 overflow-x-auto rounded-xl border border-white/10">
+          <table className="w-full text-sm text-left">
+            <thead className="bg-white/4">
+              <tr>
+                {block.headers.map((h, j) => (
+                  <th key={j} scope="col" className="px-4 py-3 font-semibold text-white whitespace-nowrap">
+                    {h}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {block.rows.map((row, r) => (
+                <tr key={r} className="border-t border-white/8">
+                  {row.map((cell, c) => (
+                    <td
+                      key={c}
+                      className={`px-4 py-3 leading-relaxed ${c === 0 ? "text-white/80 font-medium" : "text-white/60"}`}
+                    >
+                      <InlineText text={cell} />
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       );
   }
@@ -137,6 +171,37 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post) notFound();
 
   const midpoint = Math.floor(post.content.length / 2);
+  const url = `https://annoture.com/blog/${post.slug}`;
+
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    image: `${url}/opengraph-image`,
+    datePublished: toIsoDate(post.date),
+    dateModified: toIsoDate(post.updated ?? post.date),
+    author: { "@type": "Organization", name: post.author, url: "https://annoture.com" },
+    publisher: {
+      "@type": "Organization",
+      name: "Annoture",
+      url: "https://annoture.com",
+      logo: { "@type": "ImageObject", url: "https://annoture.com/apple-icon" },
+    },
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+  };
+
+  const faqJsonLd = post.faqs?.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: post.faqs.map((f) => ({
+          "@type": "Question",
+          name: f.question,
+          acceptedAnswer: { "@type": "Answer", text: plainText(f.answer) },
+        })),
+      }
+    : null;
 
   // Related: same category first, then others, exclude current
   const related = [
@@ -146,6 +211,16 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <PageLayout>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       <ReadingProgress />
 
       {/* Hero */}
@@ -171,7 +246,9 @@ export default async function BlogPostPage({ params }: Props) {
             <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${categoryClass(post.category)}`}>
               {post.category}
             </span>
-            <span className="text-xs text-white/30">{post.date}</span>
+            <span className="text-xs text-white/30">
+              {post.updated ? `Updated ${post.updated}` : post.date}
+            </span>
             <span className="text-xs text-white/30">·</span>
             <span className="text-xs text-white/30">{post.readTime}</span>
             <span className="text-xs text-white/30">·</span>
@@ -195,6 +272,21 @@ export default async function BlogPostPage({ params }: Props) {
               {i === midpoint && <InlineCTA />}
             </React.Fragment>
           ))}
+          {post.faqs && post.faqs.length > 0 && (
+            <section className="mt-14">
+              <h2 className="text-xl sm:text-2xl font-bold text-white mb-6">Frequently asked questions</h2>
+              <div className="space-y-6">
+                {post.faqs.map((f) => (
+                  <div key={f.question}>
+                    <h3 className="text-lg font-semibold text-white mb-2">{f.question}</h3>
+                    <p className="text-white/60 leading-relaxed">
+                      <InlineText text={f.answer} />
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
           <div className="mt-10 pt-8 border-t border-white/8">
             <ShareButtons title={post.title} slug={post.slug} />
           </div>

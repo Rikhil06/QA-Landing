@@ -5,17 +5,28 @@ export type ContentBlock =
   | { type: "ul"; items: string[] }
   | { type: "ol"; items: string[] }
   | { type: "quote"; text: string }
-  | { type: "callout"; text: string };
+  | { type: "callout"; text: string }
+  | { type: "table"; headers: string[]; rows: string[][] };
+
+// Text in p, li, quote, callout and table cells may contain inline links
+// written as [link text](/path).
+
+export type FAQItem = { question: string; answer: string };
 
 export type Post = {
   slug: string;
   title: string;
+  // Optional <title>/meta title when it should differ from the on-page H1.
+  seoTitle?: string;
   excerpt: string;
   category: string;
   date: string;
+  // Set when a post is substantially revised; drives dateModified and the sitemap.
+  updated?: string;
   readTime: string;
   author: string;
   content: ContentBlock[];
+  faqs?: FAQItem[];
 };
 
 export const posts: Post[] = [
@@ -146,7 +157,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "The best QA workflows capture all seven required fields with zero extra effort from the tester. That means the screenshot is taken at the moment of capture, the URL and browser and OS and viewport are recorded automatically, the DOM element is detected, and the report lands directly on the team's task board - already categorised and ready to triage.",
+        text: "The best QA workflows capture all seven required fields with zero extra effort from the tester. That means the screenshot is taken at the moment of capture, the URL and browser and OS and viewport are recorded automatically, the DOM element is detected, and the report lands directly on the team's task board - already categorised and ready to [triage](/blog/how-to-prioritize-bugs-a-practical-framework-for-qa-teams).",
       },
       {
         type: "p",
@@ -280,7 +291,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "GitHub and Jira are live now. Slack, Linear, and Figma integrations are next - Slack for instant channel notifications when a bug is captured, Linear for teams that use it as their primary issue tracker, and Figma for linking bug reports directly to the design frames they affect. If there's an integration your team needs that isn't on the roadmap, the fastest way to get it prioritised is to request it.",
+        text: "GitHub and Jira are live now. Slack, Linear, and Figma integrations are next - [Slack](/integrations/slack) for instant channel notifications when a bug is captured, Linear for teams that use it as their primary issue tracker, and Figma for linking bug reports directly to the design frames they affect. If there's an integration your team needs that isn't on the roadmap, the fastest way to get it prioritised is to request it.",
       },
       {
         type: "p",
@@ -290,12 +301,14 @@ export const posts: Post[] = [
   },
   {
     slug: "how-to-prioritize-bugs-a-practical-framework-for-qa-teams",
-    title: "How to Prioritize Bugs: A Practical Framework for QA Teams",
+    title: "Bug Prioritization Framework: How QA Teams Decide What to Fix First",
+    seoTitle: "Bug Prioritization Framework for QA Teams",
     excerpt:
-      "Not every bug deserves to block a release. Here's how high-performing QA teams decide what to fix first - and how to get developers to agree.",
+      "A practical bug prioritization framework: severity levels, a priority matrix, a simple scoring model, and a triage template your QA team and developers can agree on.",
     category: "QA Best Practices",
     date: "23 August 2026",
-    readTime: "7 min read",
+    updated: "17 September 2026",
+    readTime: "10 min read",
     author: "Annoture Team",
     content: [
       {
@@ -308,7 +321,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "Good bug prioritization isn't complicated, but it does require a shared framework that everyone - QA, developers, and product - agrees on before the pressure hits.",
+        text: "Good bug prioritization isn't complicated, but it does require a shared framework that everyone - QA, developers, and product - agrees on before the pressure hits. This guide gives you one: a severity scale, a bug prioritization matrix, a simple scoring model for the borderline cases, and a triage template you can copy.",
       },
       {
         type: "h2",
@@ -356,6 +369,42 @@ export const posts: Post[] = [
       },
       {
         type: "h2",
+        text: "The bug prioritization matrix",
+      },
+      {
+        type: "p",
+        text: "Severity alone doesn't tell you what to fix first. Combine it with how many users are affected and you get a priority matrix that settles most decisions in seconds. Find the severity row, find the reach column, and read off the priority.",
+      },
+      {
+        type: "table",
+        headers: ["Severity", "Most users affected", "Some users affected", "Few users affected"],
+        rows: [
+          ["Critical", "P1", "P1", "P2"],
+          ["High", "P1", "P2", "P3"],
+          ["Medium", "P2", "P3", "P4"],
+          ["Low", "P3", "P4", "P4"],
+        ],
+      },
+      {
+        type: "p",
+        text: "Then agree what each priority level actually commits the team to. Without response targets, \"P1\" is just a label.",
+      },
+      {
+        type: "table",
+        headers: ["Priority", "What it means", "Target"],
+        rows: [
+          ["P1", "Drop current work and fix it. Blocks the release.", "Same day"],
+          ["P2", "Fix in the current sprint.", "Before the next release"],
+          ["P3", "Schedule it.", "Within one or two sprints"],
+          ["P4", "Track it, fix when there's capacity.", "Review monthly"],
+        ],
+      },
+      {
+        type: "p",
+        text: "These targets are a starting point - adjust them to your release cadence. A team shipping daily will want tighter windows than one releasing monthly.",
+      },
+      {
+        type: "h2",
         text: "The four factors that determine priority",
       },
       {
@@ -395,6 +444,45 @@ export const posts: Post[] = [
         text: "A medium-priority bug that takes 15 minutes to fix should often jump the queue ahead of a high-priority bug that requires a multi-day refactor. Getting easy wins resolved keeps the backlog moving and maintains momentum.",
       },
       {
+        type: "h2",
+        text: "A simple bug scoring model for borderline cases",
+      },
+      {
+        type: "p",
+        text: "The matrix handles most bugs. For the ones where people disagree, score the first three factors from 1 to 3 and add them up. Keep fix complexity out of the score and use it as a tie-breaker instead, so an easy fix never inflates how important a bug looks.",
+      },
+      {
+        type: "table",
+        headers: ["Factor", "1", "2", "3"],
+        rows: [
+          ["User impact", "Few users, rarely", "Some users or some flows", "Most users or a core flow"],
+          ["Business impact", "None visible", "Indirect (support load, trust)", "Revenue, legal, or security"],
+          ["Reproducibility", "Intermittent, hard to trigger", "Happens under specific conditions", "Happens every time"],
+        ],
+      },
+      {
+        type: "p",
+        text: "A total of 8-9 is P1, 6-7 is P2, 4-5 is P3, and 3 is P4. Within the same priority, fix the quicker bugs first.",
+      },
+      {
+        type: "p",
+        text: "Here's how that plays out on four real-world style bugs:",
+      },
+      {
+        type: "table",
+        headers: ["Bug", "User", "Business", "Repro", "Score", "Priority"],
+        rows: [
+          ["Pay now button does nothing on Safari checkout", "2", "3", "3", "8", "P1"],
+          ["Password reset email sometimes not sent", "2", "3", "2", "7", "P2"],
+          ["Label misaligned on the settings page", "1", "1", "3", "5", "P3"],
+          ["Admin CSV export occasionally times out", "1", "2", "1", "4", "P3"],
+        ],
+      },
+      {
+        type: "p",
+        text: "Notice the misaligned label scores higher on reproducibility than the export bug, but both land at P3. That's the point of scoring several factors: no single dimension gets to decide on its own.",
+      },
+      {
         type: "callout",
         text: "Tip: when you capture a bug, set the priority immediately - while you're still looking at it. Context fades fast. A bug filed with 'not assigned' priority that sits for three days will cost more time to re-evaluate than it would have taken to set it right.",
       },
@@ -414,6 +502,10 @@ export const posts: Post[] = [
           "Crashes on the main user path - login, signup, checkout, core product flow",
           "Bugs that have already reached production and are affecting live users",
         ],
+      },
+      {
+        type: "p",
+        text: "Most of these are catchable before release. A short [pre-launch QA checklist](/blog/the-pre-launch-qa-checklist-every-team-needs) covering your critical paths stops the majority of P1s from ever reaching production.",
       },
       {
         type: "p",
@@ -445,7 +537,31 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "When bug reports arrive with the full context automatically captured - URL, browser, OS, viewport, screenshot, DOM element - prioritization becomes a five-second decision rather than a five-minute investigation. The information needed to assess severity and priority is already in the report.",
+        text: "When bug reports arrive with the full context automatically captured - URL, browser, OS, viewport, screenshot, DOM element - prioritization becomes a five-second decision rather than a five-minute investigation. The information needed to assess severity and priority is already in the report. (We cover what a complete report needs in [why bug reports slow down development teams](/blog/why-bug-reports-slow-down-development).)",
+      },
+      {
+        type: "h2",
+        text: "A bug triage template you can copy",
+      },
+      {
+        type: "p",
+        text: "Paste this into your team wiki or the description of your triage meeting, and run every new bug through it:",
+      },
+      {
+        type: "ol",
+        items: [
+          "Is the report complete? URL, browser, OS, viewport, screenshot, and steps to reproduce. If not, send it back before discussing priority.",
+          "Does it trigger immediate escalation? Data loss, security, a broken core flow, or live production impact - if yes, it's P1 and skips the rest.",
+          "Set severity using the four-level scale: Critical, High, Medium, or Low.",
+          "Read priority off the matrix using severity and how many users are affected.",
+          "If anyone disagrees, score user impact, business impact, and reproducibility from 1 to 3 and use the total.",
+          "Use fix complexity to order bugs within the same priority.",
+          "Assign an owner and a target date that matches the priority level.",
+        ],
+      },
+      {
+        type: "callout",
+        text: "In Annoture, the severity is set in the capture popup at the moment the bug is found, and every report already includes the URL, browser, OS, viewport, screenshot, and DOM element - so steps 1 and 3 are done before triage starts. [See how capture works](/features).",
       },
       {
         type: "h2",
@@ -458,6 +574,33 @@ export const posts: Post[] = [
       {
         type: "p",
         text: "The goal isn't perfect prioritization - that doesn't exist. The goal is a process that's consistent, transparent, and fast enough that bugs get to the right developer at the right time without anyone spending half their day arguing about what matters.",
+      },
+    ],
+    faqs: [
+      {
+        question: "What is a bug prioritization framework?",
+        answer:
+          "A bug prioritization framework is an agreed set of rules for deciding which bugs to fix first. It usually combines a severity scale (how bad the bug is), a way to judge impact (how many users and how much business risk), and response targets for each priority level, so QA, developers, and product make the same call on the same bug.",
+      },
+      {
+        question: "What is the difference between bug severity and priority?",
+        answer:
+          "Severity describes how serious the bug is technically, such as a crash versus a cosmetic issue. Priority describes how urgently it should be fixed relative to everything else right now. A severe bug in a rarely used feature can be low priority, and a minor bug on a checkout page can be high priority.",
+      },
+      {
+        question: "What do P1, P2, P3, and P4 mean for bugs?",
+        answer:
+          "They are priority levels. P1 means drop current work and fix it the same day because it blocks release. P2 means fix it in the current sprint. P3 means schedule it within the next one or two sprints. P4 means track it and fix it when there is capacity.",
+      },
+      {
+        question: "Who should decide bug priority?",
+        answer:
+          "Priority works best when QA and at least one developer decide it together, with product involved for anything that affects revenue or roadmap. QA understands the user impact, and developers understand the fix cost, so shared triage produces better decisions than either side alone.",
+      },
+      {
+        question: "How often should a team triage bugs?",
+        answer:
+          "Most teams triage new bugs at least once per sprint, often in a 15-minute session at the start of the sprint or as a short async review on the task board. Anything that meets the immediate escalation criteria, such as data loss or a security issue, should skip the queue and be handled straight away.",
       },
     ],
   },
@@ -570,7 +713,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "Decide where bugs live, and make it the only place. It doesn't matter much which tool you pick. What matters is that it's one tool, everyone uses it, and it has enough structure to let you sort bugs by priority and see at a glance what's been fixed and what hasn't.",
+        text: "Decide where bugs live, and make it the only place. It doesn't matter much which tool you pick. What matters is that it's one tool, everyone uses it, and it has enough structure to let you [sort bugs by priority](/blog/how-to-prioritize-bugs-a-practical-framework-for-qa-teams) and see at a glance what's been fixed and what hasn't.",
       },
       {
         type: "h2",
@@ -1013,7 +1156,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "The checklist doesn't end at deployment. A brief check immediately after release catches deployment-specific issues that don't show up in staging.",
+        text: "The checklist doesn't end at deployment. A brief check immediately after release catches deployment-specific issues that don't show up in staging. When something does turn up, a shared [bug prioritization framework](/blog/how-to-prioritize-bugs-a-practical-framework-for-qa-teams) decides whether it's a same-day hotfix or can wait for the next release.",
       },
       {
         type: "ul",

@@ -2,131 +2,119 @@ import type { MetadataRoute } from "next";
 import { integrations } from "@/lib/integrations";
 import { posts } from "@/lib/blog";
 import { audiences } from "@/lib/audiences";
+import { changelog } from "@/lib/changelog";
+import { parseDisplayDate } from "@/lib/dates";
 
+// Only pages with a real content date get lastModified. Stamping every URL with
+// the build time tells Google everything changed on every deploy, so it learns
+// to ignore the field entirely.
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://annoture.com";
-  const now = new Date();
+
+  const postDates = posts.map((p) => parseDisplayDate(p.updated ?? p.date));
+  const latestPostDate = new Date(Math.max(...postDates.map((d) => d.getTime())));
+  const latestChangelogDate = new Date(
+    Math.max(...changelog.map((e) => parseDisplayDate(e.date).getTime()))
+  );
 
   return [
     {
       url: base,
-      lastModified: now,
       changeFrequency: "weekly",
       priority: 1,
     },
     {
       url: `${base}/features`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${base}/features`,
-      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${base}/use-cases/qa-testing`,
-      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.85,
     },
     {
       url: `${base}/use-cases/bug-reporting`,
-      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.85,
     },
     {
       url: `${base}/compare/bugherd-and-marker-io`,
-      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${base}/chrome-extension`,
-      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${base}/faq`,
-      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${base}/about`,
-      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${base}/contact`,
-      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${base}/privacy-policy`,
-      lastModified: now,
       changeFrequency: "yearly",
       priority: 0.4,
     },
     {
       url: `${base}/terms`,
-      lastModified: now,
       changeFrequency: "yearly",
       priority: 0.4,
     },
     {
       url: `${base}/cookies`,
-      lastModified: now,
       changeFrequency: "yearly",
       priority: 0.3,
     },
     {
       url: `${base}/changelog`,
-      lastModified: now,
+      lastModified: latestChangelogDate,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: `${base}/brand`,
-      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
       url: `${base}/blog`,
-      lastModified: now,
+      lastModified: latestPostDate,
       changeFrequency: "weekly",
       priority: 0.8,
     },
-    ...posts.map((p) => ({
+    ...posts.map((p, i) => ({
       url: `${base}/blog/${p.slug}`,
-      lastModified: now,
+      lastModified: postDates[i],
       changeFrequency: "monthly" as const,
       priority: 0.75,
     })),
     {
       url: `${base}/integrations`,
-      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     ...audiences.map((a) => ({
       url: `${base}/for/${a.slug}`,
-      lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.85,
     })),
     ...integrations.map((i) => ({
       url: `${base}/integrations/${i.slug}`,
-      lastModified: now,
       changeFrequency: "monthly" as const,
-      priority: i.status === 'available' ? 0.85 : 0.7,
+      priority: i.status === "available" ? 0.85 : 0.7,
     })),
   ];
 }

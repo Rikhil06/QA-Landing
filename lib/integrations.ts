@@ -28,6 +28,20 @@ export type Integration = {
   howItWorks: IntegrationStep[];
   setupUrl?: string;       // docs or in-app URL
   docsNote?: string;
+  // Optional SEO content for integrations that target a search topic.
+  // Text may contain inline links written as [label](/path).
+  heading?: string;          // H1 override (defaults to name)
+  seoTitle?: string;
+  seoDescription?: string;
+  guide?: IntegrationGuideSection[];
+  faqs?: { question: string; answer: string }[];
+};
+
+export type IntegrationGuideSection = {
+  heading: string;
+  paragraphs?: string[];
+  bullets?: string[];
+  afterBullets?: string[];
 };
 
 export const integrations: Integration[] = [
@@ -184,6 +198,71 @@ export const integrations: Integration[] = [
       { step: '02', title: 'Choose a channel', description: 'Select which channel should receive bug notifications for each site.' },
       { step: '03', title: 'Capture bugs', description: 'Capture bugs with the Chrome extension as usual.' },
       { step: '04', title: 'Team gets notified', description: 'A Slack message appears instantly with the bug title, priority, and a link to the full report.' },
+    ],
+    heading: 'Slack bug tracking',
+    seoTitle: 'Slack Bug Tracking: Get Bug Reports in Slack',
+    seoDescription:
+      'How to track bugs in Slack without losing them in threads: a channel setup, a bug report template, and how to pair Slack with a bug tracker. Annoture Slack notifications are coming soon.',
+    guide: [
+      {
+        heading: 'Why bug tracking in Slack falls apart',
+        paragraphs: [
+          'Slack is where most bugs are first mentioned. Someone spots something broken, drops a message in a channel, and a developer replies with a thumbs up. It feels fast. The problems show up a week later.',
+        ],
+        bullets: [
+          'Messages scroll away. A bug reported on Monday is buried under 200 messages by Wednesday.',
+          'There is no status. Nobody can tell at a glance which bugs are fixed, in progress, or forgotten.',
+          'Context is missing. "The checkout is broken" rarely comes with the URL, browser, OS, or a screenshot of the exact element.',
+          'Ownership is unclear. A reaction emoji is not an assignment.',
+          'Duplicates pile up. Three people report the same bug in three threads.',
+        ],
+      },
+      {
+        heading: 'How to track bugs in Slack today',
+        paragraphs: [
+          'If your team is small and bugs are occasional, Slack can work as a lightweight bug tracker with a little structure:',
+        ],
+        bullets: [
+          'Create one dedicated channel, such as #bugs, and make it the only place bugs get reported.',
+          'Pin a report template: page URL, browser and version, operating system, screen size, steps to reproduce, expected result, actual result, and a screenshot.',
+          'Agree status reactions: 👀 being looked at, 🛠️ in progress, ✅ fixed, 🚫 won\'t fix.',
+          'Keep all discussion about a bug in its thread, and name an owner in the first reply.',
+          'Once a bug is confirmed, move it into a real tracker and post the link back in the thread.',
+        ],
+        afterBullets: [
+          'The weak point is the template. People skip fields when they are in a hurry, which is exactly when bugs get reported. Our guide on [why bug reports slow down development](/blog/why-bug-reports-slow-down-development) covers what goes missing and what it costs.',
+        ],
+      },
+      {
+        heading: 'Slack plus a bug tracker: the setup that scales',
+        paragraphs: [
+          'As soon as bugs become a weekly occurrence, the split that works is simple: Slack is for being notified, the bug tracker is the source of truth. Slack tells the right people something happened. The tracker holds the full report, the status, the owner, and the history.',
+          'Annoture is built around that split. The [Chrome extension](/chrome-extension) captures a bug in one click with the screenshot, URL, browser, OS, viewport, and DOM element filled in automatically, and the report lands on your team\'s Kanban board. The [GitHub](/integrations/github) and [Jira](/integrations/jira) integrations are live today. The Slack integration will post each new report to the channel you choose, with the title, priority, page URL, and a link to the full report.',
+          'Once reports are flowing in, a shared [bug prioritization framework](/blog/how-to-prioritize-bugs-a-practical-framework-for-qa-teams) decides what the team fixes first.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Can you use Slack as a bug tracker?',
+        answer:
+          'For a small team with occasional bugs, yes: use one dedicated channel, a pinned report template, status reactions, and one thread per bug. It breaks down as volume grows, because messages scroll away, there is no reliable status view, and reports often miss details like the URL, browser, and screenshot.',
+      },
+      {
+        question: 'Is the Annoture Slack integration available?',
+        answer:
+          'Not yet. The Slack integration is in development. You can request early access and we will let you know when it launches. The GitHub and Jira integrations are available now.',
+      },
+      {
+        question: 'What should a bug report posted in Slack include?',
+        answer:
+          'At minimum: the page URL, browser and version, operating system, screen size, steps to reproduce, the expected result, the actual result, and a screenshot showing the problem. Without these, developers usually have to ask follow-up questions before they can start.',
+      },
+      {
+        question: 'Should bugs live in Slack or in a bug tracker?',
+        answer:
+          'In a bug tracker. Use Slack for notifications and quick discussion, and keep the full report, status, and owner in a tracker or board. That way nothing gets lost when the channel moves on.',
+      },
     ],
   },
   {

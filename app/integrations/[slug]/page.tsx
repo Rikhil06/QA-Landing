@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import PageLayout from "@/components/PageLayout";
+import InlineText, { plainText } from "@/components/InlineText";
 import { integrations, getIntegration } from "@/lib/integrations";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -15,14 +16,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const integration = getIntegration(slug);
   if (!integration) return {};
   const url = `https://annoture.com/integrations/${slug}`;
+  const title = integration.seoTitle ?? `${integration.name} Integration — Annoture`;
+  const description = integration.seoDescription ?? integration.description;
   return {
-    title: `${integration.name} Integration — Annoture`,
-    description: integration.description,
+    title,
+    description,
     robots: { index: true, follow: true },
     alternates: { canonical: url },
     openGraph: {
-      title: `${integration.name} Integration — Annoture`,
-      description: integration.description,
+      title,
+      description,
       type: "website",
       url,
       images: [{ url: "https://annoture.com/opengraph-image", width: 1200, height: 630, alt: "Annoture — Visual QA Bug Capture Tool" }],
@@ -40,12 +43,31 @@ export default async function IntegrationPage({ params }: Props) {
   if (!integration) notFound();
 
   const { name, tagline, description, category, status, icon, viewBox, color,
-          textColor, borderColor, bgColor, features, howItWorks, setupUrl, docsNote } = integration;
+          textColor, borderColor, bgColor, features, howItWorks, setupUrl, docsNote,
+          heading, guide, faqs } = integration;
+
+  const faqJsonLd = faqs?.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqs.map((f) => ({
+          "@type": "Question",
+          name: f.question,
+          acceptedAnswer: { "@type": "Answer", text: plainText(f.answer) },
+        })),
+      }
+    : null;
 
   const categoryBadge = `${bgColor} ${textColor} border ${borderColor}`;
 
   return (
     <PageLayout>
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       {/* Hero */}
       <section className="relative pt-32 pb-20 px-6 overflow-hidden">
         <div
@@ -72,7 +94,7 @@ export default async function IntegrationPage({ params }: Props) {
 
             <div className="flex-1">
               <div className="flex flex-wrap items-center gap-3 mb-3">
-                <h1 className="text-3xl sm:text-4xl font-bold text-white">{name}</h1>
+                <h1 className="text-3xl sm:text-4xl font-bold text-white">{heading ?? name}</h1>
                 <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${categoryBadge}`}>{category}</span>
                 {status === 'available' ? (
                   <span className="flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
@@ -130,7 +152,9 @@ export default async function IntegrationPage({ params }: Props) {
       {/* Features */}
       <section className="px-6 pb-20">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl font-bold text-white mb-10">What you get</h2>
+          <h2 className="text-2xl font-bold text-white mb-10">
+            {status === 'available' ? 'What you get' : `What the ${name} integration will do`}
+          </h2>
           <div className="grid sm:grid-cols-2 gap-5">
             {features.map((f, i) => (
               <div key={i} className="glass-card rounded-xl p-6">
@@ -169,6 +193,58 @@ export default async function IntegrationPage({ params }: Props) {
           )}
         </div>
       </section>
+
+      {/* Guide content */}
+      {guide && guide.length > 0 && (
+        <section className="px-6 pb-20">
+          <div className="max-w-3xl mx-auto space-y-14">
+            {guide.map((section) => (
+              <div key={section.heading}>
+                <h2 className="text-2xl font-bold text-white mb-5">{section.heading}</h2>
+                {section.paragraphs?.map((text, i) => (
+                  <p key={i} className="text-white/60 leading-relaxed mb-5">
+                    <InlineText text={text} />
+                  </p>
+                ))}
+                {section.bullets && (
+                  <ul className="mb-5 space-y-2">
+                    {section.bullets.map((item, i) => (
+                      <li key={i} className="flex gap-3 text-white/60 leading-relaxed">
+                        <span className="mt-2 w-1.5 h-1.5 rounded-full bg-violet-400 shrink-0" />
+                        <span><InlineText text={item} /></span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {section.afterBullets?.map((text, i) => (
+                  <p key={i} className="text-white/60 leading-relaxed mb-5">
+                    <InlineText text={text} />
+                  </p>
+                ))}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* FAQs */}
+      {faqs && faqs.length > 0 && (
+        <section className="px-6 pb-20">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-2xl font-bold text-white mb-8">Frequently asked questions</h2>
+            <div className="space-y-6">
+              {faqs.map((f) => (
+                <div key={f.question} className="glass-card rounded-xl p-6">
+                  <h3 className="text-base font-semibold text-white mb-2">{f.question}</h3>
+                  <p className="text-sm text-white/55 leading-relaxed">
+                    <InlineText text={f.answer} />
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CTA */}
       <section className="px-6 pb-24">

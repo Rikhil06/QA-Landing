@@ -11,8 +11,13 @@ function categoryClass(cat: string) {
   return categoryColors[cat] ?? "bg-white/10 text-white/60 border-white/10";
 }
 
+// Guides we want linked from the homepage regardless of publish date.
+const FEATURED_SLUGS = ["how-to-prioritize-bugs-a-practical-framework-for-qa-teams"];
+
 export default function LatestPosts() {
-  const latest = [...posts].reverse().slice(0, 3);
+  const featured = FEATURED_SLUGS.flatMap((slug) => posts.filter((p) => p.slug === slug));
+  const newest = [...posts].reverse().filter((p) => !FEATURED_SLUGS.includes(p.slug));
+  const latest = [...featured, ...newest].slice(0, 3);
 
   return (
     <section className="relative py-16 md:py-24 px-6">
@@ -20,7 +25,7 @@ export default function LatestPosts() {
         <div className="flex items-end justify-between mb-10">
           <div>
             <p className="text-xs font-semibold text-white/30 uppercase tracking-widest mb-2">From the blog</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-white">Latest articles</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-white">Guides and articles</h2>
           </div>
           <Link
             href="/blog"
