@@ -26,6 +26,8 @@ const resourceLinks: DropdownItem[] = [
   { label: "QA Testing", href: "/use-cases/qa-testing", desc: "Built for QA engineers" },
   { label: "Bug Reporting", href: "/use-cases/bug-reporting", desc: "For developer teams" },
   { label: "Compare", href: "/compare/bugherd-and-marker-io", desc: "Annoture vs BugHerd vs Marker.io" },
+  { label: "BugHerd alternative", href: "/compare/bugherd-alternative", desc: "Free plan, same visual capture" },
+  { label: "Marker.io alternative", href: "/compare/marker-io-alternative", desc: "With a built-in bug board" },
 ];
 
 function NavDropdown({

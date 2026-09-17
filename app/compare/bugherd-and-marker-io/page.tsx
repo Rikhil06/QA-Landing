@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import PageLayout from "@/components/PageLayout";
+import Link from "next/link";
 import FAQ from "@/components/FAQ";
+import { competitors } from "@/lib/competitors";
 
 export const metadata: Metadata = {
   title: "Annoture vs BugHerd vs Marker.io — Visual Bug Reporting Compared",
@@ -12,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Annoture vs BugHerd vs Marker.io — Visual Bug Reporting Compared",
     description:
-      "BugHerd and Marker.io both start at $39/month with no free tier. Annoture gives you 100 screenshots a month free, forever.",
+      "BugHerd starts at $50/month and Marker.io at $59/month, with no free tier. Annoture gives you 100 screenshots a month free, forever.",
     url: "https://annoture.com/compare/bugherd-and-marker-io",
   },
 };
@@ -26,7 +28,7 @@ const faqJsonLd = {
       name: "Does BugHerd or Marker.io have a free plan?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "No. BugHerd offers a 7-day free trial and Marker.io offers a 15-day free trial, but neither has a permanently free tier — both require a paid plan starting at $39/month once the trial ends. Annoture has a genuinely free plan with no time limit: 3 projects, 5 team members, and 100 screenshots a month at no cost.",
+        text: "No. BugHerd offers a free trial and Marker.io offers a 15-day free trial, but neither has a permanently free tier. Once the trial ends, BugHerd starts at $50/month and Marker.io at $59/month ($39/month billed yearly). Annoture has a genuinely free plan with no time limit: 3 projects, 5 team members, and 100 screenshots a month at no cost.",
       },
     },
     {
@@ -34,7 +36,7 @@ const faqJsonLd = {
       name: "What's the cheapest paid plan across Annoture, BugHerd, and Marker.io?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "BugHerd's Standard plan and Marker.io's Starter plan are both $39/month. Annoture's Starter plan is £15/month (roughly $19), making it the cheapest paid entry point of the three while including 300 screenshots a month and 10 team members.",
+        text: "BugHerd's Standard plan is $50/month ($42/month billed yearly) for 5 members, and Marker.io's Starter plan is $59/month ($39/month billed yearly) for 3 users. Annoture's Starter plan is £15/month (£12/month billed yearly), making it the cheapest paid entry point of the three while including 300 screenshots a month and 10 team members.",
       },
     },
     {
@@ -42,7 +44,7 @@ const faqJsonLd = {
       name: "Do Annoture, BugHerd, and Marker.io all work as a Chrome extension?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes, all three offer a browser-based capture tool. The difference is what happens after capture: BugHerd and Marker.io are built to forward feedback into your existing project management tool, while Annoture includes its own Kanban board out of the box, so you don't need a separate tool to track and resolve issues.",
+        text: "Yes, all three offer a browser-based capture tool. The difference is what happens after capture: Marker.io is built to forward feedback into your existing project management tool, while BugHerd and Annoture both include a built-in Kanban board, so you don't need a separate tool to track and resolve issues.",
       },
     },
     {
@@ -50,18 +52,18 @@ const faqJsonLd = {
       name: "Is Annoture a replacement for BugHerd or Marker.io?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes — Annoture covers the same core workflow (click an element, capture a screenshot with full context, file a report) and adds a built-in Kanban board, so most teams don't need a separate project management tool alongside it.",
+        text: "For most teams, yes. Annoture covers the same core workflow (click an element, capture a screenshot with full context, file a report) and includes a built-in Kanban board, so you don't need a separate project management tool alongside it. Teams that rely on session replay, feedback on Figma or PDF files, or unlimited client guest users may still prefer Marker.io or BugHerd.",
       },
     },
   ],
 };
 
 const pricingRows = [
-  { plan: "Free / entry trial", bugherd: "7-day trial only", marker: "15-day trial only", annoture: "Free forever" },
-  { plan: "Cheapest paid plan", bugherd: "$39/mo (5 members)", marker: "$39/mo (3 users)", annoture: "£15/mo (10 members)" },
+  { plan: "Free / entry trial", bugherd: "Free trial only", marker: "15-day trial only", annoture: "Free forever" },
+  { plan: "Cheapest paid plan", bugherd: "$50/mo · $42/mo yearly (5 members)", marker: "$59/mo · $39/mo yearly (3 users)", annoture: "£15/mo · £12/mo yearly (10 members)" },
   { plan: "Screenshots / month", bugherd: "Unlimited (paid only)", marker: "Unlimited (paid only)", annoture: "100/mo free, 300/mo on Starter" },
-  { plan: "Mid-tier plan", bugherd: "$59/mo · 10 members", marker: "$149/mo · 15 users", annoture: "£39/mo · unlimited" },
-  { plan: "Built-in Kanban board", bugherd: "No — exports to your PM tool", marker: "No — exports to your PM tool", annoture: "Yes, included on every plan" },
+  { plan: "Mid-tier plan", bugherd: "$80/mo · 10 members", marker: "$199/mo · $149/mo yearly · 15 users", annoture: "£39/mo · unlimited" },
+  { plan: "Built-in Kanban board", bugherd: "Yes, on every plan", marker: "No — sends to your PM tool", annoture: "Yes, included on every plan" },
 ];
 
 const featureRows = [
@@ -69,8 +71,8 @@ const featureRows = [
   { label: "Auto-captured URL, browser, OS", bugherd: true, marker: true, annoture: true },
   { label: "DOM element / CSS selector capture", bugherd: true, marker: true, annoture: true },
   { label: "Free tier with no time limit", bugherd: false, marker: false, annoture: true },
-  { label: "Built-in Kanban board", bugherd: false, marker: false, annoture: true },
-  { label: "Session replay / console logs", bugherd: false, marker: true, annoture: false },
+  { label: "Built-in Kanban board", bugherd: true, marker: false, annoture: true },
+  { label: "Session replay", bugherd: false, marker: true, annoture: false },
   { label: "Native Jira / Trello export", bugherd: true, marker: true, annoture: true },
 ];
 
@@ -109,9 +111,9 @@ export default function ComparePage() {
             <span className="gradient-text">vs Marker.io</span>
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-white/50 w-[min(42rem,100vw-3rem)] mx-auto leading-relaxed mb-10">
-            BugHerd and Marker.io both start at $39/month with nothing but a
-            time-limited trial before that. Annoture has a free plan that
-            never expires — 100 screenshots a month, on the house.
+            BugHerd starts at $50/month and Marker.io at $59/month, with
+            nothing but a time-limited trial before that. Annoture has a free
+            plan that never expires — 100 screenshots a month, on the house.
           </p>
           <a
             href="https://app.annoture.com/register"
@@ -121,10 +123,21 @@ export default function ComparePage() {
           </a>
           <p className="text-xs text-white/30 mt-4">
             Pricing shown in source currency for each tool — BugHerd and
-            Marker.io in USD, Annoture in GBP. Figures current as of this
-            page&apos;s last update; check each provider&apos;s site for the
-            latest pricing.
+            Marker.io in USD, Annoture in GBP. Competitor pricing taken from
+            their pricing pages on 17 September 2026; check each
+            provider&apos;s site for the latest figures.
           </p>
+          <div className="mt-6 flex flex-wrap justify-center gap-3 text-sm">
+            {competitors.map((c) => (
+              <Link
+                key={c.slug}
+                href={`/compare/${c.slug}`}
+                className="px-4 py-2 rounded-lg border border-white/10 text-white/60 hover:text-white hover:border-white/20 transition-all"
+              >
+                {c.name} alternative →
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -136,8 +149,8 @@ export default function ComparePage() {
               The free tier difference
             </h2>
             <p className="text-white/45 max-w-lg mx-auto">
-              Both competitors make you commit to a card before you can
-              properly try the product. Annoture doesn&apos;t.
+              Both competitors give you a time-limited trial, then a paid
+              plan. Annoture&apos;s free plan doesn&apos;t expire.
             </p>
           </div>
           <div className="glass-card rounded-2xl overflow-hidden">
@@ -208,8 +221,9 @@ export default function ComparePage() {
             </div>
           </div>
           <p className="text-xs text-white/30 mt-4 text-center">
-            Marker.io&apos;s session replay and console log recording are only
-            available on its Team plan ($149/mo) and above.
+            Marker.io&apos;s session replay is only available on its Team plan
+            ($199/mo, or $149/mo billed yearly) and above. Screen recording is
+            coming soon to Annoture.
           </p>
         </div>
       </section>
@@ -226,23 +240,23 @@ export default function ComparePage() {
             {[
               {
                 icon: "🆓",
-                title: "No card required to start",
-                body: "BugHerd and Marker.io both require a trial sign-up that ends in a paywall. Annoture's free plan has no expiry date.",
+                title: "No trial countdown",
+                body: "BugHerd and Marker.io both offer a time-limited trial that ends in a paid plan. Annoture's free plan has no expiry date.",
               },
               {
                 icon: "📋",
                 title: "One tool, not two",
-                body: "BugHerd and Marker.io forward reports into a separate project management tool. Annoture's Kanban board is built in — there's nothing else to set up.",
+                body: "Marker.io forwards reports into a separate project management tool. Annoture's Kanban board is built in — there's nothing else to set up.",
               },
               {
                 icon: "💷",
                 title: "Lower entry price",
-                body: "Annoture's Starter plan is roughly half the price of BugHerd's or Marker.io's cheapest paid tier, with more screenshots included.",
+                body: "Annoture's Starter plan is £15/month, against $50/month for BugHerd Standard and $59/month for Marker.io Starter.",
               },
               {
                 icon: "👥",
                 title: "More members per plan",
-                body: "Marker.io's Starter plan caps out at 3 users for $39/month. Annoture's Starter plan includes 10 team members for less.",
+                body: "Marker.io's Starter plan caps out at 3 users and BugHerd Standard at 5. Annoture's Starter plan includes 10 team members for less.",
               },
               {
                 icon: "⚡",
@@ -252,7 +266,7 @@ export default function ComparePage() {
               {
                 icon: "🔄",
                 title: "Still exports where you need it",
-                body: "Connect Annoture to Jira, Trello, or export to PDF when you need to hand work off to a tool your client already uses.",
+                body: "Connect Annoture to GitHub or Jira, with PDF and Trello exports on the Agency plan, when you need to hand work off to a tool your client already uses.",
               },
             ].map((item) => (
               <div key={item.title} className="glass-card p-5 rounded-2xl">
@@ -273,22 +287,22 @@ export default function ComparePage() {
           {
             question: "Does BugHerd or Marker.io have a free plan?",
             answer:
-              "No. BugHerd offers a 7-day free trial and Marker.io offers a 15-day free trial, but neither has a permanently free tier — both require a paid plan starting at $39/month once the trial ends. Annoture has a genuinely free plan with no time limit: 3 projects, 5 team members, and 100 screenshots a month at no cost.",
+              "No. BugHerd offers a free trial and Marker.io offers a 15-day free trial, but neither has a permanently free tier. Once the trial ends, BugHerd starts at $50/month and Marker.io at $59/month ($39/month billed yearly). Annoture has a genuinely free plan with no time limit: 3 projects, 5 team members, and 100 screenshots a month at no cost.",
           },
           {
             question: "What's the cheapest paid plan across Annoture, BugHerd, and Marker.io?",
             answer:
-              "BugHerd's Standard plan and Marker.io's Starter plan are both $39/month. Annoture's Starter plan is £15/month (roughly $19), making it the cheapest paid entry point of the three while including 300 screenshots a month and 10 team members.",
+              "BugHerd's Standard plan is $50/month ($42/month billed yearly) for 5 members, and Marker.io's Starter plan is $59/month ($39/month billed yearly) for 3 users. Annoture's Starter plan is £15/month (£12/month billed yearly), making it the cheapest paid entry point of the three while including 300 screenshots a month and 10 team members.",
           },
           {
             question: "Do Annoture, BugHerd, and Marker.io all work as a Chrome extension?",
             answer:
-              "Yes, all three offer a browser-based capture tool. The difference is what happens after capture: BugHerd and Marker.io are built to forward feedback into your existing project management tool, while Annoture includes its own Kanban board out of the box, so you don't need a separate tool to track and resolve issues.",
+              "Yes, all three offer a browser-based capture tool. The difference is what happens after capture: Marker.io is built to forward feedback into your existing project management tool, while BugHerd and Annoture both include a built-in Kanban board, so you don't need a separate tool to track and resolve issues.",
           },
           {
             question: "Is Annoture a replacement for BugHerd or Marker.io?",
             answer:
-              "Yes — Annoture covers the same core workflow (click an element, capture a screenshot with full context, file a report) and adds a built-in Kanban board, so most teams don't need a separate project management tool alongside it.",
+              "For most teams, yes. Annoture covers the same core workflow (click an element, capture a screenshot with full context, file a report) and includes a built-in Kanban board, so you don't need a separate project management tool alongside it. Teams that rely on session replay, feedback on Figma or PDF files, or unlimited client guest users may still prefer Marker.io or BugHerd.",
           },
         ]}
       />

@@ -85,9 +85,44 @@ export const metadata: Metadata = {
   // Icons are auto-generated from app/icon.tsx and app/apple-icon.tsx
 };
 
+const CHROME_STORE_URL =
+  "https://chromewebstore.google.com/detail/annoture/bmamimdeecmfddopfkkcfphkddigpimc";
+
+const organization = {
+  "@type": "Organization",
+  "@id": `${BASE_URL}/#organization`,
+  name: "Annoture",
+  url: BASE_URL,
+  logo: {
+    "@type": "ImageObject",
+    url: `${BASE_URL}/apple-icon`,
+    width: 180,
+    height: 180,
+  },
+  sameAs: [
+    "https://www.linkedin.com/company/annoture/",
+    "https://www.instagram.com/annoture/",
+  ],
+};
+
+// Plan prices mirror components/Pricing.tsx — keep them in sync.
+const planOffers = [
+  { name: "Free", price: "0" },
+  { name: "Starter", price: "15" },
+  { name: "Team", price: "39" },
+].map((plan) => ({
+  "@type": "Offer",
+  name: plan.name,
+  price: plan.price,
+  priceCurrency: "GBP",
+  availability: "https://schema.org/InStock",
+  url: `${BASE_URL}/#pricing`,
+}));
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
+    organization,
     {
       "@type": "SoftwareApplication",
       "@id": `${BASE_URL}/#software`,
@@ -97,29 +132,23 @@ const jsonLd = {
         "Annoture is a visual QA bug capture tool. The Chrome extension captures bugs in one click — auto-capturing screenshots, page URL, browser version, operating system, viewport size, and DOM element selector into a developer-ready bug report on a shared Kanban board.",
       applicationCategory: "DeveloperApplication",
       applicationSubCategory: "QA Testing Tool",
-      operatingSystem: "Chrome",
+      operatingSystem: "Windows, macOS, Linux, ChromeOS",
       browserRequirements: "Requires Google Chrome",
-      softwareVersion: "1.0",
-      offers: {
-        "@type": "Offer",
-        price: "0",
-        priceCurrency: "GBP",
-        availability: "https://schema.org/ComingSoon",
-      },
+      installUrl: CHROME_STORE_URL,
+      sameAs: [CHROME_STORE_URL],
+      offers: planOffers,
       featureList: [
         "One-click bug capture",
         "Automatic screenshot with annotation",
         "Auto-captured URL, browser, OS, viewport, DOM element",
+        "Console error capture",
         "Kanban bug board",
         "Severity levels",
+        "GitHub and Jira integrations",
         "Team collaboration",
       ],
-      screenshot: `${BASE_URL}/og-image.png`,
-      publisher: {
-        "@type": "Organization",
-        name: "Annoture",
-        url: BASE_URL,
-      },
+      screenshot: `${BASE_URL}/opengraph-image`,
+      publisher: { "@id": `${BASE_URL}/#organization` },
     },
     {
       "@type": "WebSite",
@@ -127,23 +156,7 @@ const jsonLd = {
       url: BASE_URL,
       name: "Annoture",
       description: "Visual QA bug capture tool for product teams",
-      publisher: {
-        "@type": "Organization",
-        name: "Annoture",
-        url: BASE_URL,
-        logo: {
-          "@type": "ImageObject",
-          url: `${BASE_URL}/apple-icon`,
-        },
-      },
-      potentialAction: {
-        "@type": "SearchAction",
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate: `${BASE_URL}/?q={search_term_string}`,
-        },
-        "query-input": "required name=search_term_string",
-      },
+      publisher: { "@id": `${BASE_URL}/#organization` },
     },
   ],
 };

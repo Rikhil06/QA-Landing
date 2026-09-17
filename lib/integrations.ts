@@ -148,6 +148,10 @@ export const integrations: Integration[] = [
         title: 'Kanban + Jira in sync',
         description: 'Every report appears on the Annoture Kanban board and in Jira simultaneously. Teams can work in whichever tool they prefer.',
       },
+      {
+        title: 'Works with any plan',
+        description: 'Jira integration is available on all Annoture plans, including the free tier.',
+      },
     ],
     howItWorks: [
       {
@@ -251,7 +255,7 @@ export const integrations: Integration[] = [
       {
         question: 'Is the Annoture Slack integration available?',
         answer:
-          'Not yet. The Slack integration is in development. You can request early access and we will let you know when it launches. The GitHub and Jira integrations are available now.',
+          'Not yet. The Slack integration is in development. You can request early access and we will let you know when it launches. The GitHub and Jira integrations are available now on every plan, including the free plan.',
       },
       {
         question: 'What should a bug report posted in Slack include?',

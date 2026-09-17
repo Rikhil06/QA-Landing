@@ -21,6 +21,30 @@ export const metadata: Metadata = {
 const CHROME_STORE_URL =
   "https://chromewebstore.google.com/detail/annoture/bmamimdeecmfddopfkkcfphkddigpimc";
 
+const extensionJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "@id": "https://annoture.com/chrome-extension#extension",
+  name: "Annoture Chrome Extension",
+  url: "https://annoture.com/chrome-extension",
+  description:
+    "Capture bugs on any web page in one click. The Annoture Chrome extension takes a screenshot and records the page URL, browser, operating system, viewport, and console errors, then sends the report to your Annoture Kanban board.",
+  applicationCategory: "BrowserApplication",
+  applicationSubCategory: "Bug reporting",
+  operatingSystem: "Windows, macOS, Linux, ChromeOS",
+  browserRequirements: "Requires Google Chrome",
+  installUrl: CHROME_STORE_URL,
+  sameAs: [CHROME_STORE_URL],
+  isPartOf: { "@id": "https://annoture.com/#software" },
+  publisher: { "@id": "https://annoture.com/#organization" },
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "GBP",
+    availability: "https://schema.org/InStock",
+  },
+};
+
 const steps = [
   {
     number: "01",
@@ -56,12 +80,16 @@ const captured = [
   { label: "Screen resolution", desc: "Display and viewport dimensions", icon: "📐" },
   { label: "Console errors", desc: "Any JS errors or warnings logged at capture time", icon: "⚠️" },
   { label: "Click position", desc: "Exact coordinates of where you clicked the bug", icon: "🎯" },
-  { label: "Screen recording", desc: "Short recording of activity before capture (Team plan)", icon: "🎬" },
+  { label: "Screen recording", desc: "Short recording of activity before capture (coming soon)", icon: "🎬" },
 ];
 
 export default function ChromeExtensionPage() {
   return (
     <PageLayout>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(extensionJsonLd) }}
+      />
       {/* Hero */}
       <section className="relative pt-32 pb-20 px-6">
         <div className="max-w-4xl mx-auto text-center">

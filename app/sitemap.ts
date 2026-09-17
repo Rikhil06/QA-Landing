@@ -3,6 +3,7 @@ import { integrations } from "@/lib/integrations";
 import { posts } from "@/lib/blog";
 import { audiences } from "@/lib/audiences";
 import { changelog } from "@/lib/changelog";
+import { competitors } from "@/lib/competitors";
 import { parseDisplayDate } from "@/lib/dates";
 
 // Only pages with a real content date get lastModified. Stamping every URL with
@@ -43,6 +44,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    ...competitors.map((c) => ({
+      url: `${base}/compare/${c.slug}`,
+      lastModified: parseDisplayDate(c.pricingCheckedOn),
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+    })),
     {
       url: `${base}/chrome-extension`,
       changeFrequency: "monthly",
